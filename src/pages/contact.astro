@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <section class="bg-pink contact-section ">
+    
+    <form id="contact-form" class="pt-header p-sm flex flex-wrap">
+      <div class="intro-form w-1/3">
+        <p class="text-p-small max-w-max-ssm">If you’re interested in partnering with us, placing an order or learning more about our cuts — drop us a line.</p>
+      </div>
+      <div class="inputs-form w-1/3">
+        <div class="inputs-form-wrapper ">
+          <div>
+            <label for="email">Name*</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              required
+            />
+          </div>
+          <div>
+            <label for="email">Company*</label>
+            <input
+              id="company"
+              type="text"
+              name="company"
+              required
+            />
+          </div>
+          <div>
+            <label for="email">E-mail Address*</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+            />
+          </div>
+  
+          <div class="radio-buttons">
+            <legend>Business*</legend>
+            <div class="">
+              <div>
+                (
+                <input
+                  type="radio"
+                  id="service-restaurant"
+                  name="service"
+                  value="restaurant"
+                  required
+                />
+                )
+                <label for="service-restaurant">Restaurant</label>
+              </div>
+              <div>
+                (
+                <input
+                  type="radio"
+                  id="service-catering"
+                  name="service"
+                  value="catering"
+                  required
+                />
+                )
+                <label for="service-catering">Catering</label>
+              </div>
+              <div>
+                (
+                <input
+                  type="radio"
+                  id="service-distributor"
+                  name="service"
+                  value="distributor"
+                  required
+                />
+                )
+                <label for="service-distributor">Distributor</label>
+              </div>
+              <div>
+                (
+                <input
+                  type="radio"
+                  id="service-distributor"
+                  name="service"
+                  value="distributor"
+                  required
+                />
+                )
+                <label for="service-distributor">Food manufacturer</label>
+              </div>
+              <div>
+                (
+                <input
+                  type="radio"
+                  id="service-distributor"
+                  name="service"
+                  value="distributor"
+                  required
+                />
+                )
+                <label for="service-distributor">Retailer</label>
+              </div>
+              <div>
+                (
+                <input
+                  type="radio"
+                  id="service-distributor"
+                  name="service"
+                  value="distributor"
+                  required
+                />
+                )
+                <label for="service-distributor">Other</label>
+              </div>
+            </div>
+            
+          </div>
+    
+          <div >
+            <label for="subject">Subject*</label>
+            <input
+              id="subject"
+              type="text"
+              name="subject"
+              required
+            />
+          </div>
+        
+        </div>
+      </div>
+      
+      <div class="textarea-form w-1/3">
+        <div class="flex flex-col max-w-max-ssm mx-auto">
+          <label for="message">Message*</label>
+          <textarea
+          class="mt-sm"
+            id="message"
+            name="message"
+            required
+          ></textarea>
+        </div>
+      </div>
+      
+      <div class="button-wrapper p-sm w-full h-[60vh] relative pt-xxl">
+        <button class="w-full cursor-pointer text-black h-full flex justify-center items-center border border-black rounded-full hover:border-none hover:bg-black hover:text-white" type="submit">Enviar</button>
+      </div>
+     
+    </form>
+    <script type="module">
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form));
+        const res = await fetch('/api/send-mail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            mail: data.email,
+            subject: data.subject,
+            message: data.message,
+            service: data.service,
+          }),
+        });
+
+        if (res.ok) {
+          alert('¡Correo enviado!');
+          form.reset();
+        } else {
+          const err = await res.json();
+          alert('Error al enviar: ' + err.error);
+        }
+      });
+    </script>
+  </section>
+    
+
+    
+
+    
+</Layout>

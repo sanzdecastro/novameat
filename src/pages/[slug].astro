@@ -1,0 +1,63 @@
+---
+
+import Layout from '../layouts/Layout.astro';
+
+import { getPages, getPage, getProducts, getProduct } from "../lib/api.js";
+
+import PointsSlider from "../components/PointsSlider.vue"
+import BlockText from "../components/BlockText.vue"
+import PlaySlider from "../components/PlaySlider.vue"
+import BlockCategoryProduct from "../components/BlockCategoryProduct.vue"
+import ButtonSection from "../components/ButtonSection.vue"
+import BlockImage from "../components/BlockImage.vue"
+import BlockTeam from "../components/BlockTeam.vue"
+import BlockCountries from "../components/BlockCountries.vue"
+import BlockLogos from "../components/BlockLogos.vue"
+import BlockPress from "../components/BlockPress.vue"
+import BlockInvestors from "../components/BlockInvestors.vue"
+import BlockCentralMessage from '../components/BlockCentralMessage.vue';
+
+const { slug } = Astro.params;
+const page = await getPage(slug , 'en');
+
+console.log( page )
+
+const flexibleSections = page?.acf?.flexible_content || [];
+---
+
+<Layout>
+<div class="flex flex-col">
+{
+    flexibleSections.map((section: any) => {
+      if (section.acf_fc_layout === "points_slider") {
+        return <PointsSlider section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_text") {
+        return <BlockText section={section} client:only />;
+      } else if(section.acf_fc_layout === "play_slider") {
+        return <PlaySlider section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_category_product") {
+        return <BlockCategoryProduct section={section} client:only />;
+      } else if(section.acf_fc_layout === "button") {
+        return <ButtonSection section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_image") {
+        return <BlockImage section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_team") {
+        return <BlockTeam section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_countries") {
+        return <BlockCountries section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_logos") {
+        return <BlockLogos section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_press") {
+        return <BlockPress section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_investors") {
+        return <BlockInvestors section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_message_central") {
+        return <BlockCentralMessage section={section} client:only />;
+      } 
+      
+      return null; 
+    })
+    
+}
+</div>
+</Layout>
