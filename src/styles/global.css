@@ -134,7 +134,7 @@ h5 {
 /* Header */
 
 body:has(.block-dots), body:has(.contact-section), body:has(.section-central-message) {
-  header {
+  header, .sub-header {
     @apply
     border-black
     text-black;
@@ -153,7 +153,20 @@ body:has(.product-page) {
   bg-black;
 }
 
-.header-product {
+
+.sub-header {
+  @apply
+  z-5 
+  fixed 
+  top-0 
+  left-0 
+  w-full 
+  py-sm 
+  px-md
+   text-white 
+   border-b 
+   border-white 
+   text-p-small;
   ul {
     li {
       a {

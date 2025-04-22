@@ -46,23 +46,23 @@ export default {
                 <div class="certifications flex flex-col">
                     <p class="pb-md">Certifications:</p>
                     <div class="logos flex gap-lg">
-                        <img class="h-[calc((45/1515)*100vw]" src="/public/v-label.svg">
-                        <img class="h-[calc((45/1515)*100vw]" src="/public/gluten-free.svg">
-                        <img class="h-[calc((45/1515)*100vw]" src="/public/food-safety.svg">
+                        <img class="h-[calc((45/1515)*100vw]" src="/v-label.svg">
+                        <img class="h-[calc((45/1515)*100vw]" src="/gluten-free.svg">
+                        <img class="h-[calc((45/1515)*100vw]" src="/food-safety.svg">
                     </div>
                 </div>
                 <div class="financial flex flex-col">
                     <p class="pb-md w-max-ssm">Financial support from CDTI through the NEOTEC programme Co-funded by the European Union's EIC Accelerator programme Grant Agreement Nº 190112238</p>
                     <div class="logos flex gap-lg">
-                        <img class="h-[calc((45/1515)*100vw]" src="/public/ministerio-economia.svg">
-                        <img class="h-[calc((45/1515)*100vw]" src="/public/cdti.svg">
-                        <img class="h-[calc((45/1515)*100vw]" src="/public/eu.svg">
+                        <img class="h-[calc((45/1515)*100vw]" src="/ministerio-economia.svg">
+                        <img class="h-[calc((45/1515)*100vw]" src="/cdti.svg">
+                        <img class="h-[calc((45/1515)*100vw]" src="/eu.svg">
                     </div>
                 </div>
                 <div class="member flex flex-col">
                     <p class="pb-md">Proud members of:</p>
                     <div class="logos">
-                        <img class="h-[calc((45/1515)*100vw]" src="/public/eit.svg">
+                        <img class="h-[calc((45/1515)*100vw]" src="/eit.svg">
                     </div>
                 </div>
             </div>

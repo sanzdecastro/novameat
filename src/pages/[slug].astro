@@ -16,6 +16,7 @@ import BlockLogos from "../components/BlockLogos.vue"
 import BlockPress from "../components/BlockPress.vue"
 import BlockInvestors from "../components/BlockInvestors.vue"
 import BlockCentralMessage from '../components/BlockCentralMessage.vue';
+import SubHeader from '../components/subHeader.vue';
 
 const { slug } = Astro.params;
 const page = await getPage(slug , 'en');
@@ -26,7 +27,7 @@ const flexibleSections = page?.acf?.flexible_content || [];
 ---
 
 <Layout>
-<div class="flex flex-col">
+<div class="flex flex-col wrapper-content-flexible">
 {
     flexibleSections.map((section: any) => {
       if (section.acf_fc_layout === "points_slider") {
@@ -53,6 +54,8 @@ const flexibleSections = page?.acf?.flexible_content || [];
         return <BlockInvestors section={section} client:only />;
       } else if(section.acf_fc_layout === "block_message_central") {
         return <BlockCentralMessage section={section} client:only />;
+      } else if(section.acf_fc_layout === "sub_header") {
+        return <SubHeader section={section} client:only />;
       } 
       
       return null; 

@@ -38,7 +38,7 @@ export default {
 </script>
 
 <template>
-  <div class="play-slider slider-container relative w-[100vw] h-[100dvh] text-black mb-20" :class="{ 'with_items_paragraphs': section.with_items_paragraphs === true }">
+  <div :id="section.id_anchor" class="play-slider slider-container relative w-[100vw] h-[100dvh] text-black mb-20" :class="{ 'with_items_paragraphs': section.with_items_paragraphs === true }">
 
     <swiper
       class="w-full h-full relative"

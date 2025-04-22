@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export function headerProductSelector() {
-  const items = document.querySelectorAll(".header-product ul li a");
+  const items = document.querySelectorAll(".header-product ul li a, header ul li a");
 
 
   if (items.length === 0) return;

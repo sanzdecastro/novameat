@@ -6,6 +6,7 @@ import { getPages, getPage, getProducts, getProduct } from "../../lib/api.js";
 import SliderIngredients from "../../components/SliderIngredients.vue"
 import CardIngredient from "../../components/CardIngredient.vue"
 import Divider from '../../components/Divider.vue';
+import SubHeader from '../../components/subHeader.vue';
 
 
 const { slug } = Astro.params;
@@ -19,14 +20,7 @@ console.log(page)
 
 <Layout>
     
-    <div class="header-product z-5 fixed top-0 left-0 pt-header w-full py-sm px-md text-white border-b border-white text-p-small">
-        <ul class="flex justify-center items-center w-full gap-items-menu">
-            <li><a class="active" href="#overview">Overview</a></li>
-            <li><a href="#ingredients">Ingredients</a></li>
-            <li><a href="#recipes">Recipes</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-    </div>
+    <SubHeader section={page?.acf?.sub_header} client:only ></SubHeader>
     
     <div class="product-page bg-black text-white">
         <div class="product-info">
