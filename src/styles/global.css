@@ -6,6 +6,7 @@
   src: url('/fonts/Haffer-TRIAL-Regular.woff') format('woff2'),
        url('/fonts/Haffer-TRIAL-Regular.woff2') format('woff');
   font-weight: 100;
+  display: swap;
   font-style: normal;
 }
 
