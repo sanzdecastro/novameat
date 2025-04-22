@@ -20,13 +20,14 @@ import SubHeader from '../components/subHeader.vue';
 
 const { slug } = Astro.params;
 const page = await getPage(slug , 'en');
+const colorLogo = "#000";
 
 console.log( page )
 
 const flexibleSections = page?.acf?.flexible_content || [];
 ---
 
-<Layout>
+<Layout colorLogo={colorLogo}>
 <div class="flex flex-col wrapper-content-flexible">
 {
     flexibleSections.map((section: any) => {
