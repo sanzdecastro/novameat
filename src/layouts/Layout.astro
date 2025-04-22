@@ -22,7 +22,6 @@ import CookieConsent from "../components/CookieConsent.vue";
     <Header transition:persist client:load/>
     <slot />
     <Footer />
-    <div class="h-md"></div>
     <script>
       import { gsap } from "gsap";
       import Lenis from "lenis";
@@ -123,6 +122,6 @@ import CookieConsent from "../components/CookieConsent.vue";
   body {
     margin: 0;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
   }
 </style>

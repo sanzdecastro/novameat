@@ -4,24 +4,24 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export function initScrollAnimation() {
-  // Seleccionamos todos los wrappers
   const wrappers = document.querySelectorAll(".scroll-wrapper");
   if (!wrappers.length) return;
 
-  if (window.innerWidth > 768) {
-    wrappers.forEach((wrapper) => {
-      // Dentro de cada wrapper, buscamos sus cards
+  wrappers.forEach((wrapper) => {
+    const isLargeScreen = window.innerWidth > 768;
+    const hasAlsoMobileClass = wrapper.classList.contains("also-mobile");
+
+    if (isLargeScreen || hasAlsoMobileClass) {
       const cards = wrapper.querySelectorAll(".card");
       if (!cards.length) return;
-  
-      // Sumamos los anchos de las cards
-      const totalWidth = Array.from(cards)
-        .reduce((sum, card) => sum + card.offsetWidth, 0);
-  
-      // Calculamos cuánto desplazar; ajusta el +500 si no lo necesitas
-      const amountToScroll = Math.max(0, totalWidth - window.innerWidth + 500);
-  
-      // Creamos un ScrollTrigger para este wrapper
+
+      const totalWidth = Array.from(cards).reduce(
+        (sum, card) => sum + card.offsetWidth,
+        0
+      );
+
+      const amountToScroll = Math.max(0, totalWidth - window.innerWidth + 100);
+
       gsap.to(wrapper, {
         x: -amountToScroll,
         ease: "none",
@@ -31,13 +31,12 @@ export function initScrollAnimation() {
           end: () => `+=${amountToScroll}`,
           pin: true,
           scrub: 1,
-          invalidateOnRefresh: true, // recalcula amountToScroll al hacer refresh
+          invalidateOnRefresh: true,
         },
       });
-    });
-  }
-  
+    }
+  });
 
-  // Refrescar para que ScrollTrigger detecte todo
   ScrollTrigger.refresh();
+
 }

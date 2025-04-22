@@ -48,7 +48,7 @@ export default {
 
 <template>
   <a :href="'/products/' + productInfo.slug">
-    <div class="cardCont !w-full">
+    <div class="cardCont !w-full ">
       <div
         class="cardBack relative flex flex-col justify-between items-center text-black p-xxl"
       >

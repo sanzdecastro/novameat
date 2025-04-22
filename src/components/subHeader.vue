@@ -55,7 +55,7 @@ export default {
 </script>
 <template>
     <div class="sub-header">
-        <ul class="flex justify-center items-center w-full gap-items-menu">
+        <ul class="flex justify-between md:justify-center items-center w-full gap-items-menu">
             <li v-for="(item, index) in section.items_sub_header">
               <a :href="item.id">{{item.item}}</a>
             </li>

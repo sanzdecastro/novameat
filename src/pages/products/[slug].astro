@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 import { getPages, getPage, getProducts, getProduct } from "../../lib/api.js";
 import SliderIngredients from "../../components/SliderIngredients.vue"
 import CardIngredient from "../../components/CardIngredient.vue"
+import CardIngredientMobile from "../../components/CardIngredientMobile.vue"
 import Divider from '../../components/Divider.vue';
 import SubHeader from '../../components/subHeader.vue';
 
@@ -23,44 +24,56 @@ console.log(page)
     <SubHeader section={page?.acf?.sub_header} client:only ></SubHeader>
     
     <div class="product-page bg-black text-white">
-        <div class="product-info">
+        <div class="product-info pt-xxl-2 md:pt-lg">
             
-            <div class="back-image-container h-[100dvh] w-[100vw] flex justify-center items-center">
-                <div class="image-wrapper w-[calc((541/1515)*100vw)] h-[100dvh] flex items-center">
+            <div class="back-image-container hidden md:flex h-[100dvh] w-[100vw]  justify-center items-center">
+                <div class="flex image-wrapper w-[calc((541/1515)*100vw)] h-[100dvh] items-center">
                     <img class="w-full" src={page?._embedded["wp:featuredmedia"]?.[0]?.source_url} >
                 </div>
-                <h1 class="absolute top[50%] text-product">{page.title.rendered}</h1>
+                <h1 class="md:absolute top[50%] text-product">{page.title.rendered}</h1>
             </div>
-            <section id="overview" class="product-info-container flex min-h-[100dvh]">
-                <div class="gallery w-1/2">
-                    <div class="image-wrapper w-[calc((541/1515)*100vw)] h-[100dvh] flex items-center relative">
+            <section id="overview" class="product-info-container flex flex-col md:flex-row min-h-[100dvh]">
+                <div class="gallery md:order-1 order-2 w-full md:w-1/2 px-sm ">
+                    <!-- Solo desktop -->
+                    <div class="hidden md:flex image-wrapper w-[calc((541/1515)*100vw)] h-[100dvh] items-center relative ">
                         {page?.acf?.product_highlights?.map((highlight: any) => (
-                            <p class="highlight flex items-center gap-2"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{highlight.highlight}</p>
+                            <p class="highlight flex items-center gap-2 font-haffe"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{highlight.highlight}</p>
                         ))}
                     </div>
+                    <!-- Solo desktop -->
                     
                     {page?.acf?.gallery?.map((image: any) => (
                         <div
-                          class="image-wrapper w-full flex items-center aspect-[726/856] overflow-hidden relative"
+                          class="image-wrapper w-full flex items-center aspect-[726/856] overflow-hidden relative mb-xs"
                         >
                           <img class="absolute w-full object-cover" src={image.image.url} alt={image.image.alt} />
                         </div>
                       ))}
                    
                 </div>
-                <div class="info-column w-1/2 text-center h-[100dvh] px-product-description py-xxl-2">
+                <div class="info-column  md:order-2 order-1 w-full md:w-1/2 text-center md:h-[100dvh] px-sm md:px-product-description py-xxl-2">
                     <span class="block pb-lg">( {page.title.rendered} )</span>
                     <h2 class="text-title pb-xxl leading-[120%]">{page?.acf?.title}</h2>
-                    <p class="text-left pb-lg-2 ">{page?.acf?.description}</p>
+                    
+                    <!-- Solo mobile -->
+                    <div class="md:hidden w-full image-wrapper h-[70dvh] flex items-center relative">
+                        {page?.acf?.product_highlights?.map((highlight: any) => (
+                            <p class="highlight flex items-center gap-2 font-haffe text-p-[12px]"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{highlight.highlight}</p>
+                        ))}
+                        <img class="w-full absolute top-[10vh] p-xxl" src={page?._embedded["wp:featuredmedia"]?.[0]?.source_url} >
+                    </div>
+                    <!-- Solo mobile -->
+
+                    <p class="text-left pb-lg-2 text-p-small md:text-p-small">{page?.acf?.description}</p>
                     <div class="inside py-lg border-b-white border-y mb-lg-2">
-                        <h3 class="uppercase pb-md">{page?.acf?.inside_the_cut?.title}</h3>
-                        <p class="max-w-max-ssm mx-auto">{page?.acf?.inside_the_cut?.items}</p>
+                        <h3 class="uppercase pb-md text-p-small">{page?.acf?.inside_the_cut?.title}</h3>
+                        <p class="md:max-w-max-ssm mx-auto text-p-small">{page?.acf?.inside_the_cut?.items}</p>
                     </div>
                     <div class="tabs flex-col text-left">
                         <div class="tab-header flex border-b border-white">
                             {page?.acf?.tabs?.map((tab: any, index: number) => (
                                 <div class="tab w-1/3 relative text-center" data-id={index}>
-                                    <p class="text-p-small text-nowrap py-2 cursor-pointer">{tab.tab.title}</p>
+                                    <p class="text-p-small md:text-nowrap py-2 cursor-pointer">{tab.tab.title}</p>
                                 </div>
                               ))}
                               <span class="tab-indicator absolute bottom-0 w-1/3 bg-white"></span>
@@ -68,7 +81,7 @@ console.log(page)
                         <div class="tab-inside flex-col">
                             {page?.acf?.tabs?.map((tab: any, index: number) => (
                                 <div class="tab-inside hidden py-md" data-id={index}>
-                                    <p>{tab.tab.description}</p>
+                                    <p class="text-p-small">{tab.tab.description}</p>
                                 </div>
                             ))}
                         </div>
@@ -77,19 +90,20 @@ console.log(page)
                 </div>
             </section>
             <Divider></Divider>
-            <section id="ingredients" class="ingredients pb-product-description text-center mt-xxl-2 pl-sm">
+            <section id="ingredients" class="ingredients  pb-product-description text-center mt-xxl-2 md:pl-sm">
                 <span class="block pb-lg">({page?.acf?.ingredients?.pretitle})</span>
                 <h2 class="text-title text-leading[120%] pb-xxl-2">{page?.acf?.ingredients?.title}</h2>
-                <div class="ingredients scroll-wrapper flex">
+                <div class="ingredients scroll-wrapper flex flex-col md:flex-row mx-sm md:mx-0 rounded-[15px] md:rounded-0 overflow-hidden md:overflow-visible px-sm md:px-0 bg-ash md:bg-black">
                     {page?.acf?.ingredients?.ingredients?.map((ingredient: any, index: number) => (
-                        <CardIngredient class="card" ingredient={ingredient} client:load></CardIngredient>
+                        <CardIngredient class="card hidden md:block" ingredient={ingredient} client:load></CardIngredient>
+                        <CardIngredientMobile class="md:hidden" ingredient={ingredient} client:load></CardIngredientMobile>
                     ))}
                 </div>
                 <!-- <SliderIngredients ingzredients={page?.acf?.ingredients} client:load></SliderIngredients> -->
             </section>
             
             <section id="recipes" class="section-button pb-product-description">
-                <div class="button-wrapper p-sm w-full h-[60vh] mb-xxl-2">
+                <div class="button-wrapper p-sm w-full h-[25vh] md:h-[60vh] mb-xxl-2">
                     <a class="w-full text-white h-full flex justify-center items-center border border-white rounded-full hover:border-none hover:bg-white hover:text-black" href={page?.acf?.link?.url}>{page?.acf?.link?.title}</a>
                 </div>
             </section>
@@ -103,9 +117,9 @@ console.log(page)
 
             <Divider></Divider>
             <section id="faq" class="faqs pb-product-description text-center p-sm">
-                <div class="scroll-wrapper flex w-fit items-center h-[80dvh] gap-xs">
+                <div class="scroll-wrapper also-mobile flex w-fit items-center h-[80dvh] gap-xs">
                     
-                <div class="card w-[400px] h-fit aspect-[3/4] p-lg-2 bg-stone flex flex-col  justify-between rounded-[15px]">
+                <div class="card  w-[calc(100vw-20px)] md:w-[400px] h-fit aspect-[3/4] p-lg-2 bg-stone flex flex-col  justify-between rounded-[15px]">
                     <div>
                         <span class="block pb-lg text-p-small ">(FAQs)</span>
                         <h3 class="block pb-lg text-title">{page?.acf?.faqs?.title}</h3>
@@ -114,7 +128,7 @@ console.log(page)
                 </div>
                
                 {page?.acf?.faqs?.cards?.map((card: any) => (
-                    <div class="card  w-[400px] h-fit aspect-[3/4] p-lg-2 bg-ash flex flex-col justify-between rounded-[15px]">
+                    <div class="card w-[calc(100vw-20px)] md:w-[400px] h-fit aspect-[3/4] p-lg-2 bg-ash flex flex-col justify-between rounded-[15px]">
                         <p class="text-title-sm">{card.question}</p>
                         <p class="text-p-small">{card.answer}</p>
                         
@@ -124,7 +138,7 @@ console.log(page)
             </section>
             <Divider></Divider>
             <section class="section-button-empty pb-product-description">
-                <div class="button-wrapper p-sm w-full h-[60vh] mb-xxl-2 relative">
+                <div class="button-wrapper p-sm w-full h-[25vh] md:h-[60vh] mb-xxl-2 relative">
                     <a class="w-full text-white h-full flex justify-center items-center border border-white rounded-full hover:border-none hover:bg-white hover:text-black" href={page?.acf?.link?.url}>Order</a>
                 </div>
             </section>
