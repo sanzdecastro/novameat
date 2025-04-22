@@ -324,7 +324,7 @@ body:has(.product-page) {
   z-index: 1000;
   @apply
   max-w-[279px]
-  md:w-max-sm
+  md:w-max-[358px]
   text-p-small
   p-md
   flex
