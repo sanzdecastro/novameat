@@ -47,15 +47,15 @@ import Circlee from './circlee.vue';
     
     
 
-    <div class="slider-container relative w-[100vw] h-[100dvh]">
-        <div class="z-10 pointer-events-none over-text absolute top-0 left-0 w-full h-full flex justify-center items-center flex gap-2">
+    <div class="slider-container  relative w-[100vw] h-[100dvh]">
+        <div class="z-10  over-text absolute top-0 left-0 w-full h-full flex justify-center items-center  gap-2">
             <div class="flex gap-2 items-center">
-                <logo class="h-[calc((11.2/1515)*100vw)]" color="white" />
-                <p class="text-white text-p">{{ text }}</p>
+                <logo class="h-[calc((10/360)*100vw)] md:h-[calc((15/1515)*100vw)] md:max-h-[16px]" color="white" />
+                <p class="text-white text-p text-nowrap">{{ text }}</p>
             </div>
         </div>
-        <div class="z-10 pointer-events-none absolute top-0 left-0 w-full h-full flex justify-center items-center flex">
-            <circlee class="w-1/3 aspect-square" color="white" />
+        <div class="z-10 pointer-events-none absolute top-0 left-0 w-full h-full flex justify-center items-center">
+            <circlee class="w-1/3 md:w-8/12 aspect-square" color="white" />
         </div>
         <swiper
             class="w-full h-full"

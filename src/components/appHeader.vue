@@ -7,14 +7,20 @@ export default {
   components: {
     Logo,
   },
+  props: {
+    colorLogo: {
+      type: String,
+    }
+  },
   data() {
     return {
       lastScrollY: 0,
-      colorLogo: "#eee9e3"
+      menuMobile: false,
     };
   },
   mounted() {
-    this.headerScroll()
+    this.headerScroll();
+    this.setMenuMobile();
   },
   methods : {
     headerScroll() {
@@ -41,17 +47,49 @@ export default {
         }
         this.lastScrollY = currentScrollY;
       })
+    },
+    setMenuMobile() {
+      const menuMobile = document.querySelector(".mobile-menu");
+      gsap.set(menuMobile, {
+        xPercent: -100,
+        autoAlpha: 0,
+      })
+    },
+    toggleMenu() {
+      const menuMobile = document.querySelector(".mobile-menu");
+
+      const tl = gsap.timeline({})
+
+      if(this.menuMobile === false ){
+        tl.to(menuMobile, {
+          autoAlpha: 1,
+          duration: .1,
+        }).to(menuMobile, {
+          xPercent: 0,
+        })
+        this.menuMobile = true;
+      } else if (this.menuMobile === true) {
+        tl.to(menuMobile, {
+          autoAlpha: 1,
+          duration: .1,
+        }).to(menuMobile, {
+          xPercent: -100,
+        })
+        this.menuMobile = false;
+      }
+      
+
     }
   }
 };
 </script>
 <template>
-    <header class="z-10 fixed top-0 left-0 w-full border-b border-white py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
+    <header class="z-15 fixed top-0 left-0 w-full border-b border-white py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
         <a href="/" class="flex items-center">
           <Logo class="w-logo" :color="colorLogo" />
         </a>
 
-        <a class="md:hidden open-mobile-menu">Menu (<span>+</span>)</a>
+        <a class="md:hidden open-mobile-menu " @click="toggleMenu">Menu (<span>+</span>)</a>
 
         <ul class="hidden md:flex gap-items-menu">
             <li><a href="/products"><span></span>Products</a></li>
@@ -60,6 +98,35 @@ export default {
             <li><a href="/journal"><span></span>Journal</a></li>
         </ul>
 
-        <a class="button-contact" href="/contact"><span></span>Contact</a>
+       
+
+        <a class="button-contact"  href="/contact"><span></span>Contact</a>
 	</header>
+  <div class="mobile-menu opacity-0 md:hidden">
+      <ul class="menu-items mt-[20vh] flex flex-col gap-1">
+          <li><a @click="toggleMenu" href="/products">Products<span></span></a></li>
+          <li><a @click="toggleMenu" href="/about">About<span></span></a></li>
+          <li><a @click="toggleMenu" href="/find-us">Find us<span></span></a></li>
+          <li><a @click="toggleMenu" href="/journal">Journal<span></span></a></li>
+          <li><a @click="toggleMenu" href="/contact">Contact<span></span></a></li>
+      </ul>
+      <div class="legal-lang-social flex text-small">
+        <div class="w-full legal-lang md:w-max-ssm flex flex-col">
+            <ul class="w-full pb-md">
+                <li><a href="">Legal Notice</a></li>
+                <li><a href="">Cookie Information</a></li>
+                <li><a href="">Privacy Statement</a></li>
+            </ul>
+            <ul class="lang flex">
+                <li><a href="">ES</a></li> / <li><a href="">EN</a></li>
+            </ul>
+        </div>
+        <div class="w-full social md:w-max-ssm flex flex-col">
+          <ul>
+            <li><a href="">LinkedIn</a></li>
+            <li><a href="">Instagram</a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
 </template>

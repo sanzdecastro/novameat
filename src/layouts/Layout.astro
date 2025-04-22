@@ -5,6 +5,9 @@ import { ViewTransitions } from "astro:transitions";
 import Header from "../components/appHeader.vue";
 import Footer from "../components/appFooter.vue";
 import CookieConsent from "../components/CookieConsent.vue";
+import CircleSmall from "../components/circleSmall.vue";
+
+const { colorLogo = "#eee9e3" } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,9 +22,19 @@ import CookieConsent from "../components/CookieConsent.vue";
   </head>
 
   <body class="bg-white">
-    <Header transition:persist client:load/>
-    <slot />
-    <Footer />
+    <Header transition:persist colorLogo={colorLogo} client:load/>
+
+    <div class="loading z-50 bg-black w-full h-[100vh] absolute top-0 left-0 flex justify-center items-center">
+      <CircleSmall class="w-1/6" color={colorLogo} client:load ></CircleSmall>
+    </div>
+    
+    <div class="slot-container opacity-0">
+      <slot />
+    </div>
+    <div class="slot-container opacity-0">
+      <Footer />
+    </div>
+    
     <script>
       import { gsap } from "gsap";
       import Lenis from "lenis";
@@ -57,21 +70,47 @@ import CookieConsent from "../components/CookieConsent.vue";
       requestAnimationFrame(raf);
       }
 
-      
+      function outPage(){
+        const page = document.querySelectorAll(".slot-container")
+        gsap.to(page, {
+          autoAlpha: 0,
+          duration: .2,
+        })
+      }
+
+      function inPage(){
+        const page = document.querySelectorAll(".slot-container")
+        const loading = document.querySelector(".loading")
+        gsap.fromTo(page, {
+          autoAlpha: 0,
+        },{
+          autoAlpha: 1,
+          duration: .3,
+        })
+        gsap.fromTo(loading, {
+          autoAlpha: 1,
+        },{
+          delay:.6,
+          autoAlpha: 0,
+          duration: .3,
+        })
+      }
 
       document.addEventListener("astro:before-preparation", () => {
         console.log("before prep");
+        outPage()
       });
 
       document.addEventListener("astro:before-swap", () => {
         console.log("before swap");
+       
       });
 
       // En la navegación interna
       document.addEventListener("astro:after-swap", () => {
         console.log("after swap");
 
-        
+        inPage()
         // mata triggers previos, por si acaso
         ScrollTrigger.getAll().forEach((t) => t.kill());
         lenis();
@@ -87,13 +126,14 @@ import CookieConsent from "../components/CookieConsent.vue";
         orderButtonAnimation();
         headerProductSelector(); 
         copiesAnimation();
+
         
       });
 
       // En la carga inicial
       document.addEventListener("astro:page-load", () => {
         console.log("page loaded");
-        
+        inPage();
         // mata triggers previos, por si acaso
         ScrollTrigger.getAll().forEach((t) => t.kill());
         // refresca el ScrollTrigger tras crear
@@ -110,6 +150,7 @@ import CookieConsent from "../components/CookieConsent.vue";
         orderButtonAnimation();
         headerProductSelector(); 
         copiesAnimation();
+
         
       });
     </script>

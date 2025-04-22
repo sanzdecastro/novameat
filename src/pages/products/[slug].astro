@@ -95,7 +95,7 @@ console.log(page)
                 <h2 class="text-title text-leading[120%] pb-xxl-2">{page?.acf?.ingredients?.title}</h2>
                 <div class="ingredients scroll-wrapper flex flex-col md:flex-row mx-sm md:mx-0 rounded-[15px] md:rounded-0 overflow-hidden md:overflow-visible px-sm md:px-0 bg-ash md:bg-black">
                     {page?.acf?.ingredients?.ingredients?.map((ingredient: any, index: number) => (
-                        <CardIngredient class="card hidden md:block" ingredient={ingredient} client:load></CardIngredient>
+                        <CardIngredient class="card w-[235px] hidden md:block" ingredient={ingredient} client:load></CardIngredient>
                         <CardIngredientMobile class="md:hidden" ingredient={ingredient} client:load></CardIngredientMobile>
                     ))}
                 </div>

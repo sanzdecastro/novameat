@@ -61,7 +61,7 @@ export default {
 <template>
   <Divider></Divider>
   <div class="px-sm text-center mb-xxl-2">
-    <h2 class="text-title mb-lg">{{ this.productCategory.name }}</h2>
+    <h2 class="text-title md:mb-lg">{{ this.productCategory.name }}</h2>
     <span class="mb-xxl block">( {{ this.productCategory.count }} )</span>
     <div class="scroll-container w-full"  :class="{ 'flex justify-center w-full': section.products.length < 3 }">
       <div class="scroll-wrapper  w-full flex flex-col md:flex-row  md:items-center gap-xs" :class="{ 'flex justify-center w-full': section.products.length < 3 }">
