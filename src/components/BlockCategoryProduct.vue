@@ -61,12 +61,12 @@ export default {
 <template>
   <Divider></Divider>
   <div class="px-sm text-center mb-xxl-2">
-    <h2 class="text-title mb-lg">{{ this.productCategory.name }}</h2>
-    <span class="mb-xxl block">( {{ this.productCategory.count }} )</span>
-    <div class="scroll-container"  :class="{ 'flex justify-center': section.products.length < 3 }">
-      <div class="scroll-wrapper flex w-fit items-center gap-xs">
+    <h2 class="text-title md:mb-lg">{{ this.productCategory.name }}</h2>
+    <span class="mb-xxl block text-p-small">( {{ this.productCategory.count }} )</span>
+    <div class="scroll-container   w-full"  :class="{ 'flex justify-center': section.products.length < 3 }">
+      <div class="scroll-wrapper w-full flex flex-col md:flex-row md:w-fit items-center gap-sm md:gap-xs">
         <div
-           class="card w-card-product aspect-[481/607] flex-shrink-0"
+           class="card w-card-product aspect-[300/431] md:aspect-[481/607] flex-shrink-0"
           v-for="(product, index) in section.products"
         >
           <CardProduct :product="product"></CardProduct>

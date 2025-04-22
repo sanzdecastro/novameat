@@ -71,7 +71,7 @@ export default {
               <span class="">( {{ slide.pretitle }} )</span>
               <h3 class="font-sm text-title">{{ slide.title }}</h3>
               <p>{{ slide.item_menu }}</p>
-              <p class="absolute bottom-sm left-sm max-w-max-xs text-left text-small leading-[114%]">{{ slide.text }}</p>
+              <p class="absolute text-center md:text-left p-lg-2 md:p-sm bottom-xxl-2 md:bottom-sm left-sm  md:max-w-max-xs  text-small leading-[114%]">{{ slide.text }}</p>
             </div>
             
           </div>

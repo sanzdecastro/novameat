@@ -10,14 +10,14 @@ export default {
 };
 </script>
 <template>
-    <footer class="bg-pink m-sm p-sm rounded-[15px] h-footer-height flex flex-col justify-between text-small">
-        <div class="header-footer flex justify-between">
-            <div class="newsletter max-w-max-ssm">
+    <footer class="bg-pink m-sm p-sm rounded-[15px] md:h-footer-height flex flex-col justify-between text-small">
+        <div class="header-footer flex flex-col md:flex-row justify-between">
+            <div class="newsletter max-w-[90%] md:max-w-max-ssm">
                 <p>Sign up to our newsletter and get a carefully curated selection of recipes, interviews, research, and other industry news–straight from our journal to your inbox.</p>
             </div>
             <div class="legal-lang-social flex">
-                <div class="legal-lang w-max-ssm flex flex-col">
-                    <ul>
+                <div class="w-full legal-lang md:w-max-ssm flex flex-col">
+                    <ul class="w-full">
                         <li><a href="">Legal Notice</a></li>
                         <li><a href="">Cookie Information</a></li>
                         <li><a href="">Privacy Statement</a></li>
@@ -26,7 +26,7 @@ export default {
                         <li><a href="">ES</a></li> / <li><a href="">EN</a></li>
                     </ul>
                 </div>
-                <div class="social w-max-ssm flex flex-col">
+                <div class="w-full social md:w-max-ssm flex flex-col">
                     <a href="">LinkedIn</a>
                     <a href="">Instagram</a>
                 </div>
@@ -42,7 +42,7 @@ export default {
             <div class="copyright">
                 Novameat® 2025 All Rights Reserved
             </div>
-            <div class="info flex items-end gap-[calc((95/1515)*100vw)]">
+            <div class="info flex flex-col md:flex-row  items-end gap-[calc((95/1515)*100vw)]">
                 <div class="certifications flex flex-col">
                     <p class="pb-md">Certifications:</p>
                     <div class="logos flex gap-lg">

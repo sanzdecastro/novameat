@@ -51,7 +51,7 @@
     calc((11 / 2880) * 100vw)
   );
   --spacing-sm: clamp(
-    16px,
+    10px,
     calc((16 / 1515) * 100vw),
     calc((16 / 2880) * 100vw)
   );
@@ -76,7 +76,7 @@
     calc((120 / 2880) * 100vw)
   );
   --spacing-xxl-2: clamp(
-    54px,
+    61px,
     calc((115 / 1515) * 100vw),
     calc((175 / 2880) * 100vw)
   );
@@ -87,7 +87,7 @@
   );
 
   --spacing-card: clamp(
-    18px,
+    47px,
     calc((72 / 1515) * 100vw),
     calc((101 / 2880) * 100vw)
   );
@@ -103,12 +103,17 @@
   --spacing-items-menu: clamp(10px, calc((45 / 1515) * 100vw), 45px);
 
   --spacing-card-product: clamp(
-    400px,
+    100%,
     calc((480 / 1515) * 100vw),
     calc((868 / 2880) * 100vw)
   );
 }
 
+html {
+  @apply
+  overflow-x-hidden
+  md:overflow-x-visible;
+}
 body {
   font-variation-settings: "opsz" 144;
   @apply w-[100vw]
@@ -141,6 +146,41 @@ body:has(.block-dots), body:has(.contact-section), body:has(.section-central-mes
     svg {
       @apply
       fill-black;
+    }
+    ul {
+      li {
+        a.active {
+          span {
+            @apply
+            bg-black;
+          }
+        }
+      }
+    }
+  }
+}
+
+header {
+  ul {
+    li {
+      @apply
+      flex
+      items-center;
+      a.active {
+        @apply
+        items-center
+        gap-2
+        flex;
+        span {
+          @apply
+          flex
+          rounded-full
+          overflow-hidden
+          w-[10px]
+          h-[10px]
+          bg-white;
+        }
+      }
     }
   }
 }
@@ -250,7 +290,8 @@ body:has(.product-page) {
   overflow-hidden
   w-full
   h-fit
-  aspect-[235/300];
+  aspect-[300/431]
+  md:aspect-[235/300];
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -419,8 +460,10 @@ input[type="radio"] {
       justify-content: center;
       height: 100vh;
       @apply
-    
+    hidden
+    md:flex
     text-p-small
+    
     max-w-max-sm
     pb-md
     pl-md;

@@ -46,18 +46,20 @@ export default {
 };
 </script>
 <template>
-    <header class="z-10 fixed top-0 left-0 w-full border-b border-white py-sm px-md flex justify-between text-menu text-white">
+    <header class="z-10 fixed top-0 left-0 w-full border-b border-white py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
         <a href="/" class="flex items-center">
           <Logo class="w-logo" :color="colorLogo" />
         </a>
 
-        <ul class="flex gap-items-menu">
-            <li><a href="/products">Products</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/find-us">Find us</a></li>
-            <li><a href="/journal">Journal</a></li>
+        <a class="md:hidden open-mobile-menu">Menu (<span>+</span>)</a>
+
+        <ul class="hidden md:flex gap-items-menu">
+            <li><a href="/products"><span></span>Products</a></li>
+            <li><a href="/about"><span></span>About</a></li>
+            <li><a href="/find-us"><span></span>Find us</a></li>
+            <li><a href="/journal"><span></span>Journal</a></li>
         </ul>
 
-        <a a href="/contact">Contact</a>
+        <a class="button-contact" href="/contact"><span></span>Contact</a>
 	</header>
 </template>

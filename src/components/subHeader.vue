@@ -57,7 +57,7 @@ export default {
     <div class="sub-header">
         <ul class="flex justify-center items-center w-full gap-items-menu">
             <li v-for="(item, index) in section.items_sub_header">
-              <a class="active" :href="item.id">{{item.item}}</a>
+              <a :href="item.id">{{item.item}}</a>
             </li>
         </ul>
     </div>

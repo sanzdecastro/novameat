@@ -77,7 +77,7 @@ export default {
           </div>
           <div v-else class="circle-symbol flex justify-center items-center h-full">
             <div class="aligner"></div>
-            <circleSmall class="w-[calc((150/1515)*100vw)] aspect-square" color="white" />
+            <circleSmall class="w-[calc((122/320)*100vw)] md:w-[calc((150/1515)*100vw)] aspect-square" color="white" />
           </div>
 
           <h2 class="text-title-sm pb-lg">{{ productInfo.title?.rendered }}</h2>
