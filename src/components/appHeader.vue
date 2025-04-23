@@ -86,7 +86,7 @@ export default {
 <template>
     <header class="z-15 fixed top-0 left-0 w-full border-b border-white py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
         <a href="/" class="flex items-center">
-          <Logo class="w-logo" :color="colorLogo" />
+          <Logo class="h-logo" :color="colorLogo" />
         </a>
 
         <a class="md:hidden open-mobile-menu " @click="toggleMenu">Menu (<span>+</span>)</a>

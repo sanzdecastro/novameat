@@ -22,7 +22,7 @@ export function initProductAnimations() {
         trigger: dish,
         start: "top top",
         endTrigger: info,
-        end: "bottom bottom",
+        end: "center center",
         scrub: 1,
         // markers: true,
       },

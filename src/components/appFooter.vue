@@ -34,8 +34,8 @@ export default {
         </div>
 
         <div class="center-footer flex flex-col gap-xs md:flex-row items-start my-[76px] md:my-none" >
-            <Logo class="h-[calc((12/360)*100vw)] md:h-[calc((34/1515)*100vw)] md:max-h-[32px] mt-xs pr-sm" color="black" />
-            <div class="h-[calc((20/360)*100vw)] md:h-[calc((48/1515)*100vw)] md:max-h-[52px]  reel-footer text-big overflow-hidden leading-[100%]"><p>A new culinary traidition</p><p>Specially created for food makers</p></div>
+            <Logo class="h-[calc((12/360)*100vw)] md:h-[calc((35/1515)*100vw)] md:max-h-[24px] mt-[5px] pr-sm" color="black" />
+            <div class="h-[calc((20/360)*100vw)] md:h-[calc((48/1515)*100vw)] md:max-h-[38px]  reel-footer text-title overflow-hidden leading-[100%]"><p>A new culinary tradition</p><p>Specially created for food makers</p></div>
         </div>
 
         <div class="footer-footer flex items-start md:items-end justify-between">
