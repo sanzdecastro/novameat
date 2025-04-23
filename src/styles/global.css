@@ -270,7 +270,7 @@ body:has(.product-page) {
     &:nth-child(3) {
       @apply 
       top-[calc((380/320)*100vw)]
-      md:top-[calc((542/1515)*100vw)]
+      md:top-[calc((642/1515)*100vw)]
       left-[calc((112/1515)*100vw)];
     }
     &:nth-child(4) {

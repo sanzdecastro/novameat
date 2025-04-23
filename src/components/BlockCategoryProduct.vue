@@ -8,12 +8,14 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import CardProduct from "./CardProduct.vue";
 import Divider from "./Divider.vue";
-import { initScrollAnimation } from "../scripts/scrollAnimation.js";
+
 
 // Import Swiper styles
 export default {
   name: "BlockCategoryProduct",
   components: {
+    Swiper,
+    SwiperSlide,
     CardProduct,
     Divider
   },
@@ -48,11 +50,7 @@ export default {
   mounted() {
     
     this.fetchProductCategory();
-    ScrollTrigger.getAll().forEach(t => t.kill());
-    this.$nextTick(() => {
-      initScrollAnimation();
    
-    });
 
   },
 };
@@ -60,20 +58,35 @@ export default {
 
 <template>
   <Divider></Divider>
-  <div class="px-sm text-center mb-xxl-2">
+  <div class="md:pl-md">
+    <div class="text-center mb-xxl-2">
     <h2 class="text-title md:mb-lg">{{ this.productCategory.name }}</h2>
     <span class="mb-xxl block">( {{ this.productCategory.count }} )</span>
-    <div class="scroll-container w-full"  :class="{ 'flex justify-center w-full': section.products.length < 3 }">
-      <div class="scroll-wrapper  w-full flex flex-col md:flex-row  md:items-center gap-xs" :class="{ 'flex justify-center w-full': section.products.length < 3 }">
-        <div
-           class="card w-card-product aspect-[308/431] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
+    <div class="w-full" v-if="(section.products.length > 3)" >
+      <swiper  
+      :slides-per-view="3.1" 
+      :space-between="10" 
+      :breakpoints="swiperOptions.breakpoints"
+      class="!overflow-visible ">
+        <swiper-slide
+           class="card w-card-product aspect-[481/607] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
           v-for="(product, index) in section.products"
         >
           <CardProduct :product="product"></CardProduct>
-        </div>
-      </div>
+        </swiper-slide>
+      </swiper>
+    </div>
+    <div v-else class="flex flex-col md:flex-row justify-center w-full px-md">
+      <div
+           class="card w-full md:w-1/3 aspect-[481/607] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
+          v-for="(product, index) in section.products"
+        >
+          <CardProduct :product="product"></CardProduct>
+    </div>
     </div>
     
   </div>
+  </div>
+  
 </template>
 <style></style>

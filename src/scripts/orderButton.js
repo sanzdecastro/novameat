@@ -14,6 +14,7 @@ export function orderButtonAnimation() {
     position: "fixed",
     bottom: "10px",
     right: "10px",
+    aspectRatio: "1/1",
     width: "calc((113/1550)*100vw)",
     height: "calc((113/1550)*100vw)",
   })
