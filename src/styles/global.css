@@ -227,23 +227,34 @@ body:has(.product-page) {
    text-p-small;
   ul {
     li {
+      &:hover {
+        a {
+          &::after, &::before {
+            @apply
+            opacity-100;
+          }
+        }
+      }
       a {
-        &.active {
+        
           @apply
+          block
           relative;
           &:before {
             content: '(';
             @apply
+            opacity-0
             absolute
             -left-3;
           }
           &:after {
             content: ')';
             @apply
+            opacity-0
             absolute
             -right-3;
           }
-        }
+        
       }
     }
   }

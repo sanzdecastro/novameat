@@ -37,11 +37,11 @@ export default {
 <template>
   <!-- Solo desktop -->
   <div class="cardCont">
-    <div class="cardBack flex flex-col justify-between items-center text-black p-sm">
+    <div class="cardBack flex flex-col justify-between items-center text-black p-md">
       <p>{{ ingredient.post_excerpt }}</p>
       <h3>{{ ingredient.post_title }}</h3>
     </div>
-    <div class="cardFront flex flex-col justify-between items-center p-sm">
+    <div class="cardFront flex flex-col justify-between items-center p-md">
       <div
         v-if="ingredientInfo._embedded?.['wp:featuredmedia']"
         class="aspect-square rounded-full overflow-hidden "
