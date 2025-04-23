@@ -207,6 +207,20 @@ header, .mobile-menu {
 /*  Product page */
 
 body:has(.product-page) {
+  header, .sub-header {
+    @apply
+    bg-black;
+    ul {
+      li {
+        a {
+          span {
+            @apply
+            bg-white;
+          }
+        }
+      }
+    }
+  }
   @apply
   bg-black;
 }
@@ -226,6 +240,8 @@ body:has(.product-page) {
    border-white 
    text-p-small;
   ul {
+    @apply
+    pt-sm;
     li {
       &:hover {
         a {

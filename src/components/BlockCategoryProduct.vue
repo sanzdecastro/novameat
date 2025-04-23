@@ -66,7 +66,7 @@ export default {
       <swiper  
       :slides-per-view="3.1" 
       :space-between="10" 
-      :breakpoints="swiperOptions.breakpoints"
+
       class="!overflow-visible ">
         <swiper-slide
            class="card w-card-product aspect-[481/607] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"

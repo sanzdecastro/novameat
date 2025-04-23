@@ -23,7 +23,7 @@ export default {
       let heightHeader = header.offsetHeight;
       console.log(heightHeader);
 
-      subHeader.style.marginTop = `${heightHeader}px`;
+      subHeader.style.paddingTop = `${heightHeader}px`;
     },
     headerScroll() {
       const header = document.querySelector(".sub-header");
