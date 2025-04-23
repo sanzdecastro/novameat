@@ -1,6 +1,5 @@
 {
     "buildCommand": "npm run build",
     "outputDirectory": "dist",
-    "framework": "astro",
-    "regions": ["cdg1","bru1"]
+    "framework": "astro"
   }
