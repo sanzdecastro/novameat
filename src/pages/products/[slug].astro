@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 
 import { getPages, getPage, getProducts, getProduct } from "../../lib/api.js";
 import SliderIngredients from "../../components/SliderIngredients.vue"
+import SliderFaqs from "../../components/SliderFaqs.vue"
 import CardIngredient from "../../components/CardIngredient.vue"
 import CardIngredientMobile from "../../components/CardIngredientMobile.vue"
 import Divider from '../../components/Divider.vue';
@@ -97,13 +98,13 @@ console.log(page)
             <section id="ingredients" class="ingredients  pb-product-description text-center mt-xxl-2 md:pl-sm">
                 <span class="block pb-lg">({page?.acf?.ingredients?.pretitle})</span>
                 <h2 class="text-title text-leading[120%] pb-xxl-2">{page?.acf?.ingredients?.title}</h2>
-                <div class="ingredients scroll-wrapper flex flex-col md:flex-row mx-sm md:mx-0 rounded-[15px] md:rounded-0 overflow-hidden md:overflow-visible px-sm md:px-0 bg-ash md:bg-black">
+                <!-- <div class="ingredients scroll-wrapper flex flex-col md:flex-row mx-sm md:mx-0 rounded-[15px] md:rounded-0 overflow-hidden md:overflow-visible px-sm md:px-0 bg-ash md:bg-black">
                     {page?.acf?.ingredients?.ingredients?.map((ingredient: any, index: number) => (
                         <CardIngredient class="card w-[235px] hidden md:block" ingredient={ingredient} client:load></CardIngredient>
                         <CardIngredientMobile class="md:hidden" ingredient={ingredient} client:load></CardIngredientMobile>
                     ))}
-                </div>
-                <!-- <SliderIngredients ingzredients={page?.acf?.ingredients} client:load></SliderIngredients> -->
+                </div> -->
+                <SliderIngredients ingredients={page?.acf?.ingredients} client:load></SliderIngredients>
             </section>
             
             <section id="recipes" class="section-button pb-product-description">
@@ -120,25 +121,23 @@ console.log(page)
             </section>
 
             <Divider></Divider>
-            <section id="faq" class="faqs pb-product-description text-center p-sm">
-                <div class="scroll-wrapper also-mobile flex w-fit items-center h-[80dvh] gap-xs">
-                    
-                <div class="card  w-[calc(100vw-20px)] md:w-[400px] h-fit aspect-[3/4] p-lg-2 bg-stone flex flex-col  justify-between rounded-[15px]">
+            <section id="faq" class="faqs py-xxl-2 text-center">
+                <div class="flex ">
+                    <SliderFaqs cardsFaq={page?.acf?.faqs} client:load></SliderFaqs>
+                <!-- <div class="card  w-[calc(100vw-20px)] md:w-[400px] h-fit aspect-[3/4] p-lg-2 bg-stone flex flex-col  justify-between rounded-[15px]">
                     <div>
                         <span class="block pb-lg text-p-small ">(FAQs)</span>
                         <h3 class="block pb-lg text-title">{page?.acf?.faqs?.title}</h3>
                     </div>
                     <p class="">{page?.acf?.faqs?.more_info}</p>
-                </div>
+                </div> -->
                
-                {page?.acf?.faqs?.cards?.map((card: any) => (
-                    <div class="card w-[calc(100vw-20px)] md:w-[400px] h-fit aspect-[3/4] p-lg-2 bg-ash flex flex-col justify-between rounded-[15px]">
-                        <p class="text-title-sm">{card.question}</p>
-                        <p class="text-p-small">{card.answer}</p>
-                        
-                    </div>
-                  ))}
-                  </div>
+                <!-- {page?.acf?.faqs?.cards?.map((cardFaq: any) => (
+                    
+                    
+                    <SliderFaqs cardFaq={cardFaq} client:load></SliderFaqs>
+                  ))} -->
+                </div>
             </section>
             <Divider></Divider>
             <section class="section-button-empty pb-product-description">

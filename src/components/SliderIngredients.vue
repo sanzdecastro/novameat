@@ -42,19 +42,22 @@ export default {
 
 <template>
  
- <div >
-    <swiper
+ <div class="pr-md">
+    <swiper class="!overflow-visible "
      
-      :slides-per-view="6"
+      :slides-per-view="6.3"
       :space-between="10"
 
     >
-      <swiper-slide
+      <swiper-slide class="!overflow-visible w-full aspect-[235/300] "
         v-for="(ingredient, index) in ingredients?.ingredients"
       >
         <CardIngredient :ingredient="ingredient"></CardIngredient>
       </swiper-slide>
     </swiper>
   </div>
+  
+   
+  
 </template>
 

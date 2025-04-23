@@ -36,7 +36,7 @@ export default {
 
 <template>
   <!-- Solo desktop -->
-  <div class="cardCont min-w-[230px]">
+  <div class="cardCont">
     <div class="cardBack flex flex-col justify-between items-center text-black p-sm">
       <p>{{ ingredient.post_excerpt }}</p>
       <h3>{{ ingredient.post_title }}</h3>

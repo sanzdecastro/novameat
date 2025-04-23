@@ -301,12 +301,12 @@ body:has(.product-page) {
 .cardCont {
   @apply
   aspect-[308/431]
+  w-full
   md:aspect-[235/300]
   md:h-fit
   mb-sm
   md:mb-0
-  md:mr-xs
-  w-[300px];
+  md:mr-xs;
   float: left;
 
   position: relative;
