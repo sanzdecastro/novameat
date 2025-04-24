@@ -293,6 +293,18 @@ header, .mobile-menu {
   
 }
 
+body:has(.product-page) {
+    @apply bg-black;
+}
+
+body:has(#contact-form) {
+  footer {
+    @apply
+    border
+    border-black;
+  }
+}
+
 /* Card Effect */
 .cardCont {
   @apply
