@@ -53,6 +53,7 @@ const { colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
       import { orderButtonAnimation } from "../scripts/orderButton.js";
       import { headerProductSelector } from "../scripts/headerProductSelector.js";
       import { copiesAnimation } from "../scripts/copiesAnimation.js";
+      import { reload } from "../scripts/reload";
 
       gsap.registerPlugin(ScrollTrigger);
 
@@ -179,6 +180,7 @@ const { colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
           headerProductSelector();
         }, 500);
         copiesAnimation();
+        reload()
       });
     </script>
     <CookieConsent client:load />
