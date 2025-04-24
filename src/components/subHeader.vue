@@ -6,11 +6,19 @@ export default {
   name: "subHeader",
   props: {
     section: {
-      type: Array,
+      type: Object,
     },
+    colorText: {
+      type: String,
+    },
+    bgHeader: {
+      type: String
+    }
   },
   data() {
-    
+    return {
+      
+    }
   },
   mounted() {
     this.setMarginTop();
@@ -54,10 +62,10 @@ export default {
 };
 </script>
 <template>
-    <div class="sub-header">
+    <div class="sub-header" :class="[ bgHeader, colorText === 'text-black' ? 'border-black' : 'border-white' ]">
         <ul class="flex justify-between md:justify-center items-center w-full gap-items-menu">
             <li v-for="(item, index) in section.items_sub_header">
-              <a :href="item.id">{{item.item}}</a>
+              <a :class=colorText :href="item.id">{{item.item}}</a>
             </li>
         </ul>
     </div>

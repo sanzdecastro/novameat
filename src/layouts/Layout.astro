@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css"
+import "../styles/global.css";
 
 import { ViewTransitions } from "astro:transitions";
 import Header from "../components/appHeader.vue";
@@ -7,7 +7,7 @@ import Footer from "../components/appFooter.vue";
 import CookieConsent from "../components/CookieConsent.vue";
 import CircleSmall from "../components/circleSmall.vue";
 
-const { colorLogo = "#eee9e3" } = Astro.props;
+const { colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,24 +23,26 @@ const { colorLogo = "#eee9e3" } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
-    >
+    />
     <ViewTransitions />
   </head>
 
   <body class="bg-white">
-    <Header transition:persist colorLogo={colorLogo} client:load/>
+    <Header transition:persist colorText={colorText} bgHeader={bgHeader} client:load />
 
-    <div class="loading z-50 bg-black w-full h-[100vh] absolute top-0 left-0 flex justify-center items-center">
-      <CircleSmall class="w-1/6" color={colorLogo} client:load ></CircleSmall>
+    <div
+      class="loading z-50 bg-black w-full h-[100vh] absolute top-0 left-0 flex justify-center items-center"
+    >
+      <CircleSmall class="w-1/6" color={colorText} client:load />
     </div>
-    
+
     <div class="slot-container opacity-0">
       <slot />
     </div>
     <div class="slot-container opacity-0">
       <Footer />
     </div>
-    
+
     <script>
       import { gsap } from "gsap";
       import Lenis from "lenis";
@@ -52,93 +54,98 @@ const { colorLogo = "#eee9e3" } = Astro.props;
       import { headerProductSelector } from "../scripts/headerProductSelector.js";
       import { copiesAnimation } from "../scripts/copiesAnimation.js";
 
-
       gsap.registerPlugin(ScrollTrigger);
 
       function lenis() {
         const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
 
-      // Scroll para anchor points
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = anchor.getAttribute("href");
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          ScrollTrigger.getAll().forEach((trigger) => {
-            if (trigger.animation) {
-              trigger.animation.progress(1);
+        // Scroll para anchor points
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = anchor.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              ScrollTrigger.getAll().forEach((trigger) => {
+                if (trigger.animation) {
+                  trigger.animation.progress(1);
+                }
+              });
+
+              lenis.scrollTo(targetElement);
             }
           });
+        });
 
-          lenis.scrollTo(targetElement);
+        lenis.on("scroll", ScrollTrigger.update);
+        lenis.scrollTo(0, { immediate: true });
+        ScrollTrigger.refresh();
+        ScrollTrigger.defaults({
+          //   scroller: document,
+        });
+        lenis.resize();
+        function raf(time: any) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
         }
-      });
-    });
-
-      lenis.on("scroll", ScrollTrigger.update);
-      lenis.scrollTo(0, { immediate: true });
-      ScrollTrigger.refresh();
-      ScrollTrigger.defaults({
-        //   scroller: document,
-      });
-      lenis.resize();
-      function raf(time: any) {
-        lenis.raf(time);
         requestAnimationFrame(raf);
       }
-      requestAnimationFrame(raf);
-      }
 
-      function outPage(){
-        const page = document.querySelectorAll(".slot-container")
+      function outPage() {
+        const page = document.querySelectorAll(".slot-container");
         gsap.to(page, {
           autoAlpha: 0,
-          duration: .2,
-        })
+          duration: 0.2,
+        });
       }
 
-      function inPage(){
-        const page = document.querySelectorAll(".slot-container")
-        const loading = document.querySelector(".loading")
-        gsap.fromTo(page, {
-          autoAlpha: 0,
-        },{
-          autoAlpha: 1,
-          duration: .3,
-        })
-        gsap.fromTo(loading, {
-          autoAlpha: 1,
-        },{
-          delay:.6,
-          autoAlpha: 0,
-          duration: .3,
-        })
+      function inPage() {
+        const page = document.querySelectorAll(".slot-container");
+        const loading = document.querySelector(".loading");
+        gsap.fromTo(
+          page,
+          {
+            autoAlpha: 0,
+          },
+          {
+            autoAlpha: 1,
+            duration: 0.3,
+          }
+        );
+        gsap.fromTo(
+          loading,
+          {
+            autoAlpha: 1,
+          },
+          {
+            delay: 0.6,
+            autoAlpha: 0,
+            duration: 0.3,
+          }
+        );
       }
 
       document.addEventListener("astro:before-preparation", () => {
         console.log("before prep");
-        outPage()
+        outPage();
       });
 
       document.addEventListener("astro:before-swap", () => {
         console.log("before swap");
-       
       });
 
       // En la navegación interna
       document.addEventListener("astro:after-swap", () => {
         console.log("after swap");
 
-        inPage()
+        inPage();
         // mata triggers previos, por si acaso
         ScrollTrigger.getAll().forEach((t) => t.kill());
         lenis();
         setTimeout(() => {
-         
           ScrollTrigger.refresh(true);
           console.log("refreshed");
         }, 100);
@@ -146,10 +153,10 @@ const { colorLogo = "#eee9e3" } = Astro.props;
         initTabsAnimation();
         cardEffect();
         orderButtonAnimation();
-        headerProductSelector(); 
+        setTimeout(() => {
+          headerProductSelector();
+        }, 500);
         copiesAnimation();
-
-        
       });
 
       // En la carga inicial
@@ -161,7 +168,6 @@ const { colorLogo = "#eee9e3" } = Astro.props;
         // refresca el ScrollTrigger tras crear
         lenis();
         setTimeout(() => {
-          
           ScrollTrigger.refresh(true);
           console.log("refreshed");
         }, 100);
@@ -169,13 +175,13 @@ const { colorLogo = "#eee9e3" } = Astro.props;
         initTabsAnimation();
         cardEffect();
         orderButtonAnimation();
-        headerProductSelector(); 
+        setTimeout(() => {
+          headerProductSelector();
+        }, 500);
         copiesAnimation();
-
-        
       });
     </script>
-    <CookieConsent client:load/>
+    <CookieConsent client:load />
   </body>
 </html>
 

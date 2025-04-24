@@ -15,13 +15,14 @@ const { slug } = Astro.params;
 const page = await getProduct(slug , 'en');
 
 
-const colorLogo = "#eee9e3";
+const colorText = "#eee9e3";
+const bgHeader = "bg-black";
 
 console.log(page)
 
 ---
 
-<Layout colorLogo={colorLogo}>
+<Layout colorText={colorText} bgHeader={bgHeader}>
     
     <SubHeader section={page?.acf?.sub_header} client:only ></SubHeader>
     

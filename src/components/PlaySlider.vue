@@ -18,7 +18,9 @@ export default {
     },
   },
   data() {
-
+    return {
+      
+    }
   },
   setup(props) {
     return {

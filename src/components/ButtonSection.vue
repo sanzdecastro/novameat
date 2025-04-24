@@ -9,7 +9,7 @@ export default {
   },
   props: {
     section: {
-      type: Array,
+      type: Object,
     },
   },
  

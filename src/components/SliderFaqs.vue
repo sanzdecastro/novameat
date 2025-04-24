@@ -11,7 +11,7 @@ export default {
   },
   props: {
     cardsFaq: {
-      type: Array,
+      type: Object,
     },
   },
   setup() {

@@ -20,14 +20,15 @@ import SubHeader from '../components/subHeader.vue';
 
 const { slug } = Astro.params;
 const page = await getPage(slug , 'en');
-const colorLogo = "#000";
+const colorText = "text-black";
+const bgHeader = "bg-white"
 
 console.log( page )
 
 const flexibleSections = page?.acf?.flexible_content || [];
 ---
 
-<Layout colorLogo={colorLogo}>
+<Layout colorText={colorText} bgHeader={bgHeader}>
 <div class="flex flex-col wrapper-content-flexible">
 {
     flexibleSections.map((section: any) => {
@@ -56,7 +57,7 @@ const flexibleSections = page?.acf?.flexible_content || [];
       } else if(section.acf_fc_layout === "block_message_central") {
         return <BlockCentralMessage section={section} client:only />;
       } else if(section.acf_fc_layout === "sub_header") {
-        return <SubHeader section={section} client:only />;
+        return <SubHeader colorText={colorText} bgHeader={bgHeader} section={section} client:only />;
       } 
       
       return null; 

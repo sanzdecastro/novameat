@@ -140,27 +140,7 @@ h5 {
 
 /* Header */
 
-body:has(.block-dots), body:has(.contact-section), body:has(.section-central-message) {
-  header, .sub-header {
-    @apply
-    border-black
-    text-black;
-    svg {
-      @apply
-      fill-black;
-    }
-    ul {
-      li {
-        a.active {
-          span {
-            @apply
-            bg-black;
-          }
-        }
-      }
-    }
-  }
-}
+
 
 header, .mobile-menu {
   ul {
@@ -182,8 +162,7 @@ header, .mobile-menu {
           overflow-hidden
           w-[10px]
           h-[10px]
-          opacity-0
-          bg-black;
+          opacity-0;
         }
         &:hover {
           span {
@@ -206,24 +185,7 @@ header, .mobile-menu {
 
 /*  Product page */
 
-body:has(.product-page) {
-  header, .sub-header {
-    @apply
-    bg-black;
-    ul {
-      li {
-        a {
-          span {
-            @apply
-            bg-white;
-          }
-        }
-      }
-    }
-  }
-  @apply
-  bg-black;
-}
+
 
 
 .sub-header {
@@ -237,7 +199,6 @@ body:has(.product-page) {
   px-md
    text-white 
    border-b 
-   border-white 
    text-p-small;
   ul {
     @apply
@@ -252,10 +213,18 @@ body:has(.product-page) {
         }
       }
       a {
-        
+        &.active {
+          &::after, &::before {
+            @apply
+            opacity-100;
+          }
+        }
           @apply
           block
           relative;
+          &.active {
+
+          }
           &:before {
             content: '(';
             @apply
@@ -718,3 +687,4 @@ input[type="radio"] {
     }
   }
 }
+

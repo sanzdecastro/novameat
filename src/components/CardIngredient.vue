@@ -14,7 +14,6 @@ export default {
   },
   data() {
     return {
-      ingredient: this.ingredient,
       ingredientInfo: {},
     };
   },

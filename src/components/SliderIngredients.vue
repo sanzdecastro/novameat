@@ -14,7 +14,7 @@ export default {
   },
   props: {
     ingredients: {
-      type: Array,
+      type: Object,
     },
   },
   setup() {

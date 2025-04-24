@@ -8,8 +8,11 @@ export default {
     Logo,
   },
   props: {
-    colorLogo: {
+    colorText: {
       type: String,
+    },
+    bgHeader: {
+      type: String
     }
   },
   data() {
@@ -84,23 +87,23 @@ export default {
 };
 </script>
 <template>
-    <header class="z-15 fixed top-0 left-0 w-full border-b border-white py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
+    <header :class="[ bgHeader, colorText === 'text-black' ? 'border-black' : 'border-white' ]" class="z-15 fixed top-0 left-0 w-full border-b  py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
         <a href="/" class="flex items-center">
-          <Logo class="h-logo" :color="colorLogo" />
+          <Logo class="h-logo" :color="colorText" />
         </a>
 
         <a class="md:hidden open-mobile-menu " @click="toggleMenu">Menu (<span>+</span>)</a>
 
         <ul class="hidden md:flex gap-items-menu">
-            <li><a href="/products"><span></span>Products</a></li>
-            <li><a href="/about"><span></span>About</a></li>
-            <li><a href="/find-us"><span></span>Find us</a></li>
-            <li><a href="/journal"><span></span>Journal</a></li>
+            <li><a :class=colorText href="/products"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Products</a></li>
+            <li><a :class=colorText href="/about"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>About</a></li>
+            <li><a :class=colorText href="/find-us"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Find us</a></li>
+            <li><a :class=colorText href="/journal"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Journal</a></li>
         </ul>
 
        
 
-        <a class="button-contact"  href="/contact"><span></span>Contact</a>
+        <ul><li><a :class=colorText class="button-contact"  href="/contact"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Contact</a></li></ul>
 	</header>
   <div class="mobile-menu opacity-0 md:hidden">
       <ul class="menu-items mt-[20vh] flex flex-col gap-1">

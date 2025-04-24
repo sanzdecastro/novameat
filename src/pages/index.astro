@@ -14,9 +14,11 @@ console.log(homeContent);
 const slide = homeContent.acf.slide;
 const text = homeContent.acf.centered_text;
 
+const colorText = "#eee9e3";
+const bgHeader = "bg-transparent";
 ---
 
-<Layout>
+<Layout colorText={colorText} bgHeader={bgHeader}>
 
 	<Slider client:load
 		slides={slide},
