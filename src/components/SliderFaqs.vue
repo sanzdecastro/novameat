@@ -35,7 +35,10 @@ export default {
 
 <template>
   <div class="pl-md w-full">
-    <swiper :slides-per-view="3.1" :space-between="10" >
+    <swiper :slides-per-view="1.1" 
+    :space-between="10" 
+    :breakpoints="{ 600:{ slidesPerView:2.2 }, 900:{ slidesPerView:3.1, } }"
+    >
       <swiper-slide class="aspect-[481/582]">
         <div
           class="card   aspect-[481/582] p-lg-2 bg-stone flex flex-col justify-between rounded-[15px]"

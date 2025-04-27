@@ -45,8 +45,9 @@ export default {
  <div class="pr-md">
     <swiper class="!overflow-visible "
      
-      :slides-per-view="6.3"
+      :slides-per-view="3.1"
       :space-between="10"
+      :breakpoints="{ 600:{ slidesPerView:3.2 }, 900:{ slidesPerView:6.3, } }"
 
     >
       <swiper-slide class="!overflow-visible w-full aspect-[235/300] "

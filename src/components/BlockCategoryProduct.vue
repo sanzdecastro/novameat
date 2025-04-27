@@ -64,8 +64,9 @@ export default {
     <span class="mb-xxl block">( {{ this.productCategory.count }} )</span>
     <div class="w-full" v-if="(section.products.length > 3)" >
       <swiper  
-      :slides-per-view="3.1" 
+      :slides-per-view="1.2" 
       :space-between="10" 
+      :breakpoints="{ 600:{ slidesPerView:2.2 }, 900:{ slidesPerView:3.1, } }"
 
       class="!overflow-visible ">
         <swiper-slide
