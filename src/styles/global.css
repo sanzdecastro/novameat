@@ -254,28 +254,34 @@ header, .mobile-menu {
       @apply bg-pink;
     }
     &:first-child {
-      @apply top-[calc((76/1515)*100vw)]
-            left-[calc((250/1515)*100vw)];
+
+      @apply 
+      top-[calc((150/1515)*100vw)]
+      left-[calc((300/1515)*100vw)]
+      md:top-[calc((-300/1515)*100vw)]
+            md:left-[calc((-100/1515)*100vw)];
     }
     &:nth-child(2) {
-      @apply 
-      top-[calc((70/320)*100vw)]
-      md:top-[calc((389/1515)*100vw)]
-            left-[calc((49/1515)*100vw)];
+
+      @apply
+      left-[calc((50/1515)*100vw)] 
+      top-[calc((350/1515)*100vw)]
+      md:top-[calc((0/1515)*100vw)]
+      md:left-[calc((-300/1515)*100vw)];
     }
     &:nth-child(3) {
       @apply 
-      top-[calc((380/320)*100vw)]
-      md:top-[calc((642/1515)*100vw)]
-      left-[calc((112/1515)*100vw)];
+      md:left-[calc((-250/1515)*100vw)]
+      top-[calc((1550/1515)*100vw)]
+      md:top-[calc((150/1515)*100vw)]
+      left-[calc((150/1515)*100vw)];
     }
     &:nth-child(4) {
-
       @apply 
       top-[calc((347/320)*100vw)]
-      md:top-[calc((689/1515)*100vw)]
+      md:top-[calc((250/1515)*100vw)]
       left-[calc((170/320)*100vw)]
-      md:left-[calc((595/1515)*100vw)];
+      md:left-[calc((105/1515)*100vw)];
     }
   }
   .tab-header {
@@ -700,3 +706,18 @@ input[type="radio"] {
   }
 }
 
+.legal {
+  h1 {
+    @apply
+    text-center
+    text-title;
+  }
+  .wp-block-columns {
+    @apply
+    flex;
+    & > div {
+      @apply
+      w-full;
+    }
+  }
+}

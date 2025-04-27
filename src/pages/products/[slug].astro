@@ -38,10 +38,13 @@ console.log(page)
             <section id="overview" class="product-info-container flex flex-col md:flex-row min-h-[100dvh]">
                 <div class="gallery mt-header md:order-1 order-2 w-full md:w-1/2 px-sm ">
                     <!-- Solo desktop -->
-                    <div class="hidden md:flex image-wrapper w-full h-[100dvh] items-center relative ">
-                        {page?.acf?.product_highlights?.map((highlight: any) => (
-                            <p class="highlight flex items-center gap-2 font-haffe text-p-small"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{highlight.highlight}</p>
-                        ))}
+                    <div class="hidden md:flex justify-center w-full h-[100dvh] items-center relative ">
+                        <div class="highlight-container relative h-1 w-1">
+                            {page?.acf?.product_highlights?.map((highlight: any) => (
+                                <p class="highlight flex items-center gap-2 font-haffe text-p-small"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{highlight.highlight}</p>
+                            ))}
+                        </div>
+                        
                     </div>
                     <!-- Solo desktop -->
                     
@@ -77,15 +80,25 @@ console.log(page)
                             <div class="tab-header flex border-b border-white">
                                 {page?.acf?.tabs?.map((tab: any, index: number) => (
                                     <div class="tab w-1/3 relative text-center" data-id={index}>
-                                        <p class="text-p-small md:text-nowrap py-2 cursor-pointer">{tab.tab.title}</p>
+                                        <p class="text-p-small md:text-nowrap py-2 cursor-pointer" set:html={tab.tab.title}></p>
                                     </div>
                                   ))}
                                   <span class="tab-indicator absolute bottom-0 w-1/3 bg-white"></span>
                             </div>
                             <div class="tab-inside flex-col">
                                 {page?.acf?.tabs?.map((tab: any, index: number) => (
+                                 
                                     <div class="tab-inside hidden py-md" data-id={index}>
                                         <p class="text-p-small">{tab.tab.description}</p>
+                                     <ul>
+                                       
+                                        {Array.isArray(tab.tab.list_item) && tab.tab.list_item.map((item, itemIndex) => (
+                                            <li class="text-p-small flex justify-between" key={itemIndex}>
+                                            <span>{item.element}</span>
+                                            <span>{item.quantity}</span>
+                                            </li>
+                                        ))}
+                                        </ul>
                                     </div>
                                 ))}
                             </div>

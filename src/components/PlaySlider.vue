@@ -71,7 +71,7 @@ export default {
           <div class="  w-full h-full flex justify-center items-center p-sm">
             <div class="flex-col text-center">
               <span class="">( {{ slide.pretitle }} )</span>
-              <h3 class="font-sm text-title">{{ slide.title }}</h3>
+              <h3 class="font-sm text-title" v-html="slide.title"></h3>
               <p>{{ slide.item_menu }}</p>
               <p class="absolute text-center md:text-left p-lg-2 md:p-sm bottom-xxl-2 md:bottom-sm left-sm  md:max-w-max-xs  text-small leading-[114%]">{{ slide.text }}</p>
             </div>

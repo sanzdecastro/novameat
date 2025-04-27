@@ -51,7 +51,7 @@ export default {
           class="w-full h-full object-cover"
         />
         <div class="w-[100vw] h-[100dvh] z-10 absolute top-0 left-0 text-white pointer-events-none">
-          <h2 class="px-xxl-2 text-center text-wrap text-title font-sm w-full h-full flex justify-center items-center">{{ slide.title }}</h2>
+          <h2 class="px-xxl-2 text-center text-wrap text-title font-sm w-full h-full flex justify-center items-center" v-html="slide.title"></h2>
           <p class="absolute top-[20vh] left-[20vw] font-haffe text-small flex items-center gap-2"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{{ slide.phrase_1 }}</p>
           <p class="absolute top-[90vh] left-[45vw] font-haffe text-small flex items-center gap-2"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{{ slide.phrase_2 }}</p>
           <p class="absolute top-[30vh] left-[80vw] font-haffe text-small flex items-center gap-2"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{{ slide.phrase_3 }}</p>

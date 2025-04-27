@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPages, getPage, getProducts, getProduct } from "../../lib/api.js";
+
+const colorText = "text-black";
+const bgHeader = "bg-white"
+
+const { slug } = Astro.params;
+const page = await getPage(slug , 'en');
+
+---
+
+<Layout colorText={colorText} bgHeader={bgHeader}>
+    <div class="legal py-xxl-2 text-center">
+        <span class="text-p-small text-center">({page.title.rendered})</span>
+        <h1></h1>
+        <section class="mx-auto max-w-1/2 text-left">
+            <div set:html={page.content.rendered}></div>
+        </section>
+    </div>
+    
+    
+</Layout>
