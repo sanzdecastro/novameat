@@ -18,9 +18,9 @@ export default {
             <div class="legal-lang-social flex pb-[44px]">
                 <div class="w-full legal-lang md:w-max-ssm flex flex-col">
                     <ul class="w-full pb-md">
-                        <li><a href="">Legal Notice</a></li>
-                        <li><a href="">Cookie Information</a></li>
-                        <li><a href="">Privacy Statement</a></li>
+                        <li><a href="/legal/legal-notice">Legal Notice</a></li>
+                        <li><a href="/legal/cookie-policy">Cookie Information</a></li>
+                        <li><a href="/legal/privacy-statement">Privacy Statement</a></li>
                     </ul>
                     <ul class="lang flex">
                         <li><a href="">ES</a></li> / <li><a href="">EN</a></li>
