@@ -714,17 +714,39 @@ input[type="radio"] {
 }
 
 .legal {
-  h1 {
+  span + h1 {
     @apply
+    hidden;
+  }
+  p {
+    @apply
+    mb-xs;
+  }
+  h1, .wp-block-heading {
+    @apply
+    mb-xxl-2
     text-center
     text-title;
+
+    &.h2 {
+      @apply
+      mt-xxl-2;
+    }
+  }
+  h2.wp-block-heading {
+    @apply
+      mt-xxl-2;
   }
   .wp-block-columns {
     @apply
+    text-p-small
+    mt-md
+    mb-md
     flex;
     & > div {
       @apply
       w-full;
+      
     }
   }
 }

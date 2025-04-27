@@ -12,9 +12,9 @@ const page = await getPage(slug , 'en');
 
 <Layout colorText={colorText} bgHeader={bgHeader}>
     <div class="legal py-xxl-2 text-center">
-        <span class="text-p-small text-center">({page.title.rendered})</span>
+        <span class="text-p-small text-center mb-xs block">({page.title.rendered})</span>
         <h1></h1>
-        <section class="mx-auto max-w-1/2 text-left">
+        <section class="mx-auto w-fill px-sm md:min-w-[700px] md:max-w-[calc((718/1515)*100vw)] text-left">
             <div set:html={page.content.rendered}></div>
         </section>
     </div>

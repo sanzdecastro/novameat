@@ -17,9 +17,9 @@ export default {
 </script>
 
 <template>
-  <div class="px-md pb-xxl-2">
-    <div class="block-logos grid grid-cols-4 overflow-hidden" >
-      <div class="logo aspect-video flex justify-center items-center col-span-1 border-b border-stone border-r" v-for="(logo, index) in section.logos">
+  <div class="mx-md mb-xxl-2 overflow-hidden">
+    <div class="block-logos grid-cols-1 md:grid grid-cols-4 overflow-hidden mr-[-1px] mb-[-1px]" >
+      <div class="logo aspect-video flex justify-center items-center col-span-1 border-b border-stone-300 border-r" v-for="(logo, index) in section.logos">
         <img :src="logo.logo.link" :alt="logo.logo.alt">
       </div>
     </div>
