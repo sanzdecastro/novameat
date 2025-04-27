@@ -462,27 +462,34 @@ body:has(section.contact-section) {
   bg-pink;
 }
 
+.radio-buttons {
+  label {
+    @apply
+    pl-1.5
+  }
+}
+.dot-check {
+  
+  @apply
+  h-[6px]
+  w-[6px]
+  mx-2
+  rounded-full
+  bg-transparent;
 
+}
 input[type="radio"] {
   @apply
   cursor-pointer
+  w-0
   opacity-0
   relative;
-  &:checked + label {
-    @apply
-    cursor-pointer
-    relative;
-    &:before {
-      content: '';
+  
+  &:checked + .dot-check {
+  
       @apply
-      h-[6px]
-      w-[6px]
-      absolute
-      top-[calc((9/1515)*100vw)]
-      -left-[calc((22/1515)*100vw)]
-      rounded-full
       bg-black;
-    }
+    
   }
 }
 
