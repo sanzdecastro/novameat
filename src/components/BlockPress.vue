@@ -1,33 +1,58 @@
 <script>
-
+import Divider from "./Divider.vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
 
 // Import Swiper styles
 export default {
   name: "BlockPress",
   components: {
-   
+    Divider,
+    Swiper,
+    SwiperSlide,
   },
   props: {
     section: {
       type: Object,
     },
   },
- 
 };
 </script>
 
 <template>
-  <div :id="section.id_anchor" class="py-section px-md">
-    <div class="block-dots grid grid-cols-8 gap-sm mb-xxl-2">
-      <h3 class="text-p col-span-2" v-html="section.press_title"></h3>
-      <div class="people col-span-6 grid grid-cols-3 gap-lg-2">
-        <div class="person relative col-span-1 flex justify-between items-center hover:text-pink transition-all" v-for="(media, index) in section.medias">
+  <Divider></Divider>
+  <div :id="section.id_anchor" class="py-section text-center">
+    <h3 class="text-p-small col-span-2 pb-xxl-2" v-html="'(' + section.press_title + ')'"></h3>
+    <div class="w-full">
+      <swiper
+        :slides-per-view="1.1"
+        :space-between="10"
+        :slides-offset-before="20"
+        :slides-offset-after="20"
+        :breakpoints="{
+          600: { slidesPerView: 2.2 },
+          900: { slidesPerView: 3.1 },
+        }"
+      >
+        <swiper-slide
+          v-for="(media, index) in section.medias"
+          class="aspect-[481/582]"
+        >
           <a target="_blank" :href="media.link">
-            <span class="text-small text-stone">{{ media.media }}</span>
-            <p class="text-p-small max-w-max-xs">{{ media.headline }}</p>
+            <div>
+              <div
+                class="card p-xxl text-center aspect-[481/582]  bg-beige flex flex-col justify-center items-center rounded-[15px]"
+              >
+                <div class="text-center">
+                  <h3 class="block pb-xxl text-p">{{ media.headline }}</h3>
+                
+                  <img class="mx-auto":src="media.image?.link" />
+                </div>
+              </div>
+            </div>
           </a>
-        </div>
-      </div>
+        </swiper-slide>
+      </swiper>
     </div>
   </div>
 </template>

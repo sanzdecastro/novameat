@@ -90,24 +90,48 @@ export default {
         <p>Our cuts are not an alternative, they’re a choice. And we believe in informed choices. Below, you’ll find a breakdown of the cookies we use and why we use them for.</p>
         <form @submit.prevent="savePreferences">
           <label>
+            (
             <input type="checkbox" name="necessary" disabled checked />
-            <span>ESSENTIAL COOKIES</span>
-            <p>These are always active. They help us maintain site functionality and ensure secure browsing.</p>
+            
+            <div class="dot-check"></div>
+            )
+            <div class="pl-lg">
+              <span>ESSENTIAL COOKIES</span>
+              <p>These are always active. They help us maintain site functionality and ensure secure browsing.</p>
+            </div>
+           
           </label>
           <label>
+            (
             <input type="checkbox" v-model="prefs.analytics" />
-            <span>PERSONALISATION COOKIES</span>
-            <p>They let us remember your preferences and tailor your experience.</p>
+            
+            <div class="dot-check"></div>
+            )
+            <div class="pl-lg">
+              <span>PERSONALISATION COOKIES</span>
+              <p>They let us remember your preferences and tailor your experience.</p>
+            </div>
+            
           </label>
           <label>
+            (
             <input type="checkbox" v-model="prefs.marketing" />
-            <span>BEHAVIOURAL ADVERTISING COOKIES</span>
-            <p>These help us show you more relevant content and ads, based on how you interact with the site.</p>
+            
+            <div class="dot-check"></div>
+            )
+            <div class="pl-lg">
+              <span>BEHAVIOURAL ADVERTISING COOKIES</span>
+              <p>These help us show you more relevant content and ads, based on how you interact with the site.</p>
+            </div>
+         
           </label>
           <div>
-            <button type="submit">Save Settings</button>
-            <a @click="declineAll">Reject all</a>
-            <button type="button" @click="closeSettings">Close</button>
+            <div class="buttons">
+              <a class="secondary" @click="declineAll">Reject all</a>
+              <a class="secondary" type="submit">Save Settings</a>
+              <a class="primary" @click="closeSettings">Close</a>
+            </div>
+            
           </div>
         </form>
       </div>

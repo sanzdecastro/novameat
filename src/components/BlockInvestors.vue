@@ -1,11 +1,11 @@
 <script>
-
+import Divider from './Divider.vue';
 
 // Import Swiper styles
 export default {
   name: "BlockInvestors",
   components: {
-   
+   Divider,
   },
   props: {
     section: {
@@ -17,6 +17,7 @@ export default {
 </script>
 
 <template>
+  <Divider></Divider>
   <div :id="section.id_anchor" class="py-section px-md">
     <div class="block-dots grid grid-cols-8 gap-sm mb-xxl-2">
       <h3 class="text-p col-span-2" v-html="section.investors_name"></h3>

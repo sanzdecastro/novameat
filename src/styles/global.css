@@ -20,6 +20,7 @@
   --color-black: #000000;
   --color-pink: #ec6769;
   --color-white: #eee9e3;
+  --color-beige: #DFD8CD;
   --color-stone: #787066;
   --color-ash: #362f2c;
 
@@ -350,7 +351,7 @@ body:has(#contact-form) {
   bg-pink;
 }
 
- /* Banner fijo abajo */
+
  #cookie-banner {
   z-index: 1000;
   @apply
@@ -369,6 +370,8 @@ body:has(#contact-form) {
   m-sm
   rounded-[15px]
   bg-pink;
+
+  
   span {
     @apply
     mb-sm
@@ -432,13 +435,84 @@ body:has(#contact-form) {
   z-index: 1001;
   justify-content: center;
   align-items: center;
+  label {
+    @apply
+    items-center
+    !flex;
+    input {
+      @apply
+      cursor-pointer
+      w-0
+      opacity-0
+      relative;
+      
+      &:checked + .dot-check {
+      
+          @apply
+          bg-black;
+        
+      }
+      
+    }
+  }
 }
 #cookie-settings-modal .modal-content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 90%;
-  width: 400px;
+  @apply
+  absolute
+  bottom-0
+  right-0
+  rounded-[15px]
+  max-w-[725px]
+  md:min-w-[700px]
+  md:max-w-[calc((358/1515)*100vw)]
+  text-p-small
+  p-md
+  bg-pink
+  m-sm;
+  h2,p {
+    @apply
+    pb-sm;
+  }
+  .buttons {
+    @apply
+    mt-md
+    w-full
+    gap-4
+    justify-end
+    flex;
+  }
+  a.primary {
+    @apply
+    font-haffe
+    text-p-small
+    cursor-pointer
+    py-sm
+    px-lg-2
+    flex
+    items-center
+    leading-[100%]
+    bg-black
+    text-pink
+    rounded-full
+    ;
+  }
+  a.secondary {
+    @apply
+    font-haffe
+    text-p-small
+    cursor-pointer
+    py-sm
+    flex
+    items-center
+    leading-[100%]
+    px-lg-2
+    bg-pink
+    border
+    border-black
+    text-black
+    rounded-full
+    ;
+  }
 }
 #cookie-settings-modal label {
   display: block;
@@ -714,6 +788,7 @@ input[type="radio"] {
 }
 
 .legal {
+
   span + h1 {
     @apply
     hidden;
