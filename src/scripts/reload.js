@@ -2,7 +2,7 @@ export function reload() {
     let resizeTimeout;
     const isLargeScreen = window.innerWidth > 768;
 
-    if (isLargeScreen || hasAlsoMobileClass) {
+    if (isLargeScreen) {
         window.addEventListener('resize', () => {
             // Si hay un timeout pendiente, lo limpiamos
             clearTimeout(resizeTimeout);

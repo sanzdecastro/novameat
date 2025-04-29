@@ -60,7 +60,6 @@ export default {
     },
     toggleMenu() {
       const menuMobile = document.querySelector(".mobile-menu");
-
       const tl = gsap.timeline({})
 
       if(this.menuMobile === false ){
@@ -87,12 +86,20 @@ export default {
 };
 </script>
 <template>
-    <header :class="[ bgHeader, colorText === 'text-black' ? 'border-black' : 'border-white' ]" class="z-15 fixed top-0 left-0 w-full border-b  py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
+    <header :class="[
+    colorText,                                          
+    colorText === 'text-black'                           
+      ? 'border-black'
+      : 'border-white',
+    menuMobile                                          
+      ? 'bg-transparent'
+      : bgHeader
+  ]" class="z-15 fixed top-0 left-0 w-full border-b  py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
         <a href="/" class="flex items-center">
           <Logo class="h-logo" :color="colorText" />
         </a>
 
-        <a class="md:hidden open-mobile-menu " @click="toggleMenu">Menu (<span>+</span>)</a>
+        <a :class=colorText class="md:hidden open-mobile-menu " @click="toggleMenu">Menu (<span v-if="menuMobile === false">+</span><span v-else>-</span>)</a>
 
         <ul class="hidden md:flex gap-items-menu">
             <li><a :class=colorText href="/products"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Products</a></li>
