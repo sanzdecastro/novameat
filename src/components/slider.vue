@@ -47,11 +47,11 @@ import Circlee from './circlee.vue';
     
     
 
-    <div class="slider-container  relative w-[100vw] h-[100dvh]">
+    <div class="slider-container slider-main relative w-[100vw] h-[100dvh]">
         <div class="z-10  over-text absolute top-0 left-0 w-full h-full flex justify-center items-center  gap-2">
             <div class="flex gap-2 items-center">
-                <logo class="h-[calc((10/360)*100vw)] md:h-[calc((15/1515)*100vw)] md:max-h-[16px]" color="white" />
-                <p class="text-white text-p text-nowrap">{{ text }}</p>
+                <logo class="h-[calc((10/360)*100vw)] md:h-[calc((10/1515)*100vw)] md:max-h-[16px]" color="white" />
+                <p class="text-white text-p-small text-nowrap">{{ text }}</p>
             </div>
         </div>
         <div class="z-10 pointer-events-none absolute top-0 left-0 w-full h-full flex justify-center items-center">

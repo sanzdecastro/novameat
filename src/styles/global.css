@@ -825,3 +825,7 @@ input[type="radio"] {
     }
   }
 }
+
+.slot-container:has(.slider-main) + .slot-container footer {
+  @apply hidden;
+}
