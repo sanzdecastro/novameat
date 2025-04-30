@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import CardIngredient from "./CardIngredient.vue";
+import { languages } from "../lib/i18n";
 
 // Import Swiper styles
 export default {
@@ -15,6 +16,9 @@ export default {
   props: {
     ingredients: {
       type: Object,
+    },
+    lang: {
+      type: String,
     },
   },
   setup() {
@@ -53,7 +57,7 @@ export default {
       <swiper-slide class="!overflow-visible w-full aspect-[235/300] "
         v-for="(ingredient, index) in ingredients?.ingredients"
       >
-        <CardIngredient :ingredient="ingredient"></CardIngredient>
+        <CardIngredient :ingredient="ingredient" :lang="lang"></CardIngredient>
       </swiper-slide>
     </swiper>
   </div>

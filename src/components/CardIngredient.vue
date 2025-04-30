@@ -8,6 +8,9 @@ export default {
     ingredient: {
       type: Object,
     },
+    lang: {
+      type: String,
+    },
   },
   mounted() {
     this.fetchIngredient();
@@ -22,7 +25,7 @@ export default {
       console.log(apiUrl);
       try {
         console.log("Fetched ingredient:", this.ingredient);
-        const ingredient = await getIngredient(this.ingredient.post_name, "en");
+        const ingredient = await getIngredient(this.ingredient.post_name, this.lang);
         this.ingredientInfo = ingredient;
         console.log("Fetched ingredient info:", this.ingredientInfo);
       } catch (error) {

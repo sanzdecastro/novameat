@@ -25,7 +25,7 @@ console.log(page)
 
 <Layout lang={lang} page={page} getById={getProductById} colorText={colorText} bgHeader={bgHeader}>
     
-    <SubHeader section={page?.acf?.sub_header} client:only ></SubHeader>
+    <SubHeader section={page?.acf?.sub_header} colorText={colorText} bgHeader={bgHeader} client:only ></SubHeader>
     
     <div class="product-page bg-black text-white">
         <div class="product-info pt-xxl-2 md:pt-lg">
@@ -116,10 +116,10 @@ console.log(page)
                 <div class="ingredients scroll-wrapper flex flex-col md:flex-row mx-sm md:mx-0 rounded-[15px] md:rounded-0 overflow-hidden md:overflow-visible px-sm md:px-0 bg-ash md:bg-black">
                     {page?.acf?.ingredients?.ingredients?.map((ingredient: any, index: number) => (
                         
-                        <CardIngredientMobile class="md:hidden" ingredient={ingredient} client:load></CardIngredientMobile>
+                        <CardIngredientMobile class="md:hidden" ingredient={ingredient} lang={lang} client:load></CardIngredientMobile>
                     ))}
                 </div>
-                <SliderIngredients class="hidden md:block" ingredients={page?.acf?.ingredients} client:load></SliderIngredients>
+                <SliderIngredients class="hidden md:block" ingredients={page?.acf?.ingredients} lang={lang} client:load></SliderIngredients>
             </section>
             
             <section id="recipes" class="section-button pb-product-description">
