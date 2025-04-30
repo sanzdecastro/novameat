@@ -831,3 +831,21 @@ input[type="radio"] {
 .slot-container:has(.slider-main) + .slot-container footer {
   @apply hidden;
 }
+
+#mc_embed_signup div.mce_inline_error {
+  margin: 0 0 1em 0;
+    padding: 5px 0px!important;
+    z-index: 1;
+    @apply
+    absolute
+    !bg-transparent
+    !text-black;
+}
+
+#mce-responses {
+  @apply
+  pointer-events-none;
+  position: absolute;
+  width: 100%;
+  padding-top: 20px;
+}

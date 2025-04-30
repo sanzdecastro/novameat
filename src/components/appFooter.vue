@@ -25,6 +25,21 @@ export default {
         <div class="header-footer flex flex-col md:flex-row justify-between ">
             <div class="newsletter max-w-[90%] md:max-w-max-ssm pb-[44px]">
                 <p>Sign up to our newsletter and get a carefully curated selection of recipes, interviews, research, and other industry news–straight from our journal to your inbox.</p>
+                <div id="mc_embed_shell">
+                    
+
+                <div id="mc_embed_signup">
+                    <form action="https://novameat.us21.list-manage.com/subscribe/post?u=400b324dad162be4fe0070446&amp;id=0622b2f3b8&amp;f_id=0033c7e9f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        <div id="mc_embed_signup_scroll" class="flex justify-between mt-sm border-b border-b-black">
+                            <div class="mc-field-group"><input class="required email font-haffe focus:outline-none " type="email" name="EMAIL"  placeholder="Your e-mail here" id="mce-EMAIL" required="" value=""></div>
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                        </div><div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_400b324dad162be4fe0070446_0622b2f3b8" tabindex="-1" value=""></div><div class="clear"><input  type="submit" name="subscribe" id="mc-embedded-subscribe" class="button cursor-pointer" value="Subscribe"></div>
+                    </div>
+                </form>
+            </div>
+                <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
             </div>
             <div class="legal-lang-social flex pb-[44px]">
                 <div class="w-full legal-lang md:w-max-ssm flex flex-col">
