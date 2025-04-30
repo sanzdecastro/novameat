@@ -41,7 +41,7 @@ export default {
         const products = await getProductCategories(
           apiUrl,
           this.category,
-          "en"
+          this.lang
         );
         this.productCategory = products;
         console.log("Fetched products:", products);
@@ -51,7 +51,7 @@ export default {
     },
   },
   mounted() {
-    
+    console.log(this.lang);
     this.fetchProductCategory();
    
 
@@ -87,7 +87,7 @@ export default {
            class="card w-full md:w-1/3 aspect-[481/607] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
           v-for="(product, index) in section.products"
         >
-          <CardProduct :product="product"></CardProduct>
+          <CardProduct :product="product" :lang="lang"></CardProduct>
     </div>
     </div>
     
