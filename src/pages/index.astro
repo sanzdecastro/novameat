@@ -1,0 +1,8 @@
+---
+// Redirect “/” → “/en/”
+import { redirect } from 'astro';
+export const prerender = true;        // generate a static redirect
+export function GET() {
+  throw redirect(307, '/en/');
+}
+---
