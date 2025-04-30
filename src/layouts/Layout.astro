@@ -86,6 +86,7 @@ const switchUrls = page && getById
       import { headerProductSelector } from "../scripts/headerProductSelector.js";
       import { copiesAnimation } from "../scripts/copiesAnimation.js";
       import { reload } from "../scripts/reload";
+      import { menuTransparent } from "../scripts/menuTransparent";
 
       gsap.registerPlugin(ScrollTrigger);
 
@@ -188,8 +189,10 @@ const switchUrls = page && getById
         orderButtonAnimation();
         setTimeout(() => {
           headerProductSelector();
+          menuTransparent();
         }, 500);
         copiesAnimation();
+
       });
 
       // En la carga inicial
@@ -210,9 +213,11 @@ const switchUrls = page && getById
         orderButtonAnimation();
         setTimeout(() => {
           headerProductSelector();
+          menuTransparent();
         }, 500);
         copiesAnimation();
-        reload()
+        reload();
+        
       });
     </script>
     <CookieConsent client:load />
