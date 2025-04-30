@@ -23,6 +23,9 @@ export default {
     section: {
       type: Object,
     },
+    lang: {
+      type: String,
+    },
   },
 
   data() {
@@ -75,7 +78,7 @@ export default {
            class="card w-card-product aspect-[481/607] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
           v-for="(product, index) in section.products"
         >
-          <CardProduct :product="product"></CardProduct>
+          <CardProduct :product="product" :lang="lang"></CardProduct>
         </swiper-slide>
       </swiper>
     </div>

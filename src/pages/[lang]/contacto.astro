@@ -1,10 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+
+const { lang } = Astro.params;
+
 const colorText = "text-black";
-const bgHeader = "bg-pink"
+const bgHeader = "bg-pink";
 ---
 
-<Layout  colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} colorText={colorText} bgHeader={bgHeader}>
   <section class="bg-pink contact-section ">
     
     <form id="contact-form" class="p-sm pt-xxl-2 md:pt-xxl md:p-md flex flex-col md:flex-row md:flex-wrap">
@@ -14,7 +17,7 @@ const bgHeader = "bg-pink"
       <div class="inputs-form w-full md:w-1/3">
         <div class="inputs-form-wrapper ">
           <div>
-            <label for="email">Name*</label>
+            <label for="email">Nombre*</label>
             <input
               id="name"
               type="text"
@@ -23,7 +26,7 @@ const bgHeader = "bg-pink"
             />
           </div>
           <div>
-            <label for="email">Company*</label>
+            <label for="email">Empresa*</label>
             <input
               id="company"
               type="text"
@@ -32,7 +35,7 @@ const bgHeader = "bg-pink"
             />
           </div>
           <div>
-            <label for="email">E-mail Address*</label>
+            <label for="email">E-mail*</label>
             <input
               id="email"
               type="email"
@@ -42,7 +45,7 @@ const bgHeader = "bg-pink"
           </div>
   
           <div class="radio-buttons">
-            <legend>Business*</legend>
+            <legend>Sector*</legend>
             <div class="">
               <div class="flex items-center">
                 (
@@ -81,7 +84,7 @@ const bgHeader = "bg-pink"
                 />
                 <div class="dot-check"></div>
                 )
-                <label for="distributor">Distributor</label>
+                <label for="distributor">Distribuidor</label>
               </div>
               <div class="flex items-center">
                 (
@@ -120,14 +123,14 @@ const bgHeader = "bg-pink"
                 />
                 <div class="dot-check"></div>
                 )
-                <label for="other">Other</label>
+                <label for="other">Otro</label>
               </div>
             </div>
             
           </div>
     
           <div >
-            <label for="subject">Subject*</label>
+            <label for="subject">Asunto*</label>
             <input
               id="subject"
               type="text"
@@ -141,7 +144,7 @@ const bgHeader = "bg-pink"
       
       <div class="textarea-form w-full md:w-1/3">
         <div class="flex flex-col md:max-w-max-ssm mx-auto">
-          <label for="message">Message*</label>
+          <label for="message">Mensaje*</label>
           <textarea
           class="mt-sm"
             id="message"

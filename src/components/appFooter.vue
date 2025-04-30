@@ -7,10 +7,21 @@ export default {
   components: {
     Logo,
   },
+  props: {
+    lang: { 
+      type: String,
+    },
+    routes: { 
+      type: Array, 
+    }, 
+    switchUrls: { 
+      type: Array, 
+    },
+  }
 };
 </script>
 <template>
-    <footer class="bg-pink m-sm p-sm rounded-[15px] md:h-footer-height flex flex-col justify-between text-small">
+    <footer class="bg-pink m-sm p-md rounded-[15px] md:h-footer-height flex flex-col justify-between text-small">
         <div class="header-footer flex flex-col md:flex-row justify-between ">
             <div class="newsletter max-w-[90%] md:max-w-max-ssm pb-[44px]">
                 <p>Sign up to our newsletter and get a carefully curated selection of recipes, interviews, research, and other industry news–straight from our journal to your inbox.</p>
@@ -23,7 +34,17 @@ export default {
                         <li><a href="/legal/privacy-statement">Privacy Statement</a></li>
                     </ul>
                     <ul class="lang flex">
-                        <li><a href="">ES</a></li> / <li><a href="">EN</a></li>
+                        <!-- <li><a href="">ES</a></li> / <li><a href="">EN</a></li> -->
+                    </ul>
+                    <ul class="lang flex language-switcher">
+                        <li v-for="item in switchUrls" :key="item.code">
+                            <a
+                            :href="item.url"
+                            :class="{ active: item.code === lang }"
+                            >
+                            {{ item.code.toUpperCase() }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="w-full social md:w-max-ssm flex flex-col">

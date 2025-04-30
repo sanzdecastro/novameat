@@ -1,25 +1,28 @@
 ---
 
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 
-import { getPages, getPage, getProducts, getProduct } from "../lib/api.js";
+import { getPages, getPage, getPageById, getProducts, getProduct } from "../../lib/api.js";
 
-import PointsSlider from "../components/PointsSlider.vue"
-import BlockText from "../components/BlockText.vue"
-import PlaySlider from "../components/PlaySlider.vue"
-import BlockCategoryProduct from "../components/BlockCategoryProduct.vue"
-import ButtonSection from "../components/ButtonSection.vue"
-import BlockImage from "../components/BlockImage.vue"
-import BlockTeam from "../components/BlockTeam.vue"
-import BlockCountries from "../components/BlockCountries.vue"
-import BlockLogos from "../components/BlockLogos.vue"
-import BlockPress from "../components/BlockPress.vue"
-import BlockInvestors from "../components/BlockInvestors.vue"
-import BlockCentralMessage from '../components/BlockCentralMessage.vue';
-import SubHeader from '../components/subHeader.vue';
+import PointsSlider from "../../components/PointsSlider.vue"
+import BlockText from "../../components/BlockText.vue"
+import PlaySlider from "../../components/PlaySlider.vue"
+import BlockCategoryProduct from "../../components/BlockCategoryProduct.vue"
+import ButtonSection from "../../components/ButtonSection.vue"
+import BlockImage from "../../components/BlockImage.vue"
+import BlockTeam from "../../components/BlockTeam.vue"
+import BlockCountries from "../../components/BlockCountries.vue"
+import BlockLogos from "../../components/BlockLogos.vue"
+import BlockPress from "../../components/BlockPress.vue"
+import BlockInvestors from "../../components/BlockInvestors.vue"
+import BlockCentralMessage from '../../components/BlockCentralMessage.vue';
+import SubHeader from '../../components/subHeader.vue';
+import BlockRelated from '../../components/BlockRelated.vue';
 
-const { slug } = Astro.params;
-const page = await getPage(slug , 'en');
+
+const { lang, slug } = Astro.params;
+const page = await getPage(slug , lang);
+
 const colorText = "text-black";
 const bgHeader = "bg-white"
 
@@ -28,7 +31,7 @@ console.log( page )
 const flexibleSections = page?.acf?.flexible_content || [];
 ---
 
-<Layout colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} page={page} getById={getPageById} slug={slug}  colorText={colorText} bgHeader={bgHeader}>
 <div class="flex flex-col wrapper-content-flexible">
 {
     flexibleSections.map((section: any) => {
@@ -39,7 +42,7 @@ const flexibleSections = page?.acf?.flexible_content || [];
       } else if(section.acf_fc_layout === "play_slider") {
         return <PlaySlider section={section} client:only />;
       } else if(section.acf_fc_layout === "block_category_product") {
-        return <BlockCategoryProduct section={section} client:only />;
+        return <BlockCategoryProduct section={section} lang={lang} client:only />;
       } else if(section.acf_fc_layout === "button") {
         return <ButtonSection section={section} client:only />;
       } else if(section.acf_fc_layout === "block_image") {
@@ -58,6 +61,8 @@ const flexibleSections = page?.acf?.flexible_content || [];
         return <BlockCentralMessage section={section} client:only />;
       } else if(section.acf_fc_layout === "sub_header") {
         return <SubHeader colorText={colorText} bgHeader={bgHeader} section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_related") {
+        return <BlockRelated section={section.related} client:only />;
       } 
       
       return null; 

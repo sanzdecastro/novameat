@@ -1,19 +1,20 @@
 ---
 
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 
-import { getPages, getPage, getProducts, getProduct } from "../../lib/api.js";
-import SliderIngredients from "../../components/SliderIngredients.vue"
-import SliderFaqs from "../../components/SliderFaqs.vue"
-import CardIngredient from "../../components/CardIngredient.vue"
-import CardIngredientMobile from "../../components/CardIngredientMobile.vue"
-import Divider from '../../components/Divider.vue';
-import SubHeader from '../../components/subHeader.vue';
+import { getPages, getPage, getProducts, getProduct, getProductById } from "../../../lib/api.js";
+import SliderIngredients from "../../../components/SliderIngredients.vue"
+import SliderFaqs from "../../../components/SliderFaqs.vue"
+import CardIngredient from "../../../components/CardIngredient.vue"
+import CardIngredientMobile from "../../../components/CardIngredientMobile.vue"
+import Divider from '../../../components/Divider.vue';
+import SubHeader from '../../../components/subHeader.vue';
+import BlockRelated from '../../../components/BlockRelated.vue';
 
 
-const { slug } = Astro.params;
-const page = await getProduct(slug , 'en');
-
+const { lang, slug } = Astro.params;
+const page = await getProduct(slug , lang);
+if (!page) throw new Error('Producto no encontrado');
 
 const colorText = "#eee9e3";
 const bgHeader = "bg-black";
@@ -22,7 +23,7 @@ console.log(page)
 
 ---
 
-<Layout colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} page={page} getById={getProductById} colorText={colorText} bgHeader={bgHeader}>
     
     <SubHeader section={page?.acf?.sub_header} client:only ></SubHeader>
     
@@ -92,8 +93,8 @@ console.log(page)
                                         <p class="text-p-small">{tab.tab.description}</p>
                                      <ul>
                                        
-                                        {Array.isArray(tab.tab.list_item) && tab.tab.list_item.map((item, itemIndex) => (
-                                            <li class="text-p-small flex justify-between" key={itemIndex}>
+                                        {Array.isArray(tab.tab.list_item) && tab.tab.list_item.map((item : any) => (
+                                            <li class="text-p-small flex justify-between">
                                             <span>{item.element}</span>
                                             <span>{item.quantity}</span>
                                             </li>
@@ -138,42 +139,13 @@ console.log(page)
             <section id="faq" class="faqs py-xxl-2 text-center">
                 <div class="flex ">
                     <SliderFaqs cardsFaq={page?.acf?.faqs} client:load></SliderFaqs>
-                <!-- <div class="card  w-[calc(100vw-20px)] md:w-[400px] h-fit aspect-[3/4] p-lg-2 bg-stone flex flex-col  justify-between rounded-[15px]">
-                    <div>
-                        <span class="block pb-lg text-p-small ">(FAQs)</span>
-                        <h3 class="block pb-lg text-title">{page?.acf?.faqs?.title}</h3>
-                    </div>
-                    <p class="">{page?.acf?.faqs?.more_info}</p>
-                </div> -->
-               
-                <!-- {page?.acf?.faqs?.cards?.map((cardFaq: any) => (
-                    
-                    
-                    <SliderFaqs cardFaq={cardFaq} client:load></SliderFaqs>
-                  ))} -->
+                
                 </div>
             </section>
             <section>
                 <Divider></Divider>
-                <div class="relateds py-xxl flex flex-col md:flex-row justify-center items-center px-md">
-                    {page?.acf?.related?.map((item: any, index: number) => (
-                        <div class="w-full md:w-1/3 text-center flex flex-col justify-between md:aspect-[396/472] pb-xxl-2 md:pb-0">
-                            <div class="flex flex-col gap-lg ">
-                                <p class="text-p-small">({item?.pretitle})</p>
-                                <p class="text-title pb-xxl" set:html={item?.title}></p>
-                            </div>
-                            <div>
-                                <div class="image-wrapper pb-xxl md:pb-lg-2 w-full md:w-[calc((224/1515)*100vw)] mx-auto flex justify-center items-center aspect-[224-279]">
-                                    <img class="flex w-1/2 md:w-full object-cover mx-auto" src={item?.image?.url} alt={item?.image?.alt}>
-                                </div>
-                                <p class="text-p-small md:max-w-max-sm mx-auto">{item?.excerpt}</p>
-                            </div>
-                           
-                            
-                            
-                        </div>
-                    ))}
-                </div>
+                <BlockRelated section={page?.acf?.related} client:load></BlockRelated>
+
             </section>
             <Divider></Divider>
             <section class="section-button-empty pb-product-description">

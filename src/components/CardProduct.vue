@@ -13,6 +13,9 @@ export default {
     product: {
       type: Object,
     },
+    lang: {
+      type: String,
+    },
   },
   mounted() {
     this.fetchProduct();
@@ -47,7 +50,7 @@ export default {
 </script>
 
 <template>
-  <a :href="'/products/' + productInfo.slug">
+  <a :href="`/${lang}/products/${productInfo.slug}`">
     <div class="cardCont !w-full ">
       <div
         class="cardBack relative flex flex-col justify-between items-center text-black p-xxl"

@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <div class="button-wrapper style-2">
+  <div class="button-wrapper style-2 mb-xxl-2">
     <button :href="section.link.url">{{ section.link.title }}</button>
   </div>
 

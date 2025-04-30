@@ -8,6 +8,15 @@ export default {
     Logo,
   },
   props: {
+    lang: { 
+      type: String,
+    },
+    routes: { 
+      type: Array, 
+    }, 
+    switchUrls: { 
+      type: Array, 
+    },
     colorText: {
       type: String,
     },
@@ -24,6 +33,12 @@ export default {
   mounted() {
     this.headerScroll();
     this.setMenuMobile();
+  },
+  computed: {
+    // Encuentra el objeto contact dentro de routes
+    contactRoute() {
+      return this.routes.find(r => r.key === 'contact');
+    }
   },
   methods : {
     headerScroll() {
@@ -50,6 +65,13 @@ export default {
         }
         this.lastScrollY = currentScrollY;
       })
+    },
+    to(route) {
+      // ej: route.slug[this.lang] -> 'productos' si lang==='es'
+      return `/${this.lang}/${route.slug[this.lang]}`;
+    },
+    homeUrl() {
+      return `/${this.lang}/`;
     },
     setMenuMobile() {
       const menuMobile = document.querySelector(".mobile-menu");
@@ -95,22 +117,34 @@ export default {
       ? 'bg-transparent'
       : bgHeader
   ]" class="z-15 fixed top-0 left-0 w-full border-b  py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white">
-        <a href="/" class="flex items-center">
+        <a :href="homeUrl()" class="flex items-center">
           <Logo class="h-logo" :color="colorText" />
         </a>
 
         <a :class=colorText class="md:hidden open-mobile-menu " @click="toggleMenu">Menu (<span v-if="menuMobile === false">+</span><span v-else>-</span>)</a>
 
         <ul class="hidden md:flex gap-items-menu">
-            <li><a :class=colorText href="/products"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Products</a></li>
-            <li><a :class=colorText href="/about"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>About</a></li>
-            <li><a :class=colorText href="/find-us"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Find us</a></li>
-            <li><a :class=colorText href="/journal"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Journal</a></li>
+          <li v-for="route in routes.filter(r => r.key !== 'contact')" :key="route.key">
+            <a :class="colorText" :href="to(route)">
+              <span :class="colorText==='text-black' ? 'bg-black' : 'bg-white'"></span>
+              {{ route.label[lang] }}
+            </a>
+          </li>
         </ul>
 
-       
+        
 
-        <ul><li><a :class=colorText class="button-contact"  href="/contact"><span :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"></span>Contact</a></li></ul>
+        <ul>
+          <li v-if="contactRoute">
+            <a
+              :href="to(contactRoute)"
+              :class="[colorText, 'button-contact']"
+            >
+              <span :class="colorText==='text-black'?'bg-black':'bg-white'"></span>
+              {{ contactRoute.label[lang] }}
+            </a>
+          </li>
+        </ul>
 	</header>
   <div class="mobile-menu opacity-0 md:hidden">
       <ul class="menu-items mt-[20vh] flex flex-col gap-1">

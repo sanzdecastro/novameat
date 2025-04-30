@@ -10,6 +10,13 @@ export default defineConfig({
   integrations: [vue()],
   output: 'server',
   adapter: vercel(),
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en','es'],
+    routing: {
+      prefixDefaultLocale: true,
+   }
+  },
   prefetch: {
     prefetchAll: true
   },

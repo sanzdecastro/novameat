@@ -1,0 +1,29 @@
+---
+
+import Layout from '../../layouts/Layout.astro';
+
+import { getPages, getPage, getProducts, getProduct, getPageById } from "../../lib/api.js";
+import Slider from '../../components/slider.vue';
+
+
+const { lang } = Astro.params;
+const page = await getPage('home' , lang);
+
+console.log(page);
+
+
+const slide = page?.acf?.slide;
+const text = page?.acf?.centered_text;
+
+const colorText = "#eee9e3";
+const bgHeader = "bg-transparent";
+---
+
+<Layout lang={lang} page={page} getById={getPageById} slug="home"  colorText={colorText} bgHeader={bgHeader}>
+
+	<Slider client:load
+		slides={slide},
+		text={text}
+		class="w-full h-screen overflow-hidden"
+	/>
+</Layout>

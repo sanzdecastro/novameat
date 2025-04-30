@@ -2,12 +2,38 @@
 import "../styles/global.css";
 
 import { ViewTransitions } from "astro:transitions";
+
+import { routes } from '../lib/routes.js';
+
 import Header from "../components/appHeader.vue";
 import Footer from "../components/appFooter.vue";
 import CookieConsent from "../components/CookieConsent.vue";
 import CircleSmall from "../components/circleSmall.vue";
+import { getPageById, getProductById } from '../lib/api.js';
 
-const { colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
+const LOCALES = ['en','es'];
+const { lang, slug, page, getById, colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
+
+// determina el slug actual, dinámico o estático
+const currentSlug = page?.slug ?? slug;
+
+// construye el switch
+const switchUrls = page && getById
+  ? await Promise.all(
+      LOCALES.map(async (code) => {
+        if (code === lang) return { code, url: `/${code}/${page.slug}` };
+        const transId = page.translations?.[code];
+        if (!transId) return { code, url: `/${code}/` };
+        const { slug: translated } = await getById(transId);
+        return { code, url: `/${code}/${translated}` };
+      })
+    )
+  : LOCALES.map((code) => {
+      const route = routes.find(r => r.slug[lang] === currentSlug);
+      const target = route ? route.slug[code] : '';
+      return { code, url: `/${code}/${target}` };
+    });
+
 ---
 
 <!doctype html>
@@ -28,8 +54,8 @@ const { colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
   </head>
 
   <body class="bg-white">
-    <Header transition:persist colorText={colorText} bgHeader={bgHeader} client:load />
-
+    <Header transition:persist lang={lang} switchUrls={switchUrls} routes={routes} colorText={colorText} bgHeader={bgHeader} client:load />
+    
     <div
       class="loading z-50 bg-black w-full h-[100vh] absolute top-0 left-0 flex justify-center items-center"
     >
@@ -40,7 +66,7 @@ const { colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
       <slot />
     </div>
     <div class="slot-container opacity-0">
-      <Footer />
+      <Footer lang={lang} switchUrls={switchUrls} routes={routes} />
     </div>
 
     <script>

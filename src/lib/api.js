@@ -8,6 +8,8 @@ export async function getPages(lang) {
   return await response.json();
 }
 
+
+
 // Get Products
 export async function getProducts(lang) {
   const response = await fetch(`${apiUrl}/product?lang=${lang}`);
@@ -38,7 +40,13 @@ export async function getPage(slug, lang) {
 
   const page = pages[0]; 
 
-  return { ...page, translations: {} };
+  return { ...page };
+}
+// Obtiene una página concreta por ID
+export async function getPageById(id) {
+  const res = await fetch(`${apiUrl}/pages/${id}`);
+  if (!res.ok) throw new Error('WP: fallo al cargar página por ID');
+  return res.json();
 }
 
 // Get Singular Product
@@ -54,6 +62,13 @@ export async function getProduct(slug, lang) {
   const project = projects[0]; 
 
   return { ...project, translations: {} };
+}
+
+/** OBTENER SLUG traducido de producto por ID */
+export async function getProductById(id) {
+  const res = await fetch(`${apiUrl}/product/${id}`);
+  if (!res.ok) throw new Error("Error al obtener producto por ID");
+  return res.json();
 }
 
 // Get Singular Ingredient

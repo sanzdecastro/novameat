@@ -65,7 +65,7 @@ import Circlee from './circlee.vue';
             @slideChange="onSlideChange"
             >
                 <swiper-slide v-for="(slide, index) in slides" :key="index" class="w-full h-full">
-                    <img :src="slide.image" alt="Slide image" class="w-full h-full object-cover" />
+                    <img :src="slide.image.url" :alt="slide.image.alt" class="w-full h-full object-cover" />
  
                 </swiper-slide>
         </swiper>
