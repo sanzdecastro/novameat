@@ -34,7 +34,7 @@ console.log(page)
                 <div class="flex image-wrapper w-[calc((541/1515)*100vw)] h-[110dvh] items-center">
                     <img class="w-full" src={page?._embedded["wp:featuredmedia"]?.[0]?.source_url} >
                 </div>
-                <h1 class="md:absolute top[50%] text-product">{page.title.rendered}</h1>
+                <h1 class="md:absolute top[50%] text-center text-product" set:html={page?.acf?.title_for_preview}></h1>
             </div>
             <section id="overview" class="product-info-container flex flex-col md:flex-row min-h-[100dvh]">
                 <div class="gallery mt-header md:order-1 order-2 w-full md:w-1/2 px-sm ">
