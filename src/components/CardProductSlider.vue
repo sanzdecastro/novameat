@@ -62,6 +62,10 @@ export default {
   <a  :href="`/${lang}/products/${productInfo.slug}`">
     <swiper  
     class="!w-full !h-full"
+    :class="{
+    'pointer-events-none':
+      productInfo._embedded?.['wp:term']?.[1]?.[0]?.name === 'Coming soon'
+  }"
         :modules="modules"
         :scrollbar="{
           hide: false,
