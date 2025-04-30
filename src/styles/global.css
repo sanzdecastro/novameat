@@ -746,19 +746,25 @@ input[type="radio"] {
   w-full 
   aspect-[308/143] 
   md:aspect-[1462/504] 
-
+  flex
   relative 
   py-xxl 
   md:pt-xxl;
  
   a {
     @apply
+    mx-sm
     w-full 
     cursor-pointer 
     font-haffe  
-    text-black 
+    text-white
+    bg-black
+    md:bg-white
+    md:text-black 
     h-full 
     flex 
+    aspect-[308/153]
+    md:aspect-[1462/504]
     justify-center 
     items-center 
     border 
@@ -773,9 +779,13 @@ input[type="radio"] {
   &.style-2 {
     a {
       @apply
+      border-pink
+      md:border-black
       hover:border-none 
-      hover:bg-pink 
-      hover:text-white;
+      bg-pink
+      md:bg-white
+      md:hover:bg-pink 
+      md:hover:text-white;
     }
   }
   &.style-3 {

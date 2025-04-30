@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function menuTransparent() {
   // Seleccionamos todos los wrappers
   const header = document.querySelector("header");
-  const dots = header.querySelectorAll("header a span");
+  const dots = header.querySelectorAll("header a span.dot");
   const headerItems = header.querySelectorAll("header a, header svg");
   const trigger = document.querySelector(".points-slider");
 
