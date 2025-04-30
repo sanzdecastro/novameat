@@ -51,20 +51,23 @@ export default {
 
 <template>
   <a :href="`/${lang}/products/${productInfo.slug}`">
-    <div class="cardCont !w-full ">
+    <div class="cardCont !w-full"  :class="{
+    'pointer-events-none':
+      productInfo._embedded?.['wp:term']?.[1]?.[0]?.name === 'Coming soon'
+  }">
       <div
         class="cardBack relative flex flex-col justify-between items-center text-black p-xxl"
       >
         <img class="absolute top-0 h-full object-cover" :src="productInfo?.acf?.main_image?.link" :alt="productInfo?.acf?.main_image?.alt">
         <div class="text-white underline z-10 border border-white rounded-full flex items-center justify-center w-full aspect-square font-haffe">Learn more</div>
       </div>
-      <div class="cardFront flex flex-col justify-between items-center">
+      <div class="cardFront flex flex-col justify-between items-center " >
         <div
           class="relative p-card text-center text-white bg-black flex justify-between flex-col w-full h-full items-center rounded-[15px] overflow-hidden"
         >
         <div
             v-if="productInfo._embedded?.['wp:term']?.[1]?.[0]"
-            class="tag absolute top-sm right-sm py-xs px-sm rounded-full text-white bg-ash font-haffe text-small"
+            class="tag absolute top-sm right-sm py-[calc((6/1515)*100vw)] px-[calc((16/1515)*100vw)] rounded-full text-white bg-ash font-haffe text-small"
             :class="{ 'bg-pink !text-black': productInfo._embedded['wp:term']?.[1]?.[0]?.name == 'New' }"
           >
             {{ productInfo._embedded['wp:term'][1][0]?.name }}

@@ -68,11 +68,10 @@ export default {
         />
         <div class="w-[100vw] h-[100vh] z-10 absolute top-0 left-0 text-white">
           
-          <div class="  w-full h-full flex justify-center items-center p-sm">
-            <div class="flex-col text-center">
-              <span class="">( {{ slide.pretitle }} )</span>
+          <div class="-mt-[7vh]  w-full h-full flex justify-center items-center p-sm">
+            <div class="flex flex-col text-center h-auto">
+              <span class="pb-md">( {{ slide.pretitle }} )</span>
               <h3 class="font-sm text-title" v-html="slide.title"></h3>
-              <p>{{ slide.item_menu }}</p>
               <p class="absolute text-center md:text-left p-lg-2 md:p-sm bottom-xxl-2 md:bottom-sm left-sm  md:max-w-max-xs  text-small leading-[114%]">{{ slide.text }}</p>
             </div>
             

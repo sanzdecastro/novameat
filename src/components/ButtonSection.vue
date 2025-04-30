@@ -18,7 +18,7 @@ export default {
 
 <template>
   <div class="button-wrapper style-2 mb-xxl-2">
-    <button :href="section.link.url">{{ section.link.title }}</button>
+    <a :href="section.link.url">{{ section.link.title }}</a>
   </div>
 
  

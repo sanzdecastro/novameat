@@ -1,16 +1,17 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { getPages, getPage, getProducts, getProduct } from "../../../lib/api.js";
+import { getPages, getPage, getProducts, getProduct, getPageById } from "../../../lib/api.js";
 
 const colorText = "text-black";
 const bgHeader = "bg-white"
 
-const { slug } = Astro.params;
-const page = await getPage(slug , 'en');
+const { lang, slug } = Astro.params;
+const page = await getPage(slug , lang);
+
 
 ---
 
-<Layout colorText={colorText} bgHeader={bgHeader}>
+<Layout page={page} getById={getPageById} colorText={colorText} bgHeader={bgHeader}>
     <div class="legal py-xxl-2 text-center">
         <span class="text-p-small text-center mb-xs block">({page.title.rendered})</span>
         <h1></h1>

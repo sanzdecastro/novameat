@@ -656,6 +656,7 @@ input[type="radio"] {
   
   input {
     @apply
+    font-haffe
     text-p
     md:text-p-small
     focus:outline-none
@@ -743,13 +744,14 @@ input[type="radio"] {
   @apply
   md:p-sm 
   w-full 
-  h-[30vh] 
-  md:h-[60vh] 
+  aspect-[308/143] 
+  md:aspect-[1462/504] 
+
   relative 
   py-xxl 
   md:pt-xxl;
  
-  button {
+  a {
     @apply
     w-full 
     cursor-pointer 
@@ -769,7 +771,7 @@ input[type="radio"] {
     hover:text-white;
   }
   &.style-2 {
-    button {
+    a {
       @apply
       hover:border-none 
       hover:bg-pink 
@@ -777,7 +779,7 @@ input[type="radio"] {
     }
   }
   &.style-3 {
-    button {
+    a {
       @apply
       text-white
       border-white

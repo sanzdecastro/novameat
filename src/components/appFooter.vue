@@ -29,14 +29,14 @@ export default {
             <div class="legal-lang-social flex pb-[44px]">
                 <div class="w-full legal-lang md:w-max-ssm flex flex-col">
                     <ul class="w-full pb-md">
-                        <li><a href="/legal/legal-notice">Legal Notice</a></li>
-                        <li><a href="/legal/cookie-policy">Cookie Information</a></li>
-                        <li><a href="/legal/privacy-statement">Privacy Statement</a></li>
+                        <li><a href="/en/legal/legal-notice">Legal Notice</a></li>
+                        <li><a href="/en/legal/cookie-policy">Cookie Information</a></li>
+                        <li><a href="/en/legal/privacy-statement">Privacy Statement</a></li>
                     </ul>
                     <ul class="lang flex">
                         <!-- <li><a href="">ES</a></li> / <li><a href="">EN</a></li> -->
                     </ul>
-                    <ul class="lang flex language-switcher">
+                    <ul class="lang gap-2 flex language-switcher">
                         <li v-for="item in switchUrls" :key="item.code">
                             <a
                             :href="item.url"
@@ -48,8 +48,8 @@ export default {
                     </ul>
                 </div>
                 <div class="w-full social md:w-max-ssm flex flex-col">
-                    <a href="">LinkedIn</a>
-                    <a href="">Instagram</a>
+                    <a target="_blank" href="https://www.linkedin.com/company/novameat/">LinkedIn</a>
+                    <a target="_blank" href="https://www.instagram.com/nova_meat">Instagram</a>
                 </div>
             </div>
         </div>

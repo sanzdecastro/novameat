@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function orderButtonAnimation() {
   // Seleccionamos todos los wrappers
   const button = document.querySelector(".section-button-empty a");
-  const trigger = document.querySelector(".section-button-empty .button-wrapper");
+  const trigger = document.querySelector(".section-button-empty .button-wrapper-resize");
   if (!button ) return;
 
   gsap.set(button, {
