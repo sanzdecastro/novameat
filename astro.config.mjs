@@ -14,11 +14,8 @@ export default defineConfig({
     defaultLocale: 'en',
     locales: ['en','es'],
     routing: {
-      // ✅ Every page (even English) is under /en/... or /es/...
       prefixDefaultLocale: true,
-      // ✅ Redirect “/” → “/en/” automatically
-      redirectToDefaultLocale: true,
-    }
+   }
   },
   prefetch: {
     prefetchAll: true
