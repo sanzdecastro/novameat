@@ -21,10 +21,10 @@ export default {
 
 <template>
   <div class="relateds py-xxl flex flex-col md:flex-row justify-center items-center px-md">
-    <div class="w-full md:w-1/3 text-center flex flex-col justify-between md:aspect-[396/472] pb-xxl-2 md:pb-0" v-for="(related, index) in section">
+    <div class="w-full md:w-1/3 text-center flex flex-col justify-between md:aspect-[396/350] pb-xxl-2 md:pb-0" v-for="(related, index) in section">
       <div class="flex flex-col gap-lg ">
           <p class="text-p-small">({{related.pretitle}})</p>
-          <p class="text-title pb-xxl" v-html="related?.title"></p>
+          <p class="text-title pb-md" v-html="related?.title"></p>
       </div>
       <div>
           <div class="image-wrapper pb-xxl md:pb-lg-2 w-full md:w-[calc((224/1515)*100vw)] mx-auto flex justify-center items-center aspect-[224-279]">
