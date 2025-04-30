@@ -36,7 +36,7 @@
   --text-title: clamp(22px, calc((32 / 1515) * 100vw), 32px);
   --text-title-sm: clamp(16px, calc((20 / 1515) * 100vw), 20px);
   --text-p: clamp(16px, calc((20 / 1515) * 100vw), 20px);
-  --text-p-small: clamp(11px , calc((14 / 1515) * 100vw), 14px);
+  --text-p-small: clamp(12px , calc((14 / 1515) * 100vw), 14px);
   --text-p-small-line-height: 120%;
   --text-small: clamp(12px, calc((13 / 1515) * 100vw), 12px);
 
@@ -114,6 +114,7 @@
 
 html {
   @apply
+  w-[100vw]
   overflow-x-hidden
   md:overflow-x-visible;
 }
@@ -182,11 +183,6 @@ header, .mobile-menu {
     }
   }
 }
-
-
-/*  Product page */
-
-
 
 
 .sub-header {
@@ -351,11 +347,11 @@ body:has(#contact-form) {
   bg-pink;
 }
 
-
+/* Cookies  */
  #cookie-banner {
   z-index: 1000;
   @apply
-  max-w-[279px]
+
   md:min-w-[290px]
   md:max-w-[calc((358/1515)*100vw)]
   text-p-small
@@ -385,7 +381,8 @@ body:has(#contact-form) {
     @apply
     mt-md
     w-full
-    gap-4
+    gap-2
+    text-nowrap
     justify-end
     flex;
   }
@@ -477,7 +474,8 @@ body:has(#contact-form) {
     @apply
     mt-md
     w-full
-    gap-4
+    gap-2
+    text-nowrap
     justify-end
     flex;
   }
@@ -578,23 +576,24 @@ input[type="radio"] {
     }
   }
   .swiper-pagination {
-    color: white;
-    position: absolute;
-      bottom: 0px;
-      z-index: 10;
-      top:0px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100vh;
+ 
       @apply
-    hidden
-    md:flex
-    text-p-small
-    
-    max-w-max-sm
-    pb-md
-    pl-md;
+      text-white
+      absolute
+      bottom-0
+      z-10
+      right-0
+      md:left-0
+      md:right-auto
+      flex
+      justify-center
+      flex-col
+      h-[100vh]
+      text-p-small
+      w-[70%]
+      md:max-w-max-sm
+      pb-md
+      px-md;
       .swiper-pagination-bullet {
         opacity: .6;
       }
@@ -748,12 +747,12 @@ input[type="radio"] {
   md:aspect-[1462/504] 
   flex
   relative 
-  py-xxl 
+  px-sm
   md:pt-xxl;
  
   a {
     @apply
-    mx-sm
+   
     w-full 
     cursor-pointer 
     font-haffe  
@@ -763,7 +762,7 @@ input[type="radio"] {
     md:text-black 
     h-full 
     flex 
-    aspect-[308/153]
+    aspect-[308/143]
     md:aspect-[1462/504]
     justify-center 
     items-center 
@@ -780,6 +779,7 @@ input[type="radio"] {
     a {
       @apply
       border-pink
+      text-black
       md:border-black
       hover:border-none 
       bg-pink
@@ -791,10 +791,14 @@ input[type="radio"] {
   &.style-3 {
     a {
       @apply
-      text-white
-      border-white
-      hover:bg-pink 
-      hover:text-white;
+      aspect-[308/143]
+      bg-white
+      text-black
+      md:bg-black
+      md:text-white
+      md:border-white
+      md:hover:bg-pink 
+      md:hover:text-white;
     }
   }
 }
@@ -858,4 +862,26 @@ input[type="radio"] {
   position: absolute;
   width: 100%;
   padding-top: 20px;
+}
+
+
+/* Scrollbar Swiper */
+
+.swiper-horizontal > .swiper-scrollbar, .swiper-scrollbar.swiper-scrollbar-horizontal {
+  @apply
+  !w-[calc((100%-(var(--spacing-md)*2)))]
+  !h-[1px]
+  mx-md
+  flex
+  opacity-80
+  items-center
+  my-md
+  bg-white;
+}
+
+.swiper-scrollbar-drag {
+  @apply
+  !h-[2px]
+  !bg-white;
+
 }

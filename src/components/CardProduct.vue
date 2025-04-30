@@ -67,7 +67,7 @@ export default {
         >
         <div
             v-if="productInfo._embedded?.['wp:term']?.[1]?.[0]"
-            class="tag absolute top-sm right-sm py-[calc((6/1515)*100vw)] px-[calc((16/1515)*100vw)] rounded-full text-white bg-ash font-haffe text-small"
+            class="tag absolute top-sm right-sm md:py-[calc((6/1515)*100vw)] px-[14px] py-[3px] md:px-[calc((16/1515)*100vw)] rounded-full text-white bg-ash font-haffe text-small"
             :class="{ 'bg-pink !text-black': productInfo._embedded['wp:term']?.[1]?.[0]?.name == 'New' }"
           >
             {{ productInfo._embedded['wp:term'][1][0]?.name }}

@@ -80,24 +80,40 @@ export default {
     },
     toggleMenu() {
       const menuMobile = document.querySelector(".mobile-menu");
+      const items = menuMobile.querySelectorAll(".menu-items li a");
       const tl = gsap.timeline({});
+
+      gsap.set(items, {
+        autoAlpha: 0,
+      });
 
       if (this.menuMobile === false) {
         tl.to(menuMobile, {
           autoAlpha: 1,
           duration: 0.1,
+          ease: "power2.out",
         }).to(menuMobile, {
           yPercent: 0,
+        }).to(items, {
+          stagger: 0.06,
+          ease: "power2.out",
+          autoAlpha: 1
         });
         this.menuMobile = true;
+        this.colorText = "text-black";
       } else if (this.menuMobile === true) {
         tl.to(menuMobile, {
           autoAlpha: 1,
           duration: 0.1,
         }).to(menuMobile, {
           yPercent: -100,
-        });
+          ease: "power2.out",
+        }).to(items, {
+          stagger: 0.1,
+          autoAlpha: 0
+        });;
         this.menuMobile = false;
+        this.colorText = "initial";
       }
     },
   },
@@ -152,10 +168,11 @@ export default {
         :key="route.key"
       >
         <a @click="toggleMenu" :class="colorText" :href="to(route)">
+          {{ route.label[lang] }}
           <span
             :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"
           ></span>
-          {{ route.label[lang] }}
+          
         </a>
       </li>
     </ul>

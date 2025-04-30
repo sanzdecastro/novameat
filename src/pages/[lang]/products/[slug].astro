@@ -128,9 +128,9 @@ console.log(page)
                 </div>
             </section>
 
-            <section class="video-section">
-                <div class="video-wrapper aspect-[1518/968] flex justify-center items-center">
-                    <video class="absolute object-cover w-full" controls poster={page?.acf.video?.poster?.link} src={page?.acf.video?.video?.link}></video>
+            <section class="video-section overflow-hidden">
+                <div class="video-wrapper relative aspect-[320/372] md:aspect-[1518/968] flex justify-center items-center overflow-hidden">
+                    <video class="absolute object-cover w-full h-full" controls poster={page?.acf.video?.poster?.link} src={page?.acf.video?.video?.link}></video>
                 </div>
 
             </section>
@@ -149,8 +149,8 @@ console.log(page)
             </section>
             
             <section class="section-button-empty pb-product-description ">
-                <div class="button-wrapper-resize aspect-[308/143] md:aspect-[1462/504]  p-sm w-full mb-xxl-2 relative">
-                    <a class="w-full z-10 font-haffe underline underline-offset-3 text-white h-full flex justify-center items-center border border-white rounded-full hover:border-none hover:bg-white hover:text-black" href={page?.acf?.link?.url}>Order</a>
+                <div class="button-wrapper-resize aspect-[308/143] md:aspect-[1462/504]  w-full mb-xxl-2 relative">
+                    <a class="w-full z-10 font-haffe underline underline-offset-3 bg-white text-black md:bg-black md:text-white h-full flex justify-center items-center border border-white rounded-full hover:border-none md:hover:bg-white md:hover:text-black" href={page?.acf?.link?.url}>Order</a>
                 </div>
             </section>
             

@@ -28,9 +28,9 @@ export default {
       </div>
       <div>
           <div class="image-wrapper pb-xxl md:pb-lg-2 w-full md:w-[calc((224/1515)*100vw)] mx-auto flex justify-center items-center aspect-[224-279]">
-              <img class="flex w-1/2 md:w-full object-cover mx-auto" :src="related?.image?.url" alt={item?.image?.alt}>
+              <img class="flex w-2/3 md:w-full object-cover mx-auto" :src="related?.image?.url" alt={item?.image?.alt}>
           </div>
-          <p class="text-p-small md:max-w-max-sm mx-auto">{{related.excerpt}}</p>
+          <p class="text-big md:text-p-small md:max-w-max-sm mx-auto">{{related.excerpt}}</p>
       </div>
     </div>
   </div>

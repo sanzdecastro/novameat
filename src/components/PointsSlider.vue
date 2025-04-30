@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <div class="slider-container points-slider relative w-[100vw] h-[100dvh] text-black">
+  <div class="slider-container points-slider relative w-[100vw] h-[100vh] text-black">
 
     <swiper
       class="w-full h-full relative"

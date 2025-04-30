@@ -32,7 +32,7 @@ export default {
                     <form action="https://novameat.us21.list-manage.com/subscribe/post?u=400b324dad162be4fe0070446&amp;id=0622b2f3b8&amp;f_id=0033c7e9f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
                         <div id="mc_embed_signup_scroll" class="flex justify-between mt-sm border-b border-b-black">
                             <div class="mc-field-group"><input class="required email font-haffe focus:outline-none " type="email" name="EMAIL"  placeholder="Your e-mail here" id="mce-EMAIL" required="" value=""></div>
-                        <div id="mce-responses" class="clear">
+                        <div id="mce-responses" class="clear !relative">
                             <div class="response" id="mce-error-response" style="display: none;"></div>
                             <div class="response" id="mce-success-response" style="display: none;"></div>
                         </div><div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_400b324dad162be4fe0070446_0622b2f3b8" tabindex="-1" value=""></div><div class="clear"><input  type="submit" name="subscribe" id="mc-embedded-subscribe" class="button cursor-pointer" value="Subscribe"></div>
