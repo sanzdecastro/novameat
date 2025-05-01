@@ -153,7 +153,7 @@ console.log(page)
             
             <section class="section-button-empty pb-product-description ">
                 <div class="button-wrapper-resize aspect-[308/143] md:aspect-[1462/504]  w-full mb-xxl-2 relative">
-                    <a class="w-full z-10 font-haffe underline underline-offset-3 bg-white text-black md:bg-black md:text-white h-full flex justify-center items-center border border-white rounded-full hover:border-none md:hover:bg-white md:hover:text-black" href={page?.acf?.link?.url}>Order</a>
+                    <a class="w-full z-10 font-haffe underline underline-offset-3 bg-white text-black md:bg-black md:text-white h-full flex justify-center items-center border border-white rounded-full hover:border-none md:hover:bg-white md:hover:text-black" href={`/${lang}/${lang === 'en' ? 'contact' : 'contacto'}`}>{lang === 'en' ? 'Order' : 'Pedido'}</a>
                 </div>
             </section>
             

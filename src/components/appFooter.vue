@@ -91,8 +91,8 @@
                 <div class="certifications flex flex-col md:justify-between md:h-full">
                     <p class="pb-md">{{ t('footer.certifications') }}:</p>
                     <div class="logos flex gap-lg flex-wrap md:flex-nowrap">
-                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/v-label.svg">
-                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/gluten-free.svg">
+                        <!-- <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/v-label.svg">
+                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/gluten-free.svg"> -->
                         <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/food-safety.svg">
                     </div>
                 </div>
