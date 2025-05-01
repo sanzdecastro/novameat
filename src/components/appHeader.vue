@@ -23,6 +23,9 @@ export default {
     bgHeader: {
       type: String,
     },
+    messages : {
+      type: Object,
+    },
   },
   data() {
     return {
@@ -33,6 +36,7 @@ export default {
   mounted() {
     this.headerScroll();
     this.setMenuMobile();
+    console.log('mensajes',this.messages);
   },
   computed: {
     // Encuentra el objeto contact dentro de routes
@@ -177,9 +181,9 @@ export default {
     <div class="legal-lang-social flex text-small">
       <div class="w-full legal-lang md:w-max-ssm flex flex-col">
         <ul class="w-full pb-md">
-          <li><a href="">Legal Notice</a></li>
-          <li><a href="">Cookie Information</a></li>
-          <li><a href="">Privacy Statement</a></li>
+          <li><a @click="toggleMenu" :href="`/${lang}/legal/${messages.legal.urls.legal_notice}`">{{ messages.footer.legal_notice }}</a></li>
+          <li><a @click="toggleMenu" :href="`/${lang}/legal/${messages.legal.urls.cookie_information}`">{{ messages.footer.cookie_information }}</a></li>
+          <li><a @click="toggleMenu" :href="`/${lang}/legal/${messages.legal.urls.privacy_statement}`">{{ messages.footer.privacy_statement }}</a></li>
         </ul>
         <ul class="lang gap-2 flex language-switcher">
             <li v-for="item in switchUrls" :key="item.code">

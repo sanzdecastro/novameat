@@ -5,24 +5,24 @@
     },
     "footer" : {
         "text_newsletter" : "Sign up to our newsletter and get a carefully curated selection of recipes, interviews, research, and other industry news–straight from our journal to your inbox.",
-        "legal-notice" : "Legal Notice",
-        "cookie-information" : "Cookie Information",
-        "privacy-statement" : "Privacy Statement",
+        "legal_notice" : "Legal Notice",
+        "cookie_information" : "Cookie Information",
+        "privacy_statement" : "Privacy Statement",
         "copyright" : "All Rights Reserved",
         "certifications" : "Certifications",
-        "financial-support" : "Financial support from CDTI through the NEOTEC programme Co-funded by the European Union's EIC Accelerator programme Grant Agreement Nº 190112238",
-        "member-of" : "Proud members of:",
-        "placeholder-mail" : "Your e-mail here",
-        "subscribe-button" : "Subscribe"
+        "financial_support" : "Financial support from CDTI through the NEOTEC programme Co-funded by the European Union's EIC Accelerator programme Grant Agreement Nº 190112238",
+        "member_of" : "Proud members of:",
+        "placeholder_mail" : "Your e-mail here",
+        "subscribe_button" : "Subscribe"
     },
     "products" : {
-        "learn-more" : "Learn more"
+        "learn_more" : "Learn more"
     },
     "legal" : {
         "urls" : {
-            "legal-notice" : "legal-notice",
-            "cookie-information" : "cookie-policy",
-            "privacy-statement" : "privacy-statement"
+            "legal_notice" : "legal-notice",
+            "cookie_information" : "cookie-policy",
+            "privacy_statement" : "privacy-statement"
         }
     }
 }

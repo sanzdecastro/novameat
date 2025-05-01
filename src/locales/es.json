@@ -5,24 +5,24 @@
     },
     "footer" : {
         "text_newsletter" : "Suscríbete a nuestro boletín y recibe una selección cuidadosamente seleccionada de recetas, entrevistas, investigaciones y otras noticias de la industria, directamente desde nuestra revista a tu bandeja de entrada.",
-        "legal-notice" : "Aviso legal",
-        "cookie-information" : "Política de cookies",
-        "privacy-statement" : "Política de privacidad",
+        "legal_notice" : "Aviso legal",
+        "cookie_information" : "Política de cookies",
+        "privacy_statement" : "Política de privacidad",
         "copyright" : "Todos los derechos reservados",
-        "certifications" : "Certificationes",
-        "financial-support" : "Apoyo financiero del CDTI a través del programa NEOTEC Cofinanciado por el programa EIC Accelerator de la Unión Europea Acuerdo de subvención nº 190112238",
-        "member-of" : "Orgulloso miembro de:",
-        "placeholder-mail" : "Escribe tu e-mail",
-        "subscribe-button" : "Suscríbete"
+        "certifications" : "Certificaciones",
+        "financial_support" : "Apoyo financiero del CDTI a través del programa NEOTEC Cofinanciado por el programa EIC Accelerator de la Unión Europea Acuerdo de subvención nº 190112238",
+        "member_of" : "Orgulloso miembro de:",
+        "placeholder_mail" : "Escribe tu e-mail",
+        "subscribe_button" : "Suscríbete"
     },
     "products" : {
-        "learn-more" : "Saber más"
+        "learn_more" : "Saber más"
     },
     "legal" : {
         "urls" : {
-            "legal-notice" : "aviso-legal",
-            "cookie-information" : "politica-de-cookies",
-            "privacy-statement" : "politica-de-privacidad"
+            "legal_notice" : "aviso-legal",
+            "cookie_information" : "politica-de-cookies",
+            "privacy_statement" : "politica-de-privacidad"
         }
     }
 }

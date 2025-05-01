@@ -67,7 +67,7 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
   </head>
 
   <body class="bg-white">
-    <Header transition:persist lang={lang} switchUrls={switchUrls} routes={routes} colorText={colorText} bgHeader={bgHeader} client:load />
+    <Header transition:persist lang={lang} switchUrls={switchUrls} routes={routes} colorText={colorText} bgHeader={bgHeader} messages={messages}  client:load />
     
     <div
       class="loading z-50 bg-black w-full h-[100vh] absolute top-0 left-0 flex justify-center items-center"

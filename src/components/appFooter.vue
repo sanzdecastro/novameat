@@ -36,11 +36,11 @@
                 <div id="mc_embed_signup">
                     <form action="https://novameat.us21.list-manage.com/subscribe/post?u=400b324dad162be4fe0070446&amp;id=0622b2f3b8&amp;f_id=0033c7e9f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
                         <div id="mc_embed_signup_scroll" class="flex justify-between mt-sm border-b border-b-black">
-                            <div class="mc-field-group"><input class="required email font-haffe focus:outline-none " type="email" name="EMAIL"  :placeholder="t('footer.placeholder-mail')" id="mce-EMAIL" required="true" value=""></div>
+                            <div class="mc-field-group"><input class="required email font-haffe focus:outline-none " type="email" name="EMAIL"  :placeholder="t('footer.placeholder_mail')" id="mce-EMAIL" required="true" value=""></div>
                         <div id="mce-responses" class="clear !relative">
                             <div class="response" id="mce-error-response" style="display: none;"></div>
                             <div class="response" id="mce-success-response" style="display: none;"></div>
-                        </div><div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_400b324dad162be4fe0070446_0622b2f3b8" tabindex="-1" value=""></div><div class="clear"><input  type="submit" name="subscribe" id="mc-embedded-subscribe" class="button cursor-pointer" :value="t('footer.subscribe-button')"></div>
+                        </div><div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_400b324dad162be4fe0070446_0622b2f3b8" tabindex="-1" value=""></div><div class="clear"><input  type="submit" name="subscribe" id="mc-embedded-subscribe" class="button cursor-pointer" :value="t('footer.subscribe_button')"></div>
                     </div>
                 </form>
             </div>
@@ -49,9 +49,9 @@
             <div class="legal-lang-social flex pb-[44px]">
                 <div class="w-full legal-lang md:w-max-ssm flex flex-col">
                     <ul class="w-full pb-md">
-                        <li><a :href="`/${lang}/legal/${t('legal.urls.legal-notice')}`">{{ t('footer.legal-notice') }}</a></li>
-                        <li><a :href="`/${lang}/legal/${t('legal.urls.cookie-information')}`">{{ t('footer.cookie-information') }}</a></li>
-                        <li><a :href="`/${lang}/legal/${t('legal.urls.privacy-statement')}`">{{ t('footer.privacy-statement') }}</a></li>
+                        <li><a :href="`/${lang}/legal/${t('legal.urls.legal_notice')}`">{{ t('footer.legal_notice') }}</a></li>
+                        <li><a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a></li>
+                        <li><a :href="`/${lang}/legal/${t('legal.urls.privacy_statement')}`">{{ t('footer.privacy_statement') }}</a></li>
                     </ul>
                     <ul class="lang flex">
                         <!-- <li><a href="">ES</a></li> / <li><a href="">EN</a></li> -->
@@ -79,7 +79,7 @@
             <Logo class="h-[12px] md:h-[calc((35/1515)*100vw)] md:max-h-[24px] mt-[5px] pr-sm" color="black" />
             <div class="h-[18px] md:h-[calc((48/1515)*100vw)] md:max-h-[38px]  reel-footer text-big md:text-title overflow-hidden leading-[100%]">
                 <p>{{ t('claims.claim1') }}</p>
-                <p>{{ t('claims-claim2') }}</p>
+                <p>{{ t('claims.claim2') }}</p>
             </div>
         </div>
 
