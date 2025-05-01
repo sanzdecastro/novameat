@@ -20,9 +20,9 @@ export default {
 </script>
 
 <template>
-  <div :id="section.id_anchor" class="relateds py-xxl flex flex-col md:flex-row justify-center items-center px-md">
+  <div :id="section?.id_anchor" class="relateds py-xxl flex flex-col md:flex-row justify-center items-center px-md">
     
-    <div v-for="(related, index) in section.related" class="w-full md:w-1/3 text-center flex flex-col justify-between md:aspect-[396/350] pb-xxl-2 md:pb-0" >
+    <div v-for="(related, index) in section?.related" class="w-full md:w-1/3 text-center flex flex-col justify-between md:aspect-[396/350] pb-xxl-2 md:pb-0" >
       <div class="flex flex-col gap-lg ">
           <p class="text-p-small">({{related.pretitle}})</p>
           <p class="text-title pb-md" v-html="related?.title"></p>

@@ -25,5 +25,10 @@ export const routes = [
       label: { en: 'Contact',  es: 'Contacto' },
       slug:  { en: 'contact',  es: 'contacto' },
     },
+    {
+      key: 'legal',
+      slug: { en: 'legal', es: 'legal' },
+      label: { en: 'Legal', es: 'Legal' }
+    },
   ];
   

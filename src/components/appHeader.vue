@@ -122,7 +122,7 @@ export default {
     :class="[
       colorText,
       colorText === 'text-black' ? 'border-black' : 'border-white',
-      menuMobile ? 'bg-transparent !border-black' : bgHeader,
+      menuMobile ? '!bg-pink !border-black' : bgHeader,
     ]"
     class="z-15 fixed top-0 left-0 w-full border-b py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white"
   >
@@ -136,7 +136,7 @@ export default {
 
     <ul class="hidden md:flex gap-items-menu">
       <li
-        v-for="route in routes.filter((r) => r.key !== 'contact')"
+        v-for="route in routes.filter((r) => r.key !== 'contact' && r.key !== 'legal')"
         :key="route.key"
       >
         <a :class="colorText" :href="to(route)">
@@ -162,7 +162,7 @@ export default {
   <div class="mobile-menu opacity-0 md:hidden">
     <ul class="menu-items mt-[20vh] flex flex-col gap-1">
       <li
-        v-for="route in routes"
+        v-for="route in routes.filter((r) => r.key !== 'legal')"
         :key="route.key"
       >
         <a @click="toggleMenu" :class="colorText" :href="to(route)">

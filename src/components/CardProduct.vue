@@ -1,4 +1,5 @@
 <script>
+
 import { getProduct, apiUrl } from "../lib/api";
 import circleSmall from "./circleSmall.vue";
 import { cardEffect } from "../scripts/cardEffect";
@@ -50,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <a  :href="`/${lang}/products/${productInfo.slug}`">
+  <a  :href="`/${lang}/${lang === 'es' ? 'productos' : 'products'}/${productInfo.slug}`">
     <div class="cardCont !w-full"  :class="{
     'pointer-events-none':
       productInfo._embedded?.['wp:term']?.[1]?.[0]?.name === 'Coming soon'
