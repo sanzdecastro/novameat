@@ -1,0 +1,28 @@
+{
+    "claims" : {
+        "claim1" : "A new culinary tradition",
+        "claim2" : "Specially created for food makers"
+    },
+    "footer" : {
+        "text_newsletter" : "Sign up to our newsletter and get a carefully curated selection of recipes, interviews, research, and other industry news–straight from our journal to your inbox.",
+        "legal-notice" : "Legal Notice",
+        "cookie-information" : "Cookie Information",
+        "privacy-statement" : "Privacy Statement",
+        "copyright" : "All Rights Reserved",
+        "certifications" : "Certifications",
+        "financial-support" : "Financial support from CDTI through the NEOTEC programme Co-funded by the European Union's EIC Accelerator programme Grant Agreement Nº 190112238",
+        "member-of" : "Proud members of:",
+        "placeholder-mail" : "Your e-mail here",
+        "subscribe-button" : "Subscribe"
+    },
+    "products" : {
+        "learn-more" : "Learn more"
+    },
+    "legal" : {
+        "urls" : {
+            "legal-notice" : "legal-notice",
+            "cookie-information" : "cookie-policy",
+            "privacy-statement" : "privacy-statement"
+        }
+    }
+}

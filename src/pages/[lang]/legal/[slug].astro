@@ -11,7 +11,7 @@ const page = await getPage(slug , lang);
 
 ---
 
-<Layout page={page} getById={getPageById} colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} page={page} getById={getPageById} colorText={colorText} bgHeader={bgHeader}>
     <div class="legal py-xxl-2 text-center">
         <span class="text-p-small text-center mb-xs block">({page.title.rendered})</span>
         <h1></h1>

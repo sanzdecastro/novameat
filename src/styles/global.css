@@ -39,8 +39,8 @@
   --text-p-small: clamp(12px , calc((14 / 1515) * 100vw), 14px);
   --text-p-small-line-height: 120%;
   --text-small: clamp(12px, calc((13 / 1515) * 100vw), 12px);
-
-  --spacing-header: calc((80/1515) * 100vw);
+  --text-claim: clamp(15px, calc((15 / 1515) * 100vw), 15px);
+  --spacing-header: clamp(70px ,calc((80/1515) * 100vw), calc((80/1515) * 100vw));
   --spacing-footer-height: calc((1169/1717) * 100dvh);
   --spacing-logo: clamp(
     12px,
@@ -612,14 +612,14 @@ input[type="radio"] {
   max-w-[1450px];
   h3 {
     @apply
-    pl-md
+    flex
+    gap-2
+    items-center
+    md:pl-md
     relative;
-    &:after {
+    &:before {
       content: '';
       @apply
-      absolute
-      top-2
-      left-0
       h-2.5
       w-2.5
       rounded-full
@@ -691,10 +691,16 @@ input[type="radio"] {
         w-fit
         block;
       }
+      label {
+        @apply
+        cursor-pointer;
+      }
     }
   }
 
   .textarea-form {
+    @apply
+    mb-lg-2;
     textarea {
       @apply
       p-sm
@@ -741,7 +747,7 @@ input[type="radio"] {
 
 .button-wrapper {
   @apply
-  md:p-sm 
+  md:p-md 
   w-full 
   aspect-[308/143] 
   md:aspect-[1462/504] 
@@ -883,5 +889,18 @@ input[type="radio"] {
   @apply
   !h-[2px]
   !bg-white;
-
 }
+
+/* Lang active */
+
+.lang {
+  li {
+    a {
+      &.active {
+        @apply
+        underline;
+      }
+    }
+  }
+}
+

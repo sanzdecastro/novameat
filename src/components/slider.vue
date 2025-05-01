@@ -7,6 +7,7 @@
     import 'swiper/css';
     import logo from './logo.vue'
     import circlee from './circlee.vue';
+    import circleSmall from './circleSmall.vue';
     import novameatLogo from '../assets/logo.svg';
 import Circlee from './circlee.vue';
 
@@ -18,6 +19,7 @@ import Circlee from './circlee.vue';
         SwiperSlide,
         logo,
         circlee,
+        circleSmall
       },
       props: {
         slides: {
@@ -48,14 +50,17 @@ import Circlee from './circlee.vue';
     
 
     <div class="slider-container slider-main relative w-[100vw] h-[100dvh]">
-        <div class="z-10  over-text absolute top-0 left-0 w-full h-full flex justify-center items-center  gap-2">
-            <div class="flex gap-2 items-center">
-                <logo class="h-[calc((10/360)*100vw)] md:h-[calc((10/1515)*100vw)] md:max-h-[16px]" color="white" />
-                <p class="text-white text-p-small text-nowrap">{{ text }}</p>
-            </div>
-        </div>
-        <div class="z-10 pointer-events-none absolute top-0 left-0 w-full h-full flex justify-center items-center">
-            <circlee class="w-1/3 md:w-8/12 aspect-square" color="white" />
+        <div class="mt-header md:mt-0 absolute w-full h-full top-0 left-0 flex flex-col-reverse justify-center items-center">
+          <div class="z-10 mt-xxl md:mt-0 over-text md:absolute top-0 left-0 w-full h-full flex justify-center items-start md:items-center  gap-2">
+              <div class="flex-col md:flex-row flex gap-2 items-center">
+                  <logo class="h-[11px]" color="white" />
+                  <p class="text-white leading-0 text-claim text-nowrap">{{ text }}</p>
+              </div>
+          </div>
+          <div class="z-10 pointer-events-none md:absolute top-0 left-0 w-full h-full flex justify-center items-end md:items-center">
+              <circlee class="hidden md:block w-1/3 md:w-8/12 aspect-square" color="white" />
+              <circleSmall class="md:hidden" color="white"></circleSmall>
+          </div>
         </div>
         <swiper
             class="w-full h-full"
@@ -66,7 +71,6 @@ import Circlee from './circlee.vue';
             >
                 <swiper-slide v-for="(slide, index) in slides" :key="index" class="w-full h-full">
                     <img :src="slide.image.url" :alt="slide.image.alt" class="w-full h-full object-cover" />
- 
                 </swiper-slide>
         </swiper>
     </div>

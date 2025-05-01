@@ -100,7 +100,6 @@ export default {
           autoAlpha: 1
         });
         this.menuMobile = true;
-        this.colorText = "text-black";
       } else if (this.menuMobile === true) {
         tl.to(menuMobile, {
           autoAlpha: 1,
@@ -113,7 +112,6 @@ export default {
           autoAlpha: 0
         });;
         this.menuMobile = false;
-        this.colorText = "initial";
       }
     },
   },
@@ -124,15 +122,15 @@ export default {
     :class="[
       colorText,
       colorText === 'text-black' ? 'border-black' : 'border-white',
-      menuMobile ? 'bg-transparent' : bgHeader,
+      menuMobile ? 'bg-transparent !border-black' : bgHeader,
     ]"
     class="z-15 fixed top-0 left-0 w-full border-b py-[12px] px-[10px] md:py-sm md:px-md flex justify-between text-menu text-white"
   >
     <a :href="homeUrl()" class="flex items-center">
-      <Logo class="h-logo" :color="colorText" />
+      <Logo class="h-logo" :color="menuMobile ? '#000' : colorText" />
     </a>
 
-    <a :class="colorText" class="md:hidden open-mobile-menu" @click="toggleMenu"
+    <a :class="menuMobile ? '!text-black' : colorText" class="md:hidden open-mobile-menu" @click="toggleMenu"
       >Menu (<span v-if="menuMobile === false">+</span><span v-else>-</span>)</a
     >
 
@@ -152,7 +150,7 @@ export default {
 
     <ul>
       <li v-if="contactRoute">
-        <a :href="to(contactRoute)" :class="[colorText, 'button-contact']">
+        <a :href="to(contactRoute)" :class="[menuMobile ? '!text-black' : colorText, 'button-contact']">
           <span class="dot"
             :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"
           ></span>

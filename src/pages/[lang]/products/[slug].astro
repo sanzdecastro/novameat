@@ -110,19 +110,19 @@ console.log(page)
                 </div>
             </section>
             <Divider></Divider>
-            <section id="ingredients" class="ingredients  pb-product-description text-center mt-xxl-2 md:pl-sm">
+            <section id="ingredients" class="ingredients  pb-product-description text-center pt-xxl-2 md:pl-sm">
                 <span class="block pb-lg">({page?.acf?.ingredients?.pretitle})</span>
                 <h2 class="text-title text-leading[120%] pb-xxl-2" set:html={page?.acf?.ingredients?.title}></h2>
                 <div class="ingredients scroll-wrapper flex flex-col md:flex-row mx-sm md:mx-0 rounded-[15px] md:rounded-0 overflow-hidden md:overflow-visible px-sm md:px-0 bg-ash md:bg-black">
                     {page?.acf?.ingredients?.ingredients?.map((ingredient: any, index: number) => (
                         
-                        <CardIngredientMobile class="md:hidden" ingredient={ingredient} lang={lang} client:load></CardIngredientMobile>
+                        <CardIngredientMobile class="md:hidden " ingredient={ingredient} lang={lang} client:load></CardIngredientMobile>
                     ))}
                 </div>
                 <SliderIngredients class="hidden md:block" ingredients={page?.acf?.ingredients} lang={lang} client:load></SliderIngredients>
             </section>
             
-            <section id="recipes" class="section-button pb-product-description">
+            <section class="section-button pb-product-description">
                 <div class="button-wrapper style-3">
                     <a  :href={page?.acf?.link?.url}>{page?.acf?.link?.title}</a>
                 </div>
@@ -144,7 +144,7 @@ console.log(page)
             </section>
             <section>
                 <Divider></Divider>
-                <BlockRelated section={page?.acf?.related} client:load></BlockRelated>
+                <BlockRelated section={page?.acf?.block_related} client:load></BlockRelated>
 
             </section>
             

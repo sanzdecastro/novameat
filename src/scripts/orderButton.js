@@ -9,23 +9,33 @@ export function orderButtonAnimation() {
   const trigger = document.querySelector(".section-button-empty .button-wrapper-resize");
   if (!button ) return;
 
+  const isLargeScreen = window.innerWidth > 768;
+  const sizeButton = isLargeScreen ? "calc((113/1550)*100vw)" : "96px";
+  const widthButton = isLargeScreen ? "calc(98%)" : "calc(95%)";
+  const colorText = isLargeScreen ? "white" : "black";
+  const colorBackground = isLargeScreen ? "black" : "white";
+
   gsap.set(button, {
     float: "right",
     position: "fixed",
     bottom: "10px",
     right: "10px",
+    backgroundColor: "transparent",
+    color: "white",
     aspectRatio: "1/1",
-    width: "calc((113/1550)*100vw)",
-    height: "calc((113/1550)*100vw)",
+    width: sizeButton,
+    height: sizeButton,
   })
 
 
 
   gsap.to(button, {
-    width: "calc(98%)",
+    width: widthButton,
     height: "100%",
     bottom: "unset",
-     position: "absolute",
+    position: "absolute",
+    backgroundColor: colorBackground,
+    color: colorText,
     scrollTrigger: {
       trigger: trigger,
       end: "bottom bottom",

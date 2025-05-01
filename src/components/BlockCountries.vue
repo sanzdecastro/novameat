@@ -18,7 +18,7 @@ export default {
 
 <template>
   
-  <div class="py-section ">
+  <div >
     
     <div class="block-dots grid grid-cols-1 md:grid-cols-8 gap-sm mb-xxl-2" v-for="(country, index) in section.countries">
       <Divider class="col-span-1 md:col-span-8 hidden md:block"></Divider>

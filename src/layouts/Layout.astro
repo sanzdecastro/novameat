@@ -34,6 +34,13 @@ const switchUrls = page && getById
       return { code, url: `/${code}/${target}` };
     });
 
+// Traducciones JSON
+// 1️⃣ “Glob” de todos los JSON de idiomas (eager para cargarlos en build)
+const localeModules = import.meta.glob('../locales/*.json', { eager: true, as: 'json' });
+
+// 2️⃣ Selecciona el JSON correspondiente a `lang`
+const localePath = `../locales/${lang}.json`;
+const messages = localeModules[localePath] || {};  // si no existe, devolvemos un objeto vacío
 ---
 
 <!doctype html>
@@ -72,7 +79,7 @@ const switchUrls = page && getById
       <slot />
     </div>
     <div class="slot-container opacity-0">
-      <Footer lang={lang} switchUrls={switchUrls} routes={routes} />
+      <Footer lang={lang} page={page} switchUrls={switchUrls} routes={routes} messages={messages} />
     </div>
 
     <script>

@@ -3,7 +3,6 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import CardIngredient from "./CardIngredient.vue";
-import { languages } from "../lib/i18n";
 
 // Import Swiper styles
 export default {

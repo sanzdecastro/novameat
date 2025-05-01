@@ -52,7 +52,7 @@ export default {
 <template>
 
   <!-- Solo mobile -->
-  <div class=" ingredient bg-ash py-sm  md:hidden border-b border-stone" @click="toggleIngredient">
+  <div class=" ingredient bg-ash py-sm  md:hidden border-b  border-stone" @click="toggleIngredient">
     <div ref="ingredient" class="flex gap-md">
       <div class="aspect-square w-[78px]">
         <div
@@ -62,7 +62,7 @@ export default {
           <img
             class=""
               :src="ingredientInfo?._embedded['wp:featuredmedia']?.[0]?.source_url"
-              alt="Imagen destacada"
+              alt="ingredient"
             />
         </div>
       </div>
