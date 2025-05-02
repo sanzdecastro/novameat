@@ -86,7 +86,7 @@ export default {
 
         class="!overflow-visible ">
           <swiper-slide
-            class="card w-card-product aspect-[481/607] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
+            class="card w-card-product aspect-[481/607] min-height-[460px] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
             v-for="(product, index) in section.products"
           >
             <CardProduct :product="product" :lang="lang"></CardProduct>
@@ -95,7 +95,7 @@ export default {
       </div>
       <div v-else class="flex flex-col gap-sm md:flex-row justify-center w-full px-sm md:p-md">
         <div
-            class="card w-full md:w-1/3 aspect-[481/607] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
+            class="card w-full md:w-1/3  min-height-[460px] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
             v-for="(product, index) in section.products"
           >
             <CardProductSlider v-if="!isWide" :product="product" :lang="lang"></CardProductSlider>

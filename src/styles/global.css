@@ -90,7 +90,7 @@
   );
 
   --spacing-card: clamp(
-    47px,
+    40px,
     calc((72 / 1515) * 100vw),
     calc((101 / 2880) * 100vw)
   );
@@ -615,6 +615,7 @@ input[type="radio"] {
     flex
     gap-2
     items-center
+    md:items-start
     md:pl-md
     relative;
     &:before {
@@ -693,6 +694,8 @@ input[type="radio"] {
       }
       label {
         @apply
+        -ml-[4vw]
+        pl-[5vw]
         cursor-pointer;
       }
     }
@@ -791,7 +794,7 @@ input[type="radio"] {
       bg-pink
       md:bg-white
       md:hover:bg-pink 
-      md:hover:text-white;
+      md:hover:text-black;
     }
   }
   &.style-3 {
@@ -804,7 +807,7 @@ input[type="radio"] {
       md:text-white
       md:border-white
       md:hover:bg-pink 
-      md:hover:text-white;
+      md:hover:text-black;
     }
   }
 }
