@@ -59,7 +59,7 @@ export default {
 </script>
 
 <template>
-  <a  :href="`/${lang}/products/${productInfo.slug}`">
+  <a  :href="`/${lang}/${lang === 'es' ? 'productos' : 'products'}/${productInfo.slug}`">
     <swiper  
     class="!w-full !h-full"
     :class="{

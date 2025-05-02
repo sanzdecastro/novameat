@@ -29,9 +29,9 @@ export default {
           renderBullet: function (index, className ) {
             const slide = props.section.slider[index];
             const itemMenu = slide ? slide.item_menu : '';
-            const showItemsInMobile = slide.show_items_in_mobile;
+            
             const paragraphMenu = slide ? slide.paragraph_item : '';
-            return `<span class="${showItemsInMobile ? 'block' : 'hidden md:block'} ${className}">( ${index + 1} ) ${itemMenu} ${paragraphMenu}</span>`;
+            return `<span class="${className}">( ${index + 1} ) ${itemMenu} ${paragraphMenu}</span>`;
           },
         },
         modules: [Autoplay, EffectFade, Pagination],
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <template>
-  <div :id="section.id_anchor" class="play-slider slider-container relative w-[100vw] h-[100dvh] text-black mb-20" :class="{ 'with_items_paragraphs': section.with_items_paragraphs === true }">
+  <div :id="section.id_anchor" class="play-slider slider-container relative w-[100vw] h-[100dvh] text-black mb-20" :class="{ 'with_items_paragraphs': section.with_items_paragraphs === true, 'items_in_mobile': section.show_items_in_mobile === true }">
 
     <swiper
       class="w-full h-full relative"
