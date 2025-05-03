@@ -910,7 +910,6 @@ input[type="radio"] {
   @apply
       hidden;
   li {
-   
     a {
       &.active {
         @apply
