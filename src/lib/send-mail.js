@@ -6,7 +6,7 @@ const resend = new Resend(import.meta.env.RESEND_API_KEY);
 export async function sendMail({ mail, subject, message, service }) {
   // Monta tú el HTML con el campo service
   const html = `
-    <h2>Nuevo mensaje desde el formulario</h2>
+    <h2>Nuevo mensaje desde el formulario web</h2>
     <p><strong>Servicio seleccionado:</strong> ${service}</p>
     <p><strong>Mensaje:</strong></p>
     <p>${message}</p>
@@ -15,8 +15,9 @@ export async function sendMail({ mail, subject, message, service }) {
   `;
 
   return await resend.emails.send({
-    from: 'MiFormulario <no-reply@novameat.com>',
+    from: 'Formulario web <no-reply@santisanchez.dev>',
     to: 'contact@novameat.com',
+    replyTo: mail,
     mail,
     subject,
     html,

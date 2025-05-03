@@ -907,7 +907,10 @@ input[type="radio"] {
 /* Lang active */
 
 .lang {
+  @apply
+      hidden;
   li {
+   
     a {
       &.active {
         @apply
