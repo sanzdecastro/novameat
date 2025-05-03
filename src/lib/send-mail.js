@@ -15,7 +15,7 @@ export async function sendMail({ mail, subject, message, service }) {
   `;
 
   return await resend.emails.send({
-    from: 'Formulario web <no-reply@santisanchez.dev>',
+    from: 'Formulario web <no-reply@novameat.com>',
     to: 'contact@novameat.com',
     replyTo: mail,
     mail,
