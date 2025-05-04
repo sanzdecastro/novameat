@@ -11,6 +11,8 @@ import CookieConsent from "../components/CookieConsent.vue";
 import CircleSmall from "../components/circleSmall.vue";
 import { getPageById, getProductById } from '../lib/api.js';
 
+const isProd = import.meta.env.MODE === 'production';
+
 const LOCALES = ['en','es'];
 const { lang, slug, page, getById, colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
 
@@ -64,6 +66,13 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <ViewTransitions />
+    <!-- Google tag (gtag.js) --> 
+    {isProd && (
+      <>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-H5KKM5STLL"></script> 
+        <script is:inline> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-H5KKM5STLL'); </script>
+     </>
+    )}
   </head>
 
   <body class="bg-white">
