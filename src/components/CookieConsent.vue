@@ -36,7 +36,7 @@ export default {
 
       gsap.to(cookieBanner, {
         y: 0,
-        delay: 0.2,
+        delay: 1,
         opacity: 1,
         duration: 0.5,
         ease: "power2.out",
