@@ -351,7 +351,7 @@ body:has(#contact-form) {
  #cookie-banner {
   z-index: 1000;
   @apply
-
+  opacity-0
   md:min-w-[290px]
   md:max-w-[calc((358/1515)*100vw)]
   text-p-small
