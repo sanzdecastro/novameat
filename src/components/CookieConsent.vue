@@ -4,6 +4,14 @@ import gsap from "gsap";
 import { nextTick } from "vue"; 
 
 export default {
+  props: {
+    lang: {
+      type: String,
+    },
+    messages : {
+      type: Object,
+    },
+  },
   data() {
     return {
       showBanner: false,
@@ -92,10 +100,10 @@ export default {
     <div v-if="showBanner" id="cookie-banner" ref="cookieBanner" class="cookie-banner">
       <span>Cookies</span>
       <p>
-        We approach cookies the same way we approach our cuts: with fewer ingredients and full transparency.
+        {{messages.cookies.text1}}
       </p>
       <p>
-        We use our own and third-party cookies to improve your browsing experience, understand how the site is used and adapt content to your preferences. You can manage your settings or read more about them in our Cookies Policy.
+        {{messages.cookies.text2}}
       </p>
       <div class="buttons">
         

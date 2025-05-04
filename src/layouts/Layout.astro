@@ -236,7 +236,7 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
         
       });
     </script>
-    <CookieConsent client:load />
+    <CookieConsent client:load lang={lang} messages={messages} />
   </body>
 </html>
 
