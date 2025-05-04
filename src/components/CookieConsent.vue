@@ -1,5 +1,8 @@
 
 <script>
+import gsap from "gsap";
+import { nextTick } from "vue"; 
+
 export default {
   data() {
     return {
@@ -16,12 +19,28 @@ export default {
 
     if (storedPrefs.accepted === undefined) {
       this.showBanner = true;
+      nextTick(() => {
+        this.animationCookies();
+      });
     }
 
     this.prefs.analytics = storedPrefs.analytics || false;
     this.prefs.marketing = storedPrefs.marketing || false;
+    
+    
   },
   methods: {
+    async animationCookies() {
+      const cookieBanner = this.$refs.cookieBanner;
+      gsap.set(cookieBanner, { y: 10, opacity: 0 });
+
+      gsap.to(cookieBanner, {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    },
     acceptAll() {
       const prefs = {
         accepted: true,
@@ -69,7 +88,7 @@ export default {
 
 <template>
    <div>
-    <div v-if="showBanner" id="cookie-banner" class="cookie-banner">
+    <div v-if="showBanner" id="cookie-banner" ref="cookieBanner" class="cookie-banner">
       <span>Cookies</span>
       <p>
         We approach cookies the same way we approach our cuts: with fewer ingredients and full transparency.
