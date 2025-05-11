@@ -70,10 +70,10 @@ export default {
         <div class="w-[100vw] h-[100vh] z-10 absolute top-0 left-0 text-white">
           
           <div class="w-full h-full flex justify-center items-center p-sm">
-            <div class=" flex flex-col text-center h-auto" :class=" show_items_in_mobile ? '-mt-[60vh] md:-mt-[7vh]' : '-mt-[20vh] md:-mt-[7vh]'">
+            <div class=" flex flex-col text-center h-auto" :class=" show_items_in_mobile ? '-mt-[60vh] md:-mt-[7vh]' : '-mt-[40vh] md:-mt-[7vh]'">
               <span class="pb-md">( {{ slide.pretitle }} )</span>
               <h3 class="font-sm text-title" v-html="slide.title"></h3>
-              <p class="absolute text-center md:text-left p-lg-2 md:p-sm bottom-xxl-2 md:bottom-sm left-sm  md:max-w-max-xs  text-small leading-[114%]">{{ slide.text }}</p>
+              <p class="absolute text-center md:text-left p-lg-2 md:p-sm bottom-[50px] md:bottom-sm left-sm  md:max-w-max-xs  text-small leading-[114%]">{{ slide.text }}</p>
             </div>
             
           </div>

@@ -24,7 +24,7 @@ export default {
       const lat = parseFloat((address.lat || "").replace(",", ".").trim())
       const lng = parseFloat((address.lng || "").replace(",", ".").trim())
       if (isNaN(lat) || isNaN(lng) || !mapRef.value) return
-      mapRef.value.zoomTo([lng, lat], 12)
+      mapRef.value.zoomTo([lng, lat], 17)
     }
 
     return { mapRef, handleAddressClick }

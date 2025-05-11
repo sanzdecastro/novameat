@@ -40,7 +40,7 @@ console.log(page)
                 <h1 class="md:absolute top[50%] text-center text-product" set:html={page?.acf?.title_for_preview}></h1>
             </div>
             <section id="overview" class="product-info-container flex flex-col md:flex-row min-h-[100dvh]">
-                <div class="gallery mt-header md:order-1 order-2 w-full md:w-1/2 px-sm ">
+                <div class="gallery md:mt-header md:order-1 order-2 w-full md:w-1/2 px-sm ">
                     <!-- Solo desktop -->
                     <div class="hidden md:flex justify-center w-full h-[100dvh] items-center relative ">
                         <div class="highlight-container relative h-1 w-1">
@@ -113,7 +113,7 @@ console.log(page)
                 </div>
             </section>
             <Divider></Divider>
-            <section id="ingredients" class="ingredients  pb-product-description text-center pt-xxl-2 md:pl-sm">
+            <section id="ingredients" class="ingredients  text-center pt-xxl-2 md:pl-sm">
                 <span class="block pb-lg">({page?.acf?.ingredients?.pretitle})</span>
                 <h2 class="text-title text-leading[120%] pb-xxl-2" set:html={page?.acf?.ingredients?.title}></h2>
                 <div class="ingredients scroll-wrapper flex flex-col md:flex-row mx-sm md:mx-0 rounded-[15px] md:rounded-0 overflow-hidden md:overflow-visible px-sm md:px-0 bg-ash md:bg-black">
@@ -125,8 +125,8 @@ console.log(page)
                 <SliderIngredients class="hidden md:block" ingredients={page?.acf?.ingredients} lang={lang} client:load></SliderIngredients>
             </section>
             
-            <section class="section-button pb-product-description">
-                <div class="button-wrapper style-3">
+            <section class="section-button ">
+                <div class="button-wrapper my-xxl-2 style-4">
                     <a  :href={page?.acf?.link?.url}>{page?.acf?.link?.title}</a>
                 </div>
             </section>
@@ -151,9 +151,9 @@ console.log(page)
 
             </section>
             
-            <section class="section-button-empty pb-product-description ">
+            <section class="section-button-empty ">
                 <div class="button-wrapper-resize aspect-[308/143] md:aspect-[1462/504]  w-full mb-xxl-2 relative">
-                    <a class="w-full z-10 font-haffe underline underline-offset-3 bg-white text-black md:bg-black md:text-white h-full flex justify-center items-center border border-white rounded-full hover:border-none md:hover:bg-white md:hover:text-black" href={`/${lang}/${lang === 'en' ? 'contact' : 'contacto'}`}>{lang === 'en' ? 'Order' : 'Pedido'}</a>
+                    <a class="w-full z-10 font-haffe underline underline-offset-3 bg-white text-black  md:text-white h-full flex justify-center items-center border border-white rounded-full hover:border-none md:hover:!bg-white md:hover:!text-black" href={`/${lang}/${lang === 'en' ? 'contact' : 'contacto'}`}>{lang === 'en' ? 'Order' : 'Pedido'}</a>
                 </div>
             </section>
             

@@ -46,7 +46,7 @@ export default {
 <template>
  
  <div class="pr-md">
-    <swiper class="!overflow-visible "
+    <swiper class="!overflow-visible cursor-grab"
      
       :slides-per-view="3.1"
       :space-between="10"

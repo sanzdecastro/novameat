@@ -62,7 +62,7 @@ const flexibleSections = page?.acf?.flexible_content || [];
       } else if(section.acf_fc_layout === "sub_header") {
         return <SubHeader colorText={colorText} bgHeader={bgHeader} section={section} client:only />;
       } else if(section.acf_fc_layout === "block_related") {
-        return <BlockRelated section={section.block_related} client:only />;
+        return <BlockRelated section={section} client:only />;
       } 
       
       return null; 

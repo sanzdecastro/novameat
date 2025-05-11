@@ -83,11 +83,11 @@
             </div>
         </div>
 
-        <div class="footer-footer flex items-start md:items-end justify-between">
+        <div class="footer-footer flex items-start md:items-end justify-between ">
             <div class="copyright font-haffe w-full md:w-1/3">
                 Novameat® 2025 <br class="md:hidden">{{ t('footer.copyright') }}
             </div>
-            <div class="info  w-full font-haffe flex flex-col md:flex-row  md:items-end gap-[calc((95/1515)*100vw)]">
+            <div class="info  w-full font-haffe flex flex-col md:flex-row  md:items-end gap-[calc((95/1515)*100vw)] md:justify-end">
                 <div class="certifications flex flex-col md:justify-between md:h-full">
                     <p class="pb-md">{{ t('footer.certifications') }}:</p>
                     <div class="logos flex gap-lg flex-wrap md:flex-nowrap">
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="financial flex flex-col">
-                    <p class="pb-md md:w-max-ssm">{{ t('footer.financial-support') }}</p>
+                    <p class="pb-md md:w-max-ssm">{{ t('footer.financial_support') }}</p>
                     <div class="logos flex gap-lg flex-wrap md:flex-nowrap">
                         <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/ministerio-economia.svg">
                         <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/cdti.svg">
@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="member flex flex-col">
-                    <p class="pb-md">{{ t('footer.member-of') }}:</p>
+                    <p class="pb-md">{{ t('footer.member_of') }}:</p>
                     <div class="logos">
                         <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/eit.svg">
                     </div>

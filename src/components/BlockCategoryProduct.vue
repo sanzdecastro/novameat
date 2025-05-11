@@ -77,14 +77,13 @@ export default {
       <span class="mb-xxl block">( {{ this.productCategory.count }} )</span>
       <div class="w-full" v-if="isWide && section.products.length > 3" >
         <swiper  
-        
         :slides-per-view="1.2" 
         :space-between="10" 
         :slides-offset-before="16"  
         :slides-offset-after="16"  
         :breakpoints="{ 600:{slidesPerView:2.2 }, 900:{ slidesPerView:3.1, } }"
 
-        class="!overflow-visible ">
+        class="!overflow-visible cursor-grab">
           <swiper-slide
             class="card w-card-product aspect-[481/607] min-height-[460px] md:aspect-[481/607] flex-shrink-0 max-w-[480px]"
             v-for="(product, index) in section.products"

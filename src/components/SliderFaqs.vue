@@ -40,6 +40,7 @@ export default {
     :slides-offset-before="20"  
     :slides-offset-after="20"  
     :breakpoints="{ 600:{ slidesPerView:2.2 }, 900:{ slidesPerView:3.1, } }"
+    class="cursor-grab"
     >
       <swiper-slide class="aspect-[481/582]">
         <div

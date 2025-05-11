@@ -347,6 +347,16 @@ body:has(#contact-form) {
   bg-pink;
 }
 
+.card {
+  .coming-soon {
+    .swiper-scrollbar {
+      @apply
+      hidden;
+    }
+    
+  }
+}
+
 /* Cookies  */
  #cookie-banner {
   z-index: 1000;
@@ -578,6 +588,8 @@ input[type="radio"] {
   &.items_in_mobile {
     .swiper-pagination {
       @apply
+      flex
+      md:flex
       gap-sm
       justify-end;
     }
@@ -585,8 +597,7 @@ input[type="radio"] {
   .swiper-pagination {
  
       @apply
-      hidden
-      md:flex
+      flex
       text-white
       absolute
       bottom-0
@@ -603,7 +614,13 @@ input[type="radio"] {
       pb-md
       px-md;
       .swiper-pagination-bullet {
+        @apply
+        cursor-pointer;
         opacity: .6;
+        &:hover {
+          @apply
+          opacity-100;
+        }
       }
       .swiper-pagination-bullet-active {
         opacity: 1;
@@ -712,8 +729,7 @@ input[type="radio"] {
   }
 
   .textarea-form {
-    @apply
-    mb-lg-2;
+
     textarea {
       @apply
       p-sm
@@ -760,14 +776,14 @@ input[type="radio"] {
 
 .button-wrapper {
   @apply
-  md:p-md 
+  
   w-full 
   aspect-[308/143] 
   md:aspect-[1462/504] 
   flex
   relative 
   px-sm
-  md:pt-xxl;
+  ;
  
   a {
     @apply
@@ -817,6 +833,19 @@ input[type="radio"] {
       md:text-white
       md:border-white
       md:hover:bg-pink 
+      md:hover:text-black;
+    }
+  }
+  &.style-4 {
+    a {
+      @apply
+      aspect-[308/143]
+      bg-white
+      text-black
+      md:bg-black
+      md:text-white
+      md:border-white
+      md:hover:bg-white 
       md:hover:text-black;
     }
   }

@@ -23,7 +23,7 @@ const mapContainer = ref(null);
 let mapInstance = null;
 
 // Este es el método que expondremos para centrar/zoom
-function zoomTo([lng, lat], zoomLevel = 10) {
+function zoomTo([lng, lat], zoomLevel = 18) {
   if (!mapInstance) return;
   mapInstance.flyTo({ center: [lng, lat], zoom: zoomLevel });
 }

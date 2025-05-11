@@ -61,9 +61,9 @@ export default {
 <template>
   <a  :href="`/${lang}/${lang === 'es' ? 'productos' : 'products'}/${productInfo.slug}`">
     <swiper  
-    class="!w-full !h-full"
+    class="!w-full !h-full cursor-grab"
     :class="{
-    'pointer-events-none':
+    'coming-soon pointer-events-none':
       productInfo._embedded?.['wp:term']?.[1]?.[0]?.name === 'Coming soon'
   }"
         :modules="modules"
