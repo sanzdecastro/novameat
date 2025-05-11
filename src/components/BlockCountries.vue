@@ -35,7 +35,7 @@ export default {
 <template>
   
   <div >
-    <BlockMap ref="mapRef" :countries="section.countries"></BlockMap>
+    <BlockMap ref="mapRef" :countries="section.countries" class="border border-b border-black"></BlockMap>
     <BlockText :section="section"></BlockText>
     <div class="block-dots grid grid-cols-1 md:grid-cols-8 gap-sm mb-xxl-2" 
     v-for="(country, index) in section.countries">
