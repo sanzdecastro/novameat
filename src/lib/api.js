@@ -88,7 +88,7 @@ export async function getIngredient(slug, lang) {
 
 // Get Singular Post
 export async function getPost(slug, lang) {
-  const response = await fetch(`${apiUrl}/posts?slug=${slug}&lang=${lang}`);
+  const response = await fetch(`${apiUrl}/posts?slug=${slug}&lang=${lang}&_embed`);
   const posts = await response.json();
   return posts.length ? posts[0] : null;
 }

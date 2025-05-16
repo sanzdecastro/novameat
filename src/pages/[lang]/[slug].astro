@@ -18,7 +18,7 @@ import BlockInvestors from "../../components/BlockInvestors.vue"
 import BlockCentralMessage from '../../components/BlockCentralMessage.vue';
 import SubHeader from '../../components/subHeader.vue';
 import BlockRelated from '../../components/BlockRelated.vue';
-
+import BlockFeedBlog from '../../components/BlockFeedBlog.vue'
 
 const { lang, slug } = Astro.params;
 const page = await getPage(slug , lang);
@@ -63,6 +63,8 @@ const flexibleSections = page?.acf?.flexible_content || [];
         return <SubHeader colorText={colorText} bgHeader={bgHeader} section={section} client:only />;
       } else if(section.acf_fc_layout === "block_related") {
         return <BlockRelated section={section} client:only />;
+      } else if(section.acf_fc_layout === "block_feed_blog") {
+        return <BlockFeedBlog section={section} lang={lang} client:only />;
       } 
       
       return null; 

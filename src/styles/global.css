@@ -21,6 +21,7 @@
   --color-pink: #ec6769;
   --color-white: #eee9e3;
   --color-beige: #DFD8CD;
+   --color-beige-30: rgba(223, 216, 205, 0.3);
   --color-stone: #787066;
   --color-ash: #362f2c;
 
@@ -647,7 +648,7 @@ input[type="radio"] {
       content: '';
       @apply
       mt-1.5
-      md:mt-2
+      md:mt-1.5
       h-2.5
       w-2.5
       rounded-full
@@ -947,3 +948,492 @@ input[type="radio"] {
   }
 }
 
+/* Block Blog */
+
+.block-blog {
+  @apply
+  relative
+  md:grid
+  md:grid-cols-12;
+  .block {
+    @apply
+    text-p
+    md:col-span-6
+    md:col-start-4;
+    p {
+      @apply
+      mb-md;
+    }
+    
+    .interview {
+      .block-interview {
+        @apply
+        md:grid
+        md:grid-cols-6
+        text-p-small;
+
+      
+        .question {
+          @apply
+          col-span-1;
+        }
+        .answer {
+          @apply
+          col-span-5;
+        }
+      }
+      .block-interview:nth-child(even) {
+          .answer {
+            @apply
+            md:col-start-3
+            md:col-span-4
+          }
+         
+        }
+    }
+    .quote {
+      @apply
+      md:grid
+      md:grid-cols-6
+      text-center
+      text-p-small
+      py-lg-2
+      border-y
+      border-black;
+      p {
+        @apply
+        md:col-span-4
+        md:col-start-2;
+        &.quote-author {
+          @apply
+          mb-0;
+        }
+      }
+    }
+    .notes {
+      @apply
+      border-t
+      border-t-stone
+      text-stone
+      text-small
+      font-haffe
+      pt-sm
+      pl-md
+      top-0
+      left-0
+      md:w-[calc((145/1515)*100vw)]
+      md:absolute;
+    }
+
+    &:has(.block-image) {
+      .notes {
+        @apply
+        left-auto
+        pl-0
+        pr-md
+        right-0;
+      }
+    }
+    .video-blog {
+      .video-section {
+        @apply
+        aspect-[726/816];
+        .video-wrapper {
+          @apply
+        aspect-[726/816];
+        }
+      }
+    }
+  }
+}
+
+/* Post credits */
+
+.post-credits {
+  @apply
+  pt-xxl
+  mb-xxl-2
+  border-t
+  border-t-black
+  px-md
+  md:grid
+  md:grid-cols-12;
+
+  &.block-dots {
+    @apply
+    max-w-[100%];
+  }
+  h3 {
+    @apply
+    pl-0
+    text-p;
+  }
+  .credits {
+    @apply
+    md:grid
+    md:grid-cols-6
+    col-start-4
+    col-span-6;
+    .credit {
+      @apply
+      pr-md
+      pb-lg-2
+      col-span-3;
+      span {
+        @apply
+        text-stone
+         font-haffe
+        text-p-small;
+      }
+      .name {
+        @apply
+        pt-[6px]
+        pb-sm
+        text-p-small;
+      }
+      .description {
+        @apply
+        font-haffe
+        text-small;
+      }
+    }
+  }
+}
+
+/* intro post */
+
+.intro-post {
+  
+    @apply
+    py-xxl
+    px-md
+    mt-header
+    md:flex
+    text-center
+    text-p;
+
+   
+
+    img {
+      @apply
+      max-w-2xs
+      my-lg;
+    }
+
+    .categories {
+      @apply
+      py-lg
+      gap-2
+      flex;
+      .category {
+        @apply
+        py-[4px]
+        px-[18px]
+        rounded-full
+        text-p-small
+        font-haffe
+        bg-beige;
+      }
+    }
+
+    & > div {
+      @apply
+      flex
+      flex-col
+      justify-center
+      items-center
+      md:flex-1
+    }
+
+     .left {
+        @apply
+        items-start;
+      }
+
+      .right {
+        @apply
+        items-end;
+      }
+
+      .center {
+         & > span {
+          @apply
+          mb-lg
+          text-small;
+        }
+      }
+
+}
+
+/* Blog feed */
+
+.blog-feed {
+  @apply
+  relative
+    mt-header;
+  .header-feed {
+    .view-as {
+      @apply
+      text-p-small
+      flex
+      gap-4
+      font-haffe
+      absolute
+      top-0
+      right-0
+      px-md;
+      ul {
+        @apply
+        flex
+        gap-4;
+        li {
+          @apply
+          cursor-pointer;
+          &.active {
+            @apply
+            underline
+            underline-offset-4;
+          }
+        }
+      }
+    }
+    h1 {
+      @apply
+      my-xxl-2
+      text-center
+      text-title;
+    }
+    .categories {
+      @apply
+      mb-xxl-2
+      justify-center
+      gap-xxl
+      flex;
+      .category-wrapper {
+        @apply
+        cursor-pointer
+        items-center
+        flex;
+        .dot {
+          @apply
+          rounded-full
+          mx-[6px]
+          w-[6px]
+          h-[6px];
+        }
+        &:hover, &.selected {
+          .dot {
+            @apply
+            bg-black;
+          }
+        }
+      }
+      .category {
+        @apply
+        flex
+        items-center
+        gap-1
+        text-p-small;
+      }
+    }
+  }
+
+  .feed {
+    &.list-view {
+      @apply
+      mb-xxl-2
+      px-md
+      flex
+      flex-col;
+      .post {
+        @apply
+        border-t
+        pt-sm
+        pb-md
+        
+        border-t-stone;
+        a {
+          @apply
+          flex;
+        }
+
+        .log {
+          @apply
+          pr-xxl-2
+          text-nowrap;
+        }
+
+        .image-wrapper {
+          @apply
+          mr-md
+          w-[calc((55/1515)*100vw)];
+          .categories {
+            @apply
+            hidden;
+          }
+        }
+
+        .post-footer {
+          @apply
+          w-full
+          justify-between
+          flex;
+          span {
+            @apply
+            hidden;
+          }
+          & > div {
+            @apply
+            w-[458px];
+          }
+          .categories {
+            @apply
+            text-p-small
+            gap-2
+            font-haffe
+            flex;
+          }
+        }
+      }
+    }
+    &.grid-view {
+      @apply
+          mb-xxl-2
+          md:px-md
+          md:grid
+          gap-2.5
+          md:grid-cols-12;
+          .post {
+            @apply
+            mb-[260px];
+            .post-footer {
+              @apply
+              mt-xs
+              justify-between
+              gap-3
+              text-p-small
+              flex;
+              span {
+                @apply
+                text-stone;
+              }
+              .categories {
+                @apply
+                hidden;
+              }
+            }
+            .log{
+              @apply
+              hidden;
+            }
+            .image-wrapper {
+              @apply
+              flex
+              justify-center
+              items-center
+              overflow-hidden
+              relative
+              aspect-[603/699];
+              img {
+                @apply
+                h-full
+                w-full
+                object-cover;
+              }
+              .categories {
+                @apply
+                p-sm
+                gap-sm
+                top-0
+                right-0
+                flex
+
+                absolute;
+                .category {
+                  @apply
+                  text-white
+                  py-[4px]
+                  px-[18px]
+                  rounded-full
+                  text-p-small
+                  font-haffe
+                  bg-beige-30;
+                }
+              }
+            }
+            
+          }
+          .post:nth-child(7n+1) {
+            @apply
+            col-start-8
+            col-span-5;
+            .image-wrapper {
+              @apply
+              aspect-[603/699];
+            }
+          }
+
+          .post:nth-child(7n+2) {
+            @apply
+            -mt-xxl
+            col-start-1
+            col-span-4;
+            .image-wrapper {
+              @apply
+              aspect-[481/320];
+            }
+          }
+
+          .post:nth-child(7n+3) {
+            @apply
+            col-start-7
+            col-span-3;
+            .image-wrapper {
+              @apply
+              aspect-[358/447];
+            }
+          }
+
+          .post:nth-child(7n+4) {
+            @apply
+            col-start-10
+            col-span-3;
+            .image-wrapper {
+              @apply
+              aspect-[358/447];
+            }
+          }
+
+          .post:nth-child(7n+5) {
+            @apply
+            col-start-3
+            col-span-2;
+            .image-wrapper {
+              @apply
+              aspect-[358/447];
+            }
+          }
+
+          .post:nth-child(7n+6) {
+            @apply
+            col-start-5
+            col-span-5;
+            .image-wrapper {
+              @apply
+              aspect-[603/699];
+            }
+          }
+
+          .post:nth-child(7n+7) {
+            @apply
+            col-start-1
+            col-span-5;
+            .image-wrapper {
+              @apply
+              aspect-[603/418];
+            }
+          }
+        }
+    }
+    
+}

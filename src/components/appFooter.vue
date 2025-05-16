@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="member flex flex-col">
-                    <p class="pb-md">{{ t('footer.member_of') }}:</p>
+                    <p class="pb-md">{{ t('footer.member_of') }}</p>
                     <div class="logos">
                         <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/eit.svg">
                     </div>

@@ -1,0 +1,82 @@
+---
+
+import Layout from '../../../layouts/Layout.astro';
+
+import { getPages, getPage, getPageById, getProducts, getProduct, getPost } from "../../../lib/api.js";
+
+import BlockBlog from "../../../components/BlockBlog.vue"
+
+
+
+const { lang, slug } = Astro.params;
+const page = await getPost(slug , lang);
+
+const colorText = "text-black";
+const bgHeader = "bg-white"
+
+console.log( page )
+
+const flexibleSections = page?.acf?.flexible_blog || [];
+const date = page?.acf?.date
+const words = page?.acf?.words
+const featuredMedia = page?._embedded?.['wp:featuredmedia']?.[0]?.link
+const categories = page?._embedded?.['wp:term']?.[0]
+---
+
+<Layout lang={lang} page={page} getById={getPageById} slug={slug}  colorText={colorText} bgHeader={bgHeader}>
+
+  <div class="intro-post">
+    <div class="left">
+      <p>{date}</p>
+    </div>
+    <div class="center">
+      <span>( Log. 01 )</span>
+      <h1 class="text-center text-title">{page?.title.rendered}</h1>
+      <img
+        src={featuredMedia}
+        alt={page?.title.rendered ?? 'Imagen destacada'}
+      />
+      <p class="excerpt" set:html={page?.excerpt?.rendered}></p>
+      <div class="categories">
+            {categories.map((category: any) => (
+              <div class="category">
+                  <span>{category.name}</span>
+              </div>
+            ))}
+        </div>
+      
+    </div>
+    <div class="right">
+      <p>{words}</p>
+    </div>
+   
+      
+  </div>
+  
+  
+  <div class="flex flex-col wrapper-content-flexible mt-header">
+  {
+      flexibleSections.map((section: any) => {
+        if (section.acf_fc_layout === "block_blog") {
+          return <BlockBlog section={section} client:only />;
+        } 
+        
+        return null; 
+      })
+      
+  }
+  </div>
+
+  <div class="post-credits block-dots">
+    <h3>Credits</h3>
+    <div class="credits">
+      {page?.acf?.creedits?.credit.map((credit: any) => (
+        <div class="credit">
+            <span>{credit.role}</span>
+            <p class="name">{credit.name}</p>
+            <p class="description">{credit.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
