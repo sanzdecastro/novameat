@@ -114,8 +114,8 @@ onBeforeUnmount(() => {
   display: none;
 }
 .custom-marker {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   background-image: url("/marker.svg"); /* pon aquí tu icono */
   background-size: contain;
   background-repeat: no-repeat;
