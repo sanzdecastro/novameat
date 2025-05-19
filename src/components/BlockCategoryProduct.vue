@@ -34,7 +34,8 @@ export default {
     return {
       category: this.section.category,
       productCategory: {},
-      isWide: false
+      isWide: false,
+      isWider: false
     };
   },
   methods: {
@@ -53,7 +54,8 @@ export default {
       }
     },
     onResize() {
-      this.isWide = window.innerWidth >= 600;
+      this.isWide = window.innerWidth >= 600 && window.innerWidth < 2000;
+      this.isWider = window.innerWidth >= 2000;
     }
   },
   mounted() {
@@ -91,6 +93,19 @@ export default {
             <CardProduct :product="product" :lang="lang"></CardProduct>
           </swiper-slide>
         </swiper>
+      </div>
+       <div
+        v-else-if="isWider && section.products.length > 3"
+        class="max-w-[1800px] mx-auto grid grid-cols-3 gap-sm gap-y-sm md:flex-row justify-center w-full px-sm md:p-md"
+      >
+        <div
+          v-for="(product, index) in section.products"
+          :key="product.id || index"
+          class="card w-full md:col-span-1  aspect-[481/607] flex-shrink-0"
+        >
+          
+          <CardProduct      :product="product" :lang="lang" />
+        </div>
       </div>
       <div v-else class="flex flex-col gap-sm md:flex-row justify-center w-full px-sm md:p-md">
         <div

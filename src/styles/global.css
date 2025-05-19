@@ -983,7 +983,7 @@ input[type="radio"] {
           flex-col
           flex-col-reverse
           w-[100vw]
-          h-[100vh]
+          h-[100dvh]
           fixed
           py-md
           top-0
@@ -1600,7 +1600,10 @@ input[type="radio"] {
 }
 
 
-.maplibregl-popup.maplibregl-popup-anchor-bottom {
+.maplibregl-popup.maplibregl-popup-anchor-bottom,
+.maplibregl-popup.maplibregl-popup-anchor-top,
+.maplibregl-popup.maplibregl-popup-anchor-right,
+.maplibregl-popup.maplibregl-popup-anchor-left {
   .maplibregl-popup-tip {
     @apply
     hidden;
