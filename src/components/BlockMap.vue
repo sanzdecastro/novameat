@@ -77,12 +77,11 @@ onMounted(() => {
         // Construimos el marker con el elemento
         new maplibregl.Marker({ element: el })
           .setLngLat(position)
-            // .setPopup(
-            //   new maplibregl.Popup({ offset: 25 }).setHTML(`
-            //       <p class='font-haffe'>${a.shop}</p><br>
-            //       <p class='font-haffe'>${a.street}, ${a.city}</p>
-            //     `)
-            // )
+            .setPopup(
+              new maplibregl.Popup({ offset: 10 }).setHTML(`
+                  <p class='font-haffe'><a target="_blank" href="${a.google_maps}">${a.shop}</a></p>
+                `)
+            )
           .addTo(mapInstance);
       });
     });

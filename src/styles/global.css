@@ -950,17 +950,59 @@ input[type="radio"] {
 
 /* Block Blog */
 
+.wrapper-blog {
+  &.active-note {
+    .block:not(.active-note) {
+      @apply blur-xs;
+    }
+  }
+}
 .block-blog {
   @apply
   relative
   md:grid
   md:grid-cols-12;
+
+
   .block {
     @apply
     text-[14px]
     md:text-p
     md:col-span-6
     md:col-start-4;
+
+    
+
+    &.active-note {
+      
+      .notes {
+        @apply
+        z-[5]
+        backdrop-blur-sm
+          flex
+          flex-col
+          flex-col-reverse
+          w-[100vw]
+          h-[100vh]
+          fixed
+          py-md
+          top-0
+          m-0
+          left-0;
+
+          .note {
+            @apply
+            hidden
+            w-1/2;
+            &.active {
+              @apply
+              text-stone
+              block;
+            }
+          }
+      }
+        
+    }
 
     & > div {
       
@@ -992,6 +1034,16 @@ input[type="radio"] {
     p {
       @apply
       mb-md;
+      em {
+        font-style: normal;
+        
+        &:hover {
+          @apply
+          cursor-pointer
+          text-pink;
+        }
+        
+      }
     }
     
     .interview {
@@ -1057,6 +1109,14 @@ input[type="radio"] {
       left-0
       md:w-[calc((145/1515)*100vw)]
       md:absolute;
+
+      
+      .note {
+        &.active {
+          @apply
+          text-pink;
+        }
+      }
     }
 
     &:has(.block-image) {
@@ -1089,7 +1149,7 @@ input[type="radio"] {
 /* Post share on */
 .share {
   @apply
-  mt-xxl-2
+  mt-lg
   mb-xxl-2
   text-p-small
   mx-xxl-2
@@ -1464,7 +1524,7 @@ input[type="radio"] {
 
           .post:nth-child(7n+2) {
             @apply
-            md:-mt-xxl
+            md:-mt-[40vh]
             col-start-1
             col-span-4
             md:col-start-1
@@ -1537,4 +1597,34 @@ input[type="radio"] {
         }
     }
     
+}
+
+
+.maplibregl-popup.maplibregl-popup-anchor-bottom {
+  .maplibregl-popup-tip {
+    @apply
+    hidden;
+  }
+  .maplibregl-popup-content {
+    @apply
+    px-sm
+    py-[4px]
+    text-p-small
+    font-montagu
+    text-white
+    rounded-full
+    flex
+    gap-2
+    items-center
+    bg-black;
+    .maplibregl-popup-close-button {
+      @apply
+      relative;
+    }
+    a {
+      @apply
+      border-0
+      font-montagu;
+    }
+  }
 }
