@@ -145,18 +145,22 @@ export default {
     <div class="feed grid-view">
       <div class="post" v-for="(post, index) in blogPosts">
         <a :href="`/${lang}/journal/${post.slug}`">
-          <div class="log">( Log. 01 )</div>
-          <div class="image-wrapper">
-              <img :src="post?._embedded?.['wp:featuredmedia']?.[0]?.source_url" :alt="post.title.rendered">
-              <div class="categories">
-                <div class="category" v-for="(category, index) in post?._embedded?.['wp:term']?.[0]" :class=category.slug>
-                  {{ category.name }}
+          <div class="post-header">
+          <div class="log">( Log. {{ String(index + 1).padStart(2, '0') }} )</div>
+            <div class="image-wrapper">
+                <img :src="post?._embedded?.['wp:featuredmedia']?.[0]?.source_url" :alt="post.title.rendered">
+                <div class="categories">
+                  <div class="category" v-for="(category, index) in post?._embedded?.['wp:term']?.[0]" :class=category.slug>
+                    {{ category.name }}
+                  </div>
                 </div>
-              </div>
+            </div>
           </div>
+          
           <div class="post-footer">
             <div>
                 <h2>{{post.title.rendered}}</h2>
+                <div class="excerpt" v-html="post.excerpt.rendered"></div>
                 <span>{{post.acf?.words}}</span>
             </div>
             <div class="categories">

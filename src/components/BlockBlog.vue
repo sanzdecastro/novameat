@@ -19,7 +19,7 @@ export default {
     hoverNotes() {
         const blocks = document.querySelectorAll(".block-blog")
 
-        if(window > 750) {
+        if(window.innerWidth > 750) {
             blocks.forEach((block)=> {
                 const notes = block.querySelectorAll(".block-blog p em");
                 console.log(notes)

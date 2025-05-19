@@ -1016,7 +1016,8 @@ input[type="radio"] {
               @apply
               grid
               grid-cols-6
-              mx-md;
+              mx-md
+              md:mx-0;
 
               
         }
@@ -1175,11 +1176,15 @@ input[type="radio"] {
   }
   h3 {
     @apply
+    mb-lg
+    md:mb-0
     pl-0
     text-p;
   }
   .credits {
     @apply
+    mx-xxl
+    md:mx-0
     md:grid
     md:grid-cols-6
     col-start-4
@@ -1199,7 +1204,8 @@ input[type="radio"] {
         @apply
         pt-[6px]
         pb-sm
-        text-p-small;
+        text-p
+        md:text-p-small;
       }
       .description {
         @apply
@@ -1383,6 +1389,7 @@ input[type="radio"] {
       flex-col;
       .post {
         @apply
+        
         border-t
         pt-sm
         pb-md
@@ -1390,45 +1397,78 @@ input[type="radio"] {
         border-t-stone;
         a {
           @apply
-          flex;
-        }
-
-        .log {
-          @apply
-          pr-xxl-2
-          text-nowrap;
-        }
-
-        .image-wrapper {
-          @apply
-          mr-md
-          w-[calc((55/1515)*100vw)];
+          flex
+          gap-md
+          md:grid
+          md:grid-cols-8
+          ;
+          & > .post-header {
+            @apply
+            flex
+            gap-md
+            flex-col
+            md:col-span-2
+            md:flex-row;
+            .image-wrapper {
+              @apply
+              max-w-[100px]
+              md:mr-md
+              md:w-[calc((55/1515)*100vw)];
           .categories {
             @apply
             hidden
             ;
           }
         }
+          } 
+        }
+
+        .log {
+          @apply
+          md:pr-xxl
+          text-nowrap;
+        }
+
+        
 
         .post-footer {
           @apply
           w-full
-          justify-between
-          flex;
+          flex
+          flex-col
+          justify-start
+          gap-sm
+          md:col-span-6
+          md:grid
+          md:grid-cols-3
+          md:gap-md
+          md:w-full
+          md:justify-between;
           span {
             @apply
             hidden;
           }
           & > div {
             @apply
-            w-[458px];
+            md:w-[458px];
+          }
+          .excerpt {
+            @apply
+            block
+            text-stone;
           }
           .categories {
             @apply
-            text-p-small
+            md:ml-xxl-2
+            md:text-p-small
             gap-2
             font-haffe
             flex;
+
+            & + p {
+              @apply
+              md:text-right;
+            }
           }
         }
       }
@@ -1459,6 +1499,10 @@ input[type="radio"] {
               span {
                 @apply
                 text-stone;
+              }
+              .excerpt {
+                @apply
+                hidden;
               }
               .categories {
                 @apply
