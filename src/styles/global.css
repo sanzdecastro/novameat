@@ -576,6 +576,20 @@ input[type="radio"] {
   }
 }
 
+input[type="checkbox"] {
+ @apply
+  cursor-pointer
+  w-0
+  opacity-0
+  relative;
+   &:checked + .dot-check {
+  
+      @apply
+      bg-black;
+    
+  }
+}
+
 /* Components */
 
 .play-slider {
@@ -1675,3 +1689,21 @@ input[type="radio"] {
     }
   }
 }
+
+
+/* Cursor */
+
+.cursor {
+   transform: translate(-50%, -50%) scale(1);
+  @apply
+  w-[10px]
+  h-[10px]
+  top-0
+  left-0
+  rounded-full
+  pointer-events-none
+  z-50
+  fixed;
+}
+
+body { cursor: none; }
