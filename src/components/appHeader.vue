@@ -34,6 +34,7 @@ export default {
     };
   },
   mounted() {
+    this.lastScrollY = window.scrollY;
     this.headerScroll();
     this.setMenuMobile();
     console.log('mensajes',this.messages);
@@ -50,7 +51,15 @@ export default {
       window.addEventListener("scroll", () => {
         const currentScrollY = window.scrollY;
 
-        if (currentScrollY > this.lastScrollY) {
+       
+        if (currentScrollY === 0) {
+          gsap.to(header, {
+            yPercent: 0,
+            duration: 0.2,
+            ease: "power2.out"
+          });
+        }
+        else if (currentScrollY > this.lastScrollY) {
           // 🔽 Scroll hacia abajo → ocultar hacia arriba
           gsap.to(header, {
             yPercent: -100,

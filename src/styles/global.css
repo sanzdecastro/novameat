@@ -3,8 +3,8 @@
 
 @font-face {
   font-family: 'Haffe-Regular';
-  src: url('/fonts/Haffer-TRIAL-Regular.woff') format('woff2'),
-       url('/fonts/Haffer-TRIAL-Regular.woff2') format('woff');
+  src: url('/fonts/HafferRegular.woff') format('woff2'),
+       url('/fonts/HafferRegular.woff2') format('woff');
   font-weight: 100;
   display: swap;
   font-style: normal;
@@ -1696,6 +1696,8 @@ input[type="checkbox"] {
 .cursor {
    transform: translate(-50%, -50%) scale(1);
   @apply
+  hidden
+  md:block
   w-[10px]
   h-[10px]
   top-0
