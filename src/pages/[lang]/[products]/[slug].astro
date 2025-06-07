@@ -44,15 +44,16 @@ console.log(page)
                     <!-- Solo desktop -->
                     <div class="hidden md:flex justify-center w-full h-[100dvh] items-center relative ">
                         <div class="highlight-container relative h-1 w-1">
-                            {page?.acf?.product_highlights?.map((highlight: any) => (
+                            {Array.isArray(page?.acf?.product_highlights) &&
+                                page.acf.product_highlights.map((highlight: any, index: number) => (
                                 <p class="highlight flex items-center gap-2 font-haffe text-p-small"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{highlight.highlight}</p>
                             ))}
                         </div>
                         
                     </div>
                     <!-- Solo desktop -->
-                    
-                    {page?.acf?.gallery?.map((image: any) => (
+                    {Array.isArray(page?.acf?.gallery) &&
+                     page?.acf?.gallery?.map((image: any) => (
                         <div
                           class="image-wrapper w-full flex items-center aspect-[726/856] overflow-hidden relative mb-xs"
                         >
@@ -68,7 +69,8 @@ console.log(page)
                         
                         <!-- Solo mobile -->
                         <div class="md:hidden w-full image-wrapper h-[70dvh] flex items-center relative">
-                            {page?.acf?.product_highlights?.map((highlight: any) => (
+                            {Array.isArray(page?.acf?.product_highlights) &&
+                            page?.acf?.product_highlights?.map((highlight: any) => (
                                 <p class="highlight flex items-center gap-2 font-haffe text-p-[12px]"><span class="bg-white block rounded-full w-[6px] h-[6px]"></span>{highlight.highlight}</p>
                             ))}
                             <img class="w-full absolute top-[10vh] p-xxl" src={page?._embedded["wp:featuredmedia"]?.[0]?.source_url} >
@@ -117,7 +119,8 @@ console.log(page)
                 <span class="block pb-lg">({page?.acf?.ingredients?.pretitle})</span>
                 <h2 class="text-title text-leading[120%] pb-xxl-2" set:html={page?.acf?.ingredients?.title}></h2>
                 <div class="ingredients scroll-wrapper flex flex-col md:flex-row mx-sm md:mx-0 rounded-[15px] md:rounded-0 overflow-hidden md:overflow-visible px-sm md:px-0 bg-ash md:bg-black">
-                    {page?.acf?.ingredients?.ingredients?.map((ingredient: any, index: number) => (
+                    {Array.isArray(page?.acf?.ingredients) &&
+                    page?.acf?.ingredients?.ingredients?.map((ingredient: any, index: number) => (
                         
                         <CardIngredientMobile class="md:hidden " ingredient={ingredient} lang={lang} client:load></CardIngredientMobile>
                     ))}

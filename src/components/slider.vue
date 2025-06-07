@@ -70,7 +70,11 @@ import Circlee from './circlee.vue';
             @slideChange="onSlideChange"
             >
                 <swiper-slide v-for="(slide, index) in slides" :key="index" class="w-full h-full">
-                    <img :src="slide.image.url" :alt="slide.image.alt" class="w-full h-full object-cover" />
+                  <div v-if="slide.video != false" class="video-wrapper w-full h-full relative  flex justify-center items-center overflow-hidden">
+                      <video class="absolute object-cover w-full h-full" playsinline autoplay muted :src="slide?.video?.url"></video>
+                    </div>
+                    
+                  <img v-else :src="slide.image.url" :alt="slide.image.alt" class="w-full h-full object-cover" />
                 </swiper-slide>
         </swiper>
     </div>

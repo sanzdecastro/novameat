@@ -1062,8 +1062,11 @@ input[type="checkbox"] {
     }
     
     .interview {
+      @apply
+      pt-md;
       .block-interview {
         @apply
+        
         md:grid
         md:grid-cols-6
         text-p-small;
@@ -1127,6 +1130,10 @@ input[type="checkbox"] {
 
       
       .note {
+        img {
+          @apply
+          mb-md;
+        }
         &.active {
           @apply
           text-pink;
@@ -1135,7 +1142,8 @@ input[type="checkbox"] {
     }
 
     &:has(.block-image) {
-      .notes {
+      .block-image {
+.notes {
         @apply
         block
         left-auto
@@ -1143,6 +1151,8 @@ input[type="checkbox"] {
         pr-md
         right-0;
       }
+      }
+      
     }
     .video-blog {
       @apply

@@ -26,6 +26,8 @@ const words = page?.acf?.words;
 const featuredMedia = page?._embedded?.["wp:featuredmedia"]?.[0]?.link;
 const categories = page?._embedded?.["wp:term"]?.[0];
 
+const credits = page?.acf?.creedits?.credit;
+
 // url para compartir
 const pageUrl = `${Astro.site ?? ""}${Astro.url.pathname}`;
 const encodedUrl = encodeURIComponent(pageUrl);
@@ -121,14 +123,16 @@ const encodedText = encodeURIComponent(
     <h3>Credits</h3>
     <div class="credits">
       {
-        page?.acf?.creedits?.credit.map((credit: any) => (
-          <div class="credit">
-            <span>{credit.role}</span>
-            <p class="name">{credit.name}</p>
-            <p class="description">{credit.description}</p>
-          </div>
-        ))
-      }
+      Array.isArray(credits)
+        ? credits.map((credit) => (
+            <div class="credit">
+              <span>{credit.role}</span>
+              <p class="name">{credit.name}</p>
+              <p class="description">{credit.description}</p>
+            </div>
+          ))
+        : null
+    }
     </div>
   </div>
 </Layout>

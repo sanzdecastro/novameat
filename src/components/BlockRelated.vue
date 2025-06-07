@@ -28,11 +28,13 @@ export default {
           <p class="text-title pb-md" v-html="related?.title"></p>
       </div>
       <div>
+        <a :href="related?.url">
           <div class="image-wrapper pb-xxl md:pb-lg-2 w-full md:w-[calc((224/1515)*100vw)] mx-auto flex justify-center items-center aspect-[224-279]">
               <img class="flex w-2/3 md:w-full object-cover mx-auto" :src="related?.image?.url" alt={item?.image?.alt}>
           </div>
           <p class="text-big md:text-p md:max-w-max-sm mx-auto">{{related.excerpt}}</p>
-      </div>
+        </a>
+        </div>
     </div>
   </div>
 </template>
