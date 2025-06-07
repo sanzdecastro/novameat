@@ -17,8 +17,8 @@ export const routes = [
     },
     {
       key: 'journal',
-      label: { en: 'Journal',  es: 'Blog' },
-      slug:  { en: 'journal',  es: 'blog' },
+      label: { en: 'Journal',  es: 'Journal' },
+      slug:  { en: 'journal',  es: 'journal' },
     },
     {
       key: 'contact',
