@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap");
 @import "tailwindcss";
+@import "swiper/css";
+@import 'swiper/css/effect-fade';
 
 @font-face {
   font-family: 'Haffe-Regular';

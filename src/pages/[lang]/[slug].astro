@@ -22,6 +22,7 @@ import BlockFeedBlog from '../../components/BlockFeedBlog.vue'
 
 const { lang, slug } = Astro.params;
 const page = await getPage(slug , lang);
+const seo = page?.yoast_head_json ?? null;
 
 const colorText = "text-black";
 const bgHeader = "bg-white"
@@ -31,7 +32,7 @@ console.log( page )
 const flexibleSections = page?.acf?.flexible_content || [];
 ---
 
-<Layout lang={lang} page={page} getById={getPageById} slug={slug}  colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} page={page} seo={seo} getById={getPageById} slug={slug}  colorText={colorText} bgHeader={bgHeader}>
 <div class="flex flex-col wrapper-content-flexible">
 {
     flexibleSections.map((section: any) => {

@@ -17,7 +17,8 @@ const { lang, slug } = Astro.params;
 
 
 const page = await getProduct(slug , lang);
-if (!page) throw new Error('Producto no encontrado');
+// if (!page) throw new Error('Producto no encontrado');
+const seo = page?.yoast_head_json ?? null;
 
 const colorText = "#eee9e3";
 const bgHeader = "bg-black";
@@ -26,7 +27,7 @@ console.log(page)
 
 ---
 
-<Layout lang={lang} page={page}  getById={getProductById} colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} page={page} seo={seo} getById={getProductById} colorText={colorText} bgHeader={bgHeader}>
     
     <SubHeader section={page?.acf?.sub_header} colorText={colorText} bgHeader={bgHeader} client:only ></SubHeader>
     
@@ -64,7 +65,7 @@ console.log(page)
                 </div>
                 <div class="info-column flex items-center md:order-2 order-1 w-full md:w-1/2 text-center md:h-[100dvh] px-sm md:px-product-description py-xxl-2 ">
                     <div>
-                        <span class="block pb-lg">( {page.title.rendered} )</span>
+                        <span class="block pb-lg">( {page?.title?.rendered} )</span>
                         <h2 class="text-title pb-xxl leading-[120%]">{page?.acf?.title}</h2>
                         
                         <!-- Solo mobile -->

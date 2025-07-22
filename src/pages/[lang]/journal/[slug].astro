@@ -14,6 +14,7 @@ import BlockBlog from "../../../components/BlockBlog.vue";
 
 const { lang, slug } = Astro.params;
 const page = await getPost(slug, lang);
+const seo = page?.yoast_head_json ?? null;
 
 const colorText = "text-black";
 const bgHeader = "bg-white";
@@ -39,7 +40,7 @@ const encodedText = encodeURIComponent(
 <Layout
   lang={lang}
   page={page}
-
+  seo={seo}
   slug={slug}
   colorText={colorText}
   bgHeader={bgHeader}

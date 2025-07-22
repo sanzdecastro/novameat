@@ -15,7 +15,7 @@ import { getPageById, getProductById } from '../lib/api.js';
 const isProd = import.meta.env.MODE === 'production';
 
 const LOCALES = ['en','es'];
-const { lang, slug, page, getById, colorCursor="bg-pink", colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
+const { lang, slug, page, seo, getById, colorCursor="bg-pink", colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
 
 // determina el slug actual, dinámico o estático
 const currentSlug = page?.slug ?? slug;
@@ -53,13 +53,26 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Novameat</title>
-    <meta name="description" content="Novameat designs and manufactures high quality plant-based sustainable meat alternatives to contribute to the regeneration of our planet's biodiversity and to the improvement of human and animal wellbeing."/>
-    <meta property="og:title" content="NOVAMEAT | Plant-Based Meat"/>
-    <meta property="og:description" content="Novameat designs and manufactures high quality plant-based sustainable meat alternatives to contribute to the regeneration of our planet's biodiversity and to the improvement of human and animal wellbeing."/>
-    <meta property="og:url" content="https://www.novameat.com"/>
-    <meta property="og:site_name" content="NOVAMEAT TECH"/>
-    <meta property="og:type" content="website"/>
+    {seo && (
+      <>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta property="og:title" content={seo.og_title} />
+        <meta property="og:description" content={seo.og_description} />
+        <meta property="og:type" content={seo.og_type} />
+        <meta property="og:url" content={seo.og_url} />
+        {seo.og_image?.[0]?.url && (
+          <meta property="og:image" content={seo.og_image[0].url} />
+        )}
+        <meta name="twitter:card" content={seo.twitter_card} />
+        <meta name="twitter:title" content={seo.twitter_title} />
+        <meta name="twitter:description" content={seo.twitter_description} />
+        {seo.twitter_image && (
+          <meta name="twitter:image" content={seo.twitter_image} />
+        )}
+        <link rel="canonical" href={seo.canonical} />
+      </>
+    )}
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap"

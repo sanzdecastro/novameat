@@ -7,13 +7,13 @@ const bgHeader = "bg-white"
 
 const { lang, slug } = Astro.params;
 const page = await getPage(slug , lang);
-
+const seo = page?.yoast_head_json ?? null;
 
 ---
 
-<Layout lang={lang} page={page} getById={getPageById} colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} page={page} seo={seo} getById={getPageById} colorText={colorText} bgHeader={bgHeader}>
     <div class="legal py-xxl-2 text-center">
-        <span class="text-p-small text-center mb-xs block">({page.title.rendered})</span>
+        <span class="text-p-small text-center mb-xs block">({page?.title?.rendered})</span>
         <h1></h1>
         <section class="mx-auto w-fill px-sm md:min-w-[700px] md:max-w-[calc((718/1515)*100vw)] text-left">
             <div set:html={page.content.rendered}></div>

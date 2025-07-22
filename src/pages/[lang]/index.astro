@@ -8,7 +8,7 @@ import Slider from '../../components/slider.vue';
 
 const { lang } = Astro.params;
 const page = await getPage('home' , lang);
-
+const seo = page?.yoast_head_json ?? null;
 console.log(page);
 
 
@@ -19,7 +19,7 @@ const colorText = "#eee9e3";
 const bgHeader = "bg-transparent";
 ---
 
-<Layout lang={lang} page={page} getById={getPageById} slug="home"  colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} page={page} getById={getPageById} seo={seo} slug="home"  colorText={colorText} bgHeader={bgHeader}>
 
 	<Slider client:load
 		slides={slide},
