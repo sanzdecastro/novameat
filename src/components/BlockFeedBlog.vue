@@ -40,7 +40,7 @@ export default {
           )
         );
         this.blogCategories = categories;
-        console.log("Fetched categories:", this.blogCategories);
+        //console.log("Fetched categories:", this.blogCategories);
       } catch (error) {
         console.error("Error al obtener categories", error);
       }
@@ -56,7 +56,7 @@ export default {
           )
         );
         this.blogPosts = posts;
-        console.log("Fetched posts:", this.blogPosts);
+        //console.log("Fetched posts:", this.blogPosts);
       } catch (error) {
         console.error("Error al obtener posts", error);
       }

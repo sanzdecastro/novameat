@@ -36,12 +36,12 @@ export default {
   methods: {
     
     async fetchProduct() {
-      console.log(apiUrl);
+      //console.log(apiUrl);
       try {
-        console.log("Fetched product:", this.product);
+        //console.log("Fetched product:", this.product);
         const product = await getProduct(this.product.post_name, this.lang);
         this.productInfo = product;
-        console.log("Fetched product info:", this.lang, this.productInfo);
+        //console.log("Fetched product info:", this.lang, this.productInfo);
       } catch (error) {
         console.error("Error al obtener categories", error);
       }

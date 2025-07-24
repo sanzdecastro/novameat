@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     async fetchProductCategory() {
-      console.log(apiUrl);
+      //console.log(apiUrl);
       try {
         const products = await getProductCategories(
           apiUrl,
@@ -54,7 +54,7 @@ export default {
           this.lang
         );
         this.productCategory = products;
-        console.log("Fetched products:", products);
+        //console.log("Fetched products:", products);
       } catch (error) {
         console.error("Error al obtener categories", error);
       }
@@ -65,7 +65,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.lang);
+    //console.log(this.lang);
     this.fetchProductCategory();
     this.onResize();
     window.addEventListener("resize", this.onResize);

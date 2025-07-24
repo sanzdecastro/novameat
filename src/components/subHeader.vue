@@ -29,7 +29,7 @@ export default {
       const subHeader = document.querySelector(".sub-header");
       const header = document.querySelector("header");
       let heightHeader = header.offsetHeight;
-      console.log(heightHeader);
+      //console.log(heightHeader);
 
       subHeader.style.paddingTop = `${heightHeader}px`;
     },

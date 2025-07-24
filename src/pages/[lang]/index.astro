@@ -9,7 +9,7 @@ import Slider from '../../components/slider.vue';
 const { lang } = Astro.params;
 const page = await getPage('home' , lang);
 const seo = page?.yoast_head_json ?? null;
-// console.log(page);
+// //console.log(page);
 
 
 const slide = page?.acf?.slide;

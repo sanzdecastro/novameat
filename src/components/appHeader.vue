@@ -37,7 +37,7 @@ export default {
     this.lastScrollY = window.scrollY;
     this.headerScroll();
     this.setMenuMobile();
-    console.log('mensajes',this.messages);
+    //console.log('mensajes',this.messages);
   },
   computed: {
     // Encuentra el objeto contact dentro de routes

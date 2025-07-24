@@ -32,7 +32,7 @@ export function headerProductSelector() {
   document.querySelectorAll("section[id], div[id]").forEach((section) => {
     const id = section.id;
     // Si no hay enlace para esta sección, lo ignoramos
-    console.log(id)
+    //console.log(id)
     if (!linkById[id]) return;
 
     ScrollTrigger.create({

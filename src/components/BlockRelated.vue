@@ -13,7 +13,7 @@ export default {
     },
   },
   mounted() {
-    console.log('related', this.section);
+    //console.log('related', this.section);
   },
  
 };

@@ -21,12 +21,12 @@ export default {
   },
   methods: {
     async fetchIngredient() {
-      console.log(apiUrl);
+      //console.log(apiUrl);
       try {
-        console.log("Fetched ingredient:", this.ingredient);
+        //console.log("Fetched ingredient:", this.ingredient);
         const ingredient = await getIngredient(this.ingredient.post_name, "en");
         this.ingredientInfo = ingredient;
-        console.log("Fetched ingredient info:", this.ingredientInfo);
+        //console.log("Fetched ingredient info:", this.ingredientInfo);
       } catch (error) {
         console.error("Error al obtener categories", error);
       }
