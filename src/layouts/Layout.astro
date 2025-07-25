@@ -165,6 +165,17 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
           autoAlpha: 0,
           duration: 0.2,
         });
+        // Si es iPhone y Chrome, función para obligar a actualizar el historial
+        function updateUrlIfChromeOniPhone() {
+            const ua = navigator.userAgent;
+            if (!/iPhone/.test(ua) || !/CriOS/.test(ua)) return;
+
+            const location = window.location;
+            console.log(location.href);
+            history.pushState(null, '', location.href);
+        }
+
+        updateUrlIfChromeOniPhone();
       }
 
       function inPage() {
@@ -250,17 +261,7 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
         copiesAnimation();
         reload();
 
-        // Si es iPhone y Chrome, función para obligar a actualizar el historial
-        function updateUrlIfChromeOniPhone() {
-            const ua = navigator.userAgent;
-            if (!/iPhone/.test(ua) || !/CriOS/.test(ua)) return;
-
-            const location = window.location;
-            console.log(location.href);
-            history.pushState(null, '', location.href);
-        }
-
-        updateUrlIfChromeOniPhone();
+        
         
       });
     </script>
