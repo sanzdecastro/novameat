@@ -1,5 +1,5 @@
 ---
-const defaultLocale = 'en'; // Cambia si tu idioma por defecto es otro
+const defaultLocale = 'en';
 ---
 
 <html lang="en">
@@ -7,11 +7,12 @@ const defaultLocale = 'en'; // Cambia si tu idioma por defecto es otro
     <meta charset="UTF-8" />
     <title>Redirecting...</title>
     <meta name="robots" content="noindex" />
+    <script>
+      console.log("✅ Ejecutando index.astro: redirigiendo a /en");
+      window.location.href = "/en";
+    </script>
   </head>
   <body>
-    <p>Redirecting to {`/${defaultLocale}`}...</p>
-    <script>
-      window.location.href = '/en';
-    </script>
+    <!-- <p>Redirecting to /en...</p> -->
   </body>
 </html>
