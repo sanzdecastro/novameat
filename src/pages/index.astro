@@ -4,29 +4,21 @@ const defaultLocale = 'en';
 
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
     <title>Redirecting...</title>
-    <meta name="robots" content="noindex" />
-    <link rel="canonical" href="https://novameat.com/en" />
-    <script>
-      function redirectToDefaultLocale() {
-        console.log("🚀 Redirigiendo a /en");
-        window.location.href = "/en";
-      }
-
-      // Redirige normalmente en primer acceso
-      setTimeout(redirectToDefaultLocale, 500);
-
-      // Redirige también si el usuario vuelve atrás y la página se restaura desde memoria
-      window.addEventListener("pageshow", (event) => {
-        if (event.persisted) {
-          console.log("♻️ Volviendo desde el historial (bfcache)");
-          setTimeout(redirectToDefaultLocale, 100);
-        }
-      });
-    </script>
   </head>
   <body>
-    <p>Redirecting to /en...</p>
+    <!-- <h1>Redirecting...</h1> -->
+    <script>
+      // Detecta si se entra directamente en / (sin historial previo)
+      const isDirectVisit = window.history.length <= 1;
+
+      if (isDirectVisit) {
+        // Si el usuario viene directamente, usa location.href para que pueda volver atrás
+        window.location.href = '/en';
+      } else {
+        // Si es navegación interna (por ejemplo desde /en/productos), usa replace para no dejar / en el historial
+        window.location.replace('/en');
+      }
+    </script>
   </body>
 </html>
