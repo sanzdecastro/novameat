@@ -10,23 +10,27 @@ const defaultLocale = 'en';
     <link rel="canonical" href="https://novameat.com/en" />
     <script>
       function redirectToDefaultLocale() {
+        const ref = document.referrer;
+        const fromOutside = ref === '' || !ref.startsWith(window.location.origin);
+
         console.log("🚀 Redirigiendo a /en");
-        window.location.replace("/en"); // ✅ reemplaza en lugar de añadir entrada al historial
+        console.log("🔗 Referrer:", ref);
+        console.log("🌍 From outside?", fromOutside);
+
+        if (fromOutside) {
+          // El usuario viene desde Google u otro dominio → href (se agrega al historial)
+          window.location.href = "/en";
+        } else {
+          // Navegación interna → replace (limpio historial)
+          window.location.replace("/en");
+        }
       }
 
-      // Redirige normalmente en primer acceso
-      setTimeout(redirectToDefaultLocale, 500);
-
-      // Redirige también si el usuario vuelve atrás y la página se restaura desde memoria
-      window.addEventListener("pageshow", (event) => {
-        if (event.persisted) {
-          console.log("♻️ Volviendo desde el historial (bfcache)");
-          setTimeout(redirectToDefaultLocale, 100);
-        }
-      });
+      // Redirige después de pintar (evita pantalla blanca)
+      setTimeout(redirectToDefaultLocale, 100);
     </script>
   </head>
   <body>
-    
+    <p>Redirecting...</p>
   </body>
 </html>
