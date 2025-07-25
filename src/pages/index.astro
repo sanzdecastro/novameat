@@ -5,19 +5,18 @@ const defaultLocale = 'en';
 <html lang="en">
   <head>
     <title>Redirecting...</title>
+    <meta name="robots" content="noindex">
   </head>
   <body>
-    <!-- <h1>Redirecting...</h1> -->
     <script>
-      // Detecta si se entra directamente en / (sin historial previo)
-      const isDirectVisit = window.history.length <= 1;
+      const hasBeenRedirected = sessionStorage.getItem('redirectedToLocale');
 
-      if (isDirectVisit) {
-        // Si el usuario viene directamente, usa location.href para que pueda volver atrás
-        window.location.href = '/en';
-      } else {
-        // Si es navegación interna (por ejemplo desde /en/productos), usa replace para no dejar / en el historial
-        window.location.replace('/en');
+      if (!hasBeenRedirected) {
+        const userLang = navigator.language || navigator.userLanguage;
+        const preferredLocale = userLang.startsWith('es') ? 'es' : 'en';
+
+        sessionStorage.setItem('redirectedToLocale', 'true');
+        window.location.replace('/' + preferredLocale);
       }
     </script>
   </body>
