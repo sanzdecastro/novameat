@@ -152,7 +152,7 @@ export default {
         v-for="route in routes.filter((r) => r.key !== 'contact' && r.key !== 'legal')"
         :key="route.key"
       >
-        <a :class="colorText" :href="to(route)">
+        <a :class="colorText" data-astro-history="replace" :href="to(route)">
           <span class="dot"
             :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"
           ></span>
@@ -163,7 +163,7 @@ export default {
 
     <ul>
       <li v-if="contactRoute">
-        <a :href="to(contactRoute)" :class="[menuMobile ? '!text-black' : colorText, 'button-contact']">
+        <a :href="to(contactRoute)" data-astro-history="replace" :class="[menuMobile ? '!text-black' : colorText, 'button-contact']">
           <span class="dot"
             :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"
           ></span>
