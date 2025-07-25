@@ -8,13 +8,21 @@ const defaultLocale = 'en';
     <title>Redirecting...</title>
     <meta name="robots" content="noindex" />
     <script>
-      console.log("🌐 En / (index.astro)");
-      console.log("➡️ Pathname:", window.location.pathname);
-      console.log("📜 History length:", window.history.length);
-
-      setTimeout(() => {
+      function redirectToDefaultLocale() {
+        console.log("🚀 Redirigiendo a /en");
         window.location.href = "/en";
-      }, 500); // o más si necesitas asegurar
+      }
+
+      // Redirige normalmente en primer acceso
+      setTimeout(redirectToDefaultLocale, 500);
+
+      // Redirige también si el usuario vuelve atrás y la página se restaura desde memoria
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+          console.log("♻️ Volviendo desde el historial (bfcache)");
+          setTimeout(redirectToDefaultLocale, 100);
+        }
+      });
     </script>
   </head>
   <body>
