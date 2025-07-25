@@ -9,28 +9,49 @@ const defaultLocale = 'en';
     <meta name="robots" content="noindex" />
     <link rel="canonical" href="https://novameat.com/en" />
     <script>
-      function redirectToDefaultLocale() {
-        const ref = document.referrer;
-        const fromOutside = ref === '' || !ref.startsWith(window.location.origin);
+      function shouldRedirect() {
+        const path = window.location.pathname;
 
-        console.log("🚀 Redirigiendo a /en");
-        console.log("🔗 Referrer:", ref);
-        console.log("🌍 From outside?", fromOutside);
+        // Solo redirigir si estamos exactamente en `/`
+        if (path !== '/') {
+          console.log("✅ Ya estamos en idioma o subpágina:", path);
+          return false;
+        }
+
+        const alreadyRedirected = sessionStorage.getItem('redirectedToLocale');
+        if (alreadyRedirected) {
+          console.log('⏸️ Ya redirigido. No se vuelve a redirigir.');
+          return false;
+        }
+
+        return true;
+      }
+
+      function redirectToDefaultLocale() {
+        if (!shouldRedirect()) return;
+
+        const fromOutside = document.referrer === '' || !document.referrer.startsWith(window.location.origin);
+        const destination = '/en';
+
+        sessionStorage.setItem('redirectedToLocale', 'true');
 
         if (fromOutside) {
-          // El usuario viene desde Google u otro dominio → href (se agrega al historial)
-          window.location.href = "/en";
+          console.log('🚀 Redirigiendo a', destination, '(desde fuera)');
+          window.location.href = destination;
         } else {
-          // Navegación interna → replace (limpio historial)
-          window.location.replace("/en");
+          console.log('🔁 Redirigiendo a', destination, '(desde dentro)');
+          window.location.replace(destination);
         }
       }
 
-      // Redirige después de pintar (evita pantalla blanca)
+      window.addEventListener('pageshow', () => {
+        redirectToDefaultLocale();
+      });
+
       setTimeout(redirectToDefaultLocale, 100);
     </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    <p>Redirecting to /en...</p>
   </body>
 </html>
