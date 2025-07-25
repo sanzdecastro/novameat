@@ -7,9 +7,10 @@ const defaultLocale = 'en';
     <meta charset="UTF-8" />
     <title>Redirecting...</title>
     <meta name="robots" content="noindex" />
-    <meta http-equiv="refresh" content="0; URL=/${defaultLocale}" />
+    <link rel="canonical" href={`/${defaultLocale}`} />
+    <meta http-equiv="refresh" content="0; url=/{defaultLocale}" />
   </head>
   <body>
-    <p>Redirecting to /{defaultLocale}...</p>
+    <p>Redirecting to /{defaultLocale}…</p>
   </body>
 </html>
