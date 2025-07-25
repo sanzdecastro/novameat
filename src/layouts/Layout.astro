@@ -249,16 +249,18 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
         }, 1000);
         copiesAnimation();
         reload();
-        
- document.addEventListener('click', (e) => {
-    if (!/iPad|iPhone|iPod/.test(navigator.userAgent)) return false;
-    const target = e.target;
-    const link = target.closest('a');
-    const shouldPushState = link && link.href && link.href.startsWith(window.location.origin) && !link.href.includes('#');
-    if (!shouldPushState) return;
-    history.pushState(null, '', link.href);
-    window.dispatchEvent(new PopStateEvent('popstate'));
-  });
+
+        // Si es iPhone y Chrome, función para obligar a actualizar el historial
+        function updateUrlIfChromeOniPhone() {
+            const ua = navigator.userAgent;
+            if (!/iPhone/.test(ua) || !/CriOS/.test(ua)) return;
+
+            const location = window.location;
+            console.log(location.href);
+            history.pushState(null, '', location.href);
+        }
+
+        updateUrlIfChromeOniPhone();
         
       });
     </script>
