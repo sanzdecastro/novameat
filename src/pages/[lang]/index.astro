@@ -26,15 +26,5 @@ const bgHeader = "bg-transparent";
 		text={text}
 		class="w-full h-screen overflow-hidden"
 	/>
-	<script is:inline>
-  document.addEventListener('click', (e) => {
-    if (!/iPad|iPhone|iPod/.test(navigator.userAgent)) return false;
-    const target = e.target;
-    const link = target.closest('a');
-    const shouldPushState = link && link.href && link.href.startsWith(window.location.origin) && !link.href.includes('#');
-    if (!shouldPushState) return;
-    history.pushState(null, '', link.href);
-    window.dispatchEvent(new PopStateEvent('popstate'));
-  });
-</script>
+	
 </Layout>

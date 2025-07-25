@@ -36,12 +36,12 @@ export default {
   methods: {
     
     async fetchProduct() {
-      //console.log(apiUrl);
+      console.log(apiUrl);
       try {
-        //console.log("Fetched product:", this.product);
+        console.log("Fetched product:", this.product);
         const product = await getProduct(this.product.post_name, this.lang);
         this.productInfo = product;
-        //console.log("Fetched product info:", this.lang, this.productInfo);
+        console.log("Fetched product info:", this.lang, this.productInfo);
       } catch (error) {
         console.error("Error al obtener categories", error);
       }
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <a  :href="`/${lang}/${lang === 'es' ? 'productos' : 'products'}/${productInfo.slug}`">
+  <a data-astro-history="push" :href="`/${lang}/${lang === 'es' ? 'productos' : 'products'}/${productInfo.slug}`">
     <div class="cardCont !w-full"  :class="{
     'pointer-events-none':
       productInfo._embedded?.['wp:term']?.[1]?.[0]?.name === 'Coming soon'
