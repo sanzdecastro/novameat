@@ -7,51 +7,27 @@ const defaultLocale = 'en';
     <meta charset="UTF-8" />
     <title>Redirecting...</title>
     <meta name="robots" content="noindex" />
-    <link rel="canonical" href="https://novameat.com/en" />
-    <script>
-      function shouldRedirect() {
-        const path = window.location.pathname;
-
-        // Solo redirigir si estamos exactamente en `/`
-        if (path !== '/') {
-          console.log("✅ Ya estamos en idioma o subpágina:", path);
-          return false;
-        }
-
-        const alreadyRedirected = sessionStorage.getItem('redirectedToLocale');
-        if (alreadyRedirected) {
-          console.log('⏸️ Ya redirigido. No se vuelve a redirigir.');
-          return false;
-        }
-
-        return true;
+    <link rel="canonical" href={`https://novameat.com/${defaultLocale}`} />
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 20vh;
       }
-
-      function redirectToDefaultLocale() {
-        if (!shouldRedirect()) return;
-
-        const fromOutside = document.referrer === '' || !document.referrer.startsWith(window.location.origin);
-        const destination = '/en';
-
-        sessionStorage.setItem('redirectedToLocale', 'true');
-
-        if (fromOutside) {
-          console.log('🚀 Redirigiendo a', destination, '(desde fuera)');
-          window.location.href = destination;
-        } else {
-          console.log('🔁 Redirigiendo a', destination, '(desde dentro)');
-          window.location.replace(destination);
-        }
-      }
-
-      window.addEventListener('pageshow', () => {
-        redirectToDefaultLocale();
-      });
-
-      setTimeout(redirectToDefaultLocale, 100);
-    </script>
+    </style>
   </head>
   <body>
+    <a id="redirect-link" href="/en" style="display:none;">Redirect</a>
     <p>Redirecting to /en...</p>
+
+    <script>
+      // Espera que Astro cargue, luego navega como si fuera un enlace real
+      setTimeout(() => {
+        const link = document.getElementById('redirect-link');
+        if (link) {
+          link.click(); // ⚠️ Esto activa navegación progresiva con historial
+        }
+      }, 100);
+    </script>
   </body>
 </html>
