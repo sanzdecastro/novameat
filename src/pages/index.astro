@@ -8,11 +8,16 @@ const defaultLocale = 'en';
     <title>Redirecting...</title>
     <meta name="robots" content="noindex" />
     <script>
-      console.log("✅ Ejecutando index.astro: redirigiendo a /en");
-      window.location.href = "/en";
+      console.log("🌐 En / (index.astro)");
+      console.log("➡️ Pathname:", window.location.pathname);
+      console.log("📜 History length:", window.history.length);
+
+      setTimeout(() => {
+        window.location.href = "/en";
+      }, 500); // o más si necesitas asegurar
     </script>
   </head>
   <body>
-    <!-- <p>Redirecting to /en...</p> -->
+    <p>Redirecting to /en...</p>
   </body>
 </html>
