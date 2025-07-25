@@ -23,7 +23,7 @@ const seo = page?.yoast_head_json ?? null;
 const colorText = "#eee9e3";
 const bgHeader = "bg-black";
 
-// //console.log(page)
+// console.log(page)
 
 ---
 
@@ -165,4 +165,15 @@ const bgHeader = "bg-black";
         </div>
 
     </div>
+    <script is:inline>
+  document.addEventListener('click', (e) => {
+    if (!/iPad|iPhone|iPod/.test(navigator.userAgent)) return false;
+    const target = e.target;
+    const link = target.closest('a');
+    const shouldPushState = link && link.href && link.href.startsWith(window.location.origin) && !link.href.includes('#');
+    if (!shouldPushState) return;
+    history.pushState(null, '', link.href);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  });
+</script>
 </Layout>

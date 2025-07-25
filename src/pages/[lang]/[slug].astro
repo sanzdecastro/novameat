@@ -27,7 +27,7 @@ const seo = page?.yoast_head_json ?? null;
 const colorText = "text-black";
 const bgHeader = "bg-white"
 
-// //console.log( page )
+// console.log( page )
 
 const flexibleSections = page?.acf?.flexible_content || [];
 ---
@@ -73,4 +73,15 @@ const flexibleSections = page?.acf?.flexible_content || [];
     
 }
 </div>
+<script is:inline>
+  document.addEventListener('click', (e) => {
+    if (!/iPad|iPhone|iPod/.test(navigator.userAgent)) return false;
+    const target = e.target;
+    const link = target.closest('a');
+    const shouldPushState = link && link.href && link.href.startsWith(window.location.origin) && !link.href.includes('#');
+    if (!shouldPushState) return;
+    history.pushState(null, '', link.href);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  });
+</script>
 </Layout>

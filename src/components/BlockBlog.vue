@@ -22,7 +22,7 @@ export default {
         if(window.innerWidth > 750) {
             blocks.forEach((block)=> {
                 const notes = block.querySelectorAll(".block-blog p em");
-                // //console.log(notes)
+                // console.log(notes)
                 notes.forEach((note, index)=> {
                     note.addEventListener("mouseover" , function() {
                         const block = note.closest(".block");
@@ -46,7 +46,7 @@ export default {
         } else {
              blocks.forEach((block)=> {
                 const notes = block.querySelectorAll(".block-blog p em");
-                // //console.log(notes)
+                // console.log(notes)
                 notes.forEach((note, index)=> {
                     note.addEventListener("click" , function() {
                         const block = note.closest(".block");
