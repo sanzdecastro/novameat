@@ -7,8 +7,8 @@ export const routes = [
     },
     {
       key: 'about',
-      label: { en: 'About',    es: 'Acerca de' },
-      slug:  { en: 'about',    es: 'acerca-de'  },
+      label: { en: 'About',    es: 'Nosotros' },
+      slug:  { en: 'about',    es: 'nosotros'  },
     },
     {
       key: 'find-us',
