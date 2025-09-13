@@ -8,7 +8,12 @@ export async function getPages(lang) {
   return await response.json();
 }
 
-
+// Get Contact
+export async function getContact(slug, lang) {
+  const response = await fetch(`${apiUrl}/pages?slug=${slug}`);
+  if (!response.ok) throw new Error("Error al obtener products");
+  return await response.json();
+}
 
 // Get Products
 export async function getProducts(lang) {
