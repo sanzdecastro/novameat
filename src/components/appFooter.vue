@@ -9,6 +9,7 @@
         lang: string
         routes: Routes
         page: string
+        langIsActive: boolean
         switchUrls: SwitchUrl[]
         messages: Record<string, any>
     }
@@ -72,10 +73,8 @@
                         <li><a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a></li>
                         <li><a :href="`/${lang}/legal/${t('legal.urls.privacy_statement')}`">{{ t('footer.privacy_statement') }}</a></li>
                     </ul>
-                    <ul class="lang flex">
-                        <!-- <li><a href="">ES</a></li> / <li><a href="">EN</a></li> -->
-                    </ul>
-                    <ul class="lang gap-2 flex language-switcher">
+                  
+                    <ul v-if="langIsActive" class="lang gap-2 flex language-switcher">
                         <li v-for="item in switchUrls" :key="item.code">
                             <a
                             class="hover:underline underline-offset-2"

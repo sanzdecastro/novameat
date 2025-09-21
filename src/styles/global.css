@@ -952,8 +952,6 @@ input[type="checkbox"] {
 
 /* Lang active */
 .lang {
-  @apply
-      hidden;
   li {
     a {
       &.active {

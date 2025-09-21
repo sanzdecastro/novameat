@@ -10,7 +10,7 @@ import Footer from "../components/appFooter.vue";
 import CookieConsent from "../components/CookieConsent.vue";
 import CircleSmall from "../components/circleSmall.vue";
 import Cursor from "../components/cursor.vue";
-import { getPageById, getProductById } from '../lib/api.js';
+import { getPageById, getProductById, getOptions } from '../lib/api.js';
 
 const isProd = import.meta.env.MODE === 'production';
 
@@ -44,6 +44,11 @@ const localeModules = import.meta.glob('../locales/*.json', { eager: true, as: '
 // 2️⃣ Selecciona el JSON correspondiente a `lang`
 const localePath = `../locales/${lang}.json`;
 const messages = localeModules[localePath] || {};  // si no existe, devolvemos un objeto vacío
+
+// Langs switch active or no
+const activeLangs = await getOptions();
+const langIsActive = activeLangs?.acf?.activate_lang
+
 ---
 
 <!doctype html>
@@ -102,7 +107,7 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
       <slot />
     </div>
     <div class="slot-container opacity-0">
-      <Footer lang={lang} page={page} switchUrls={switchUrls} routes={routes} messages={messages} />
+      <Footer lang={lang} langIsActive={langIsActive} page={page} switchUrls={switchUrls} routes={routes} messages={messages} />
     </div>
 
     <script>

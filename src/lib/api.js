@@ -1,5 +1,6 @@
 const domain = import.meta.env.PUBLIC_WP_DOMAIN;
 export const apiUrl = `${domain}/wp-json/wp/v2`;
+export const apiUrlv3 = `${domain}/wp-json/acf/v3`;
 
 // Get Pages
 export async function getPages(lang) {
@@ -8,10 +9,10 @@ export async function getPages(lang) {
   return await response.json();
 }
 
-// Get Contact
-export async function getContact(slug, lang) {
-  const response = await fetch(`${apiUrl}/pages?slug=${slug}`);
-  if (!response.ok) throw new Error("Error al obtener products");
+// Get Options
+export async function getOptions() {
+  const response = await fetch(`${apiUrlv3}/options/options`);
+  if (!response.ok) throw new Error("Error al obtener opciones");
   return await response.json();
 }
 
