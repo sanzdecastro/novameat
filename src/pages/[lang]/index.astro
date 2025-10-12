@@ -17,9 +17,11 @@ const text = page?.acf?.centered_text;
 
 const colorText = "#eee9e3";
 const bgHeader = "bg-transparent";
+
+const miniFooter = true;
 ---
 
-<Layout lang={lang} page={page} getById={getPageById} seo={seo} slug="home"  colorText={colorText} bgHeader={bgHeader}>
+<Layout lang={lang} page={page} miniFooter={miniFooter} getById={getPageById} seo={seo} slug="home"  colorText={colorText} bgHeader={bgHeader}>
 
 	<Slider client:load
 		slides={slide},

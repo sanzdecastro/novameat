@@ -907,9 +907,9 @@ input[type="checkbox"] {
   }
 }
 
-.slot-container:has(.slider-main) + .slot-container footer {
+/* .slot-container:has(.slider-main) + .slot-container footer {
   @apply hidden;
-}
+} */
 
 #mc_embed_signup div.mce_inline_error {
   margin: 0 0 1em 0;

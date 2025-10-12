@@ -15,7 +15,7 @@ import { getPageById, getProductById, getOptions } from '../lib/api.js';
 const isProd = import.meta.env.MODE === 'production';
 
 const LOCALES = ['en','es'];
-const { lang, slug, page, seo, getById, colorCursor="bg-pink", colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
+const { lang, slug, page, seo, miniFooter = false, getById, colorCursor="bg-pink", colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
 
 // determina el slug actual, dinámico o estático
 const currentSlug = page?.slug ?? slug;
@@ -23,12 +23,21 @@ const currentSlug = page?.slug ?? slug;
 // construye el switch
 const switchUrls = page && getById
   ? await Promise.all(
-      LOCALES.map(async (code) => {
-        if (code === lang) return { code, url: `/${code}/${page.slug}` };
+         LOCALES.map(async (code) => {
         const transId = page.translations?.[code];
-        if (!transId) return { code, url: `/${code}/` };
-        const { slug: translated } = await getById(transId);
-        return { code, url: `/${code}/${translated}` };
+        let translatedSlug = page.slug;
+
+        if (transId) {
+          const { slug } = await getById(transId);
+          translatedSlug = slug;
+        }
+
+        // 👉 si la página es 'home', no añadimos el slug
+        const url = translatedSlug === 'home'
+          ? `/${code}`
+          : `/${code}/${translatedSlug}`;
+
+        return { code, url };
       })
     )
   : LOCALES.map((code) => {
@@ -48,6 +57,8 @@ const messages = localeModules[localePath] || {};  // si no existe, devolvemos u
 // Langs switch active or no
 const activeLangs = await getOptions();
 const langIsActive = activeLangs?.acf?.activate_lang
+
+
 
 ---
 
@@ -95,7 +106,7 @@ const langIsActive = activeLangs?.acf?.activate_lang
   </head>
 
   <body class="bg-white">
-    <Header transition:persist lang={lang} switchUrls={switchUrls} routes={routes} colorText={colorText} bgHeader={bgHeader} messages={messages}  client:load />
+    <Header transition:persist lang={lang}  switchUrls={switchUrls} routes={routes} colorText={colorText} bgHeader={bgHeader} messages={messages}  client:load />
     
     <div
       class="loading z-50 bg-black w-full h-[100vh] absolute top-0 left-0 flex justify-center items-center"
@@ -107,7 +118,7 @@ const langIsActive = activeLangs?.acf?.activate_lang
       <slot />
     </div>
     <div class="slot-container opacity-0">
-      <Footer lang={lang} langIsActive={langIsActive} page={page} switchUrls={switchUrls} routes={routes} messages={messages} />
+      <Footer lang={lang} langIsActive={langIsActive} miniFooter={miniFooter} page={page} switchUrls={switchUrls} routes={routes} messages={messages} />
     </div>
 
     <script>

@@ -9,6 +9,7 @@
         lang: string
         routes: Routes
         page: string
+        miniFooter: boolean
         langIsActive: boolean
         switchUrls: SwitchUrl[]
         messages: Record<string, any>
@@ -27,7 +28,32 @@
 </script>
 
 <template>
-    <footer class="bg-pink m-sm p-md rounded-[15px] md:h-footer-height flex flex-col justify-between text-small">
+     <footer v-if="miniFooter" class="fixed w-full justify-between bottom-0 left-0  z-50 p-md pb-3 text-white flex text-xs">
+        <div class="flex items-end">
+            <p>Novameat® 2025 <br class="md:hidden">{{ t('footer.copyright') }}</p>
+        </div>
+        <div class="flex-column lg:flex gap-6">
+            <ul class="flex-column lg:flex gap-3">
+                <li><a :href="`/${lang}/legal/${t('legal.urls.legal_notice')}`">{{ t('footer.legal_notice') }}</a></li>
+                <li><a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a></li>
+                <li><a :href="`/${lang}/legal/${t('legal.urls.privacy_statement')}`">{{ t('footer.privacy_statement') }}</a></li>
+            </ul>
+            <ul v-if="langIsActive" class="lang gap-2 flex language-switcher">
+                <li v-for="item in switchUrls" :key="item.code">
+                    <a
+                    class="hover:underline underline-offset-2"
+                    :href="item.url"
+                    :class="{ active: item.code === lang }"
+                    >
+                    {{ item.code.toUpperCase() }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+       
+    </footer>
+    <footer v-else class="bg-pink m-sm p-md rounded-[15px] md:h-footer-height flex flex-col justify-between text-small">
         <div class="header-footer flex flex-col md:flex-row justify-between ">
             <div class="newsletter max-w-[90%] md:max-w-max-ssm pb-[44px]">
                 <p>{{ t('footer.text_newsletter') }}</p>
@@ -132,4 +158,5 @@
         </div>
 
 	</footer>
+    
 </template>

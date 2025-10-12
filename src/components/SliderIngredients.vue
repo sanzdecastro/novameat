@@ -1,6 +1,7 @@
 <script>
 
 import { Swiper, SwiperSlide } from "swiper/vue";
+import {Mousewheel } from 'swiper/modules';
 import "swiper/css";
 import CardIngredient from "./CardIngredient.vue";
 
@@ -21,6 +22,9 @@ export default {
     },
   },
   setup() {
+     return {
+        modules: [Mousewheel],
+      };
     const onSwiper = (swiper) => {
       //console.log(swiper);
     };
@@ -47,7 +51,10 @@ export default {
  
  <div class="pr-md">
     <swiper class="!overflow-visible cursor-grab"
-     
+      :modules="modules"
+      :mousewheel="{
+        sensitivity: 50,
+      }"
       :slides-per-view="3.1"
       :space-between="10"
       :breakpoints="{ 600:{ slidesPerView:3.2 }, 900:{ slidesPerView:6.3, } }"
