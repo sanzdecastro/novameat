@@ -1,6 +1,7 @@
 <script>
 import Divider from "./Divider.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
+import {Mousewheel } from 'swiper/modules';
 import "swiper/css";
 
 // Import Swiper styles
@@ -16,6 +17,11 @@ export default {
       type: Object,
     },
   },
+  setup() {
+     return {
+      modules: [Mousewheel],
+    };
+  }
 };
 </script>
 
@@ -25,6 +31,10 @@ export default {
     <h3 class="text-p-small col-span-2 pb-xxl-2" v-html="'(' + section.press_title + ')'"></h3>
     <div class="w-full">
       <swiper
+        :modules="modules"
+        :mousewheel="{
+            sensitivity: 50,
+          }"
         :slides-per-view="1.1"
         :space-between="10"
         :slides-offset-before="20"

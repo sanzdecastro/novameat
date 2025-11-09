@@ -1,5 +1,6 @@
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
+import {Mousewheel } from 'swiper/modules';
 import "swiper/css";
 
 // Import Swiper styles
@@ -24,6 +25,7 @@ export default {
     return {
       onSwiper,
       onSlideChange,
+      modules: [Mousewheel],
     };
   },
   data() {
@@ -36,6 +38,10 @@ export default {
 <template>
   <div class=" w-full">
     <swiper :slides-per-view="1.1" 
+     :modules="modules"
+     :mousewheel="{
+        sensitivity: 50,
+      }"
     :space-between="10" 
     :slides-offset-before="20"  
     :slides-offset-after="20"  
