@@ -72,7 +72,7 @@ export default {
         }"
         :slides-per-view="1" 
         :space-between="0" >
-          <swiper-slide class="flex flex-col justify-between items-center md:aspect-[300/431]">
+          <swiper-slide class="flex flex-col min-h-[550px] justify-between items-center md:aspect-[300/431]">
             <div class="relative p-card text-center text-white bg-black flex justify-start flex-col w-full h-full items-center rounded-[15px] overflow-hidden">
               <!-- tag -->
               <div
