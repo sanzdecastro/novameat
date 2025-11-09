@@ -103,7 +103,7 @@ export default {
                 <p class="text-p-small pb-md" v-html="productInfo.excerpt?.rendered"></p>
             </div>
           </swiper-slide>
-          <swiper-slide class="relative flex flex-col justify-between items-center text-black rounded-[15px] overflow-hidden aspect-[300/431]">
+          <swiper-slide class="relative  min-h-[550px] flex flex-col justify-between items-center text-black rounded-[15px] overflow-hidden aspect-[300/431]">
             <div class=" relative flex flex-col justify-between items-center text-black h-full p-xxl">
               <div
                   v-if="productInfo._embedded?.['wp:term']?.[1]?.[0]"
