@@ -938,6 +938,7 @@ input[type="checkbox"] {
   !h-[1px]
   mx-md
   flex
+  !bottom-0
   opacity-80
   items-center
   my-md
