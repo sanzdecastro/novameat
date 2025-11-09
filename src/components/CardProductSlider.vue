@@ -113,7 +113,7 @@ export default {
                   {{ productInfo._embedded['wp:term'][1][0]?.name }}
                 </div>
               <img class="absolute top-0 h-full object-cover" :src="productInfo?.acf?.main_image?.link" :alt="productInfo?.acf?.main_image?.alt">
-              <div class="text-white underline z-10 border border-white rounded-full flex items-center justify-center w-full md:-square font-haffe">Learn more</div>
+              <div class="text-white underline z-10 border aspect-square border-white rounded-full flex items-center justify-center w-full md:-square font-haffe">Learn more</div>
               </div>
           </swiper-slide>
          
