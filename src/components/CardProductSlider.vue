@@ -72,7 +72,7 @@ export default {
         }"
         :slides-per-view="1" 
         :space-between="0" >
-          <swiper-slide class="flex flex-col min-h-[550px] justify-between items-center md:aspect-[300/431]">
+          <swiper-slide class="flex flex-col min-h-[550px] justify-between items-center md:md:-[300/431]">
             <div class="relative p-card text-center text-white bg-black flex justify-start flex-col w-full h-full items-center rounded-[15px] overflow-hidden">
               <!-- tag -->
               <div
@@ -103,7 +103,7 @@ export default {
                 <p class="text-p-small pb-md" v-html="productInfo.excerpt?.rendered"></p>
             </div>
           </swiper-slide>
-          <swiper-slide class="relative  min-h-[550px] flex flex-col justify-between items-center text-black rounded-[15px] overflow-hidden aspect-[300/431]">
+          <swiper-slide class="relative  min-h-[550px] flex flex-col justify-between items-center text-black rounded-[15px] overflow-hidden md:aspect-[300/431]">
             <div class=" relative flex flex-col justify-between items-center text-black h-full p-xxl">
               <div
                   v-if="productInfo._embedded?.['wp:term']?.[1]?.[0]"
@@ -113,7 +113,7 @@ export default {
                   {{ productInfo._embedded['wp:term'][1][0]?.name }}
                 </div>
               <img class="absolute top-0 h-full object-cover" :src="productInfo?.acf?.main_image?.link" :alt="productInfo?.acf?.main_image?.alt">
-              <div class="text-white underline z-10 border border-white rounded-full flex items-center justify-center w-full aspect-square font-haffe">Learn more</div>
+              <div class="text-white underline z-10 border border-white rounded-full flex items-center justify-center w-full md:-square font-haffe">Learn more</div>
               </div>
           </swiper-slide>
          
