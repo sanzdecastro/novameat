@@ -1,0 +1,17 @@
+---
+const isProd = import.meta.env.PROD;
+---
+
+{isProd && (
+  <>
+    <!-- Start of HubSpot Embed Code -->
+    <script
+      type="text/javascript"
+      id="hs-script-loader"
+      async
+      defer
+      src="//js-eu1.hs-scripts.com/145277321.js"
+    ></script>
+    <!-- End of HubSpot Embed Code -->
+  </>
+)}

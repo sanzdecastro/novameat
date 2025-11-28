@@ -11,6 +11,8 @@ import CookieConsent from "../components/CookieConsent.vue";
 import CircleSmall from "../components/circleSmall.vue";
 import Cursor from "../components/cursor.vue";
 import { getPageById, getProductById, getOptions } from '../lib/api.js';
+import HubspotScript from "../components/HubsPotScript.astro";
+import HubsPotScript from "../components/HubsPotScript.astro";
 
 const isProd = import.meta.env.MODE === 'production';
 
@@ -282,6 +284,7 @@ const langIsActive = activeLangs?.acf?.activate_lang
       });
     </script>
     <CookieConsent client:load lang={lang} messages={messages} />
+    <HubsPotScript/>
   </body>
 </html>
 
