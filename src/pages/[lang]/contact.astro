@@ -20,6 +20,8 @@ const colorText = "text-black";
 const bgHeader = "bg-pink";
 const colorCursor = "bg-black";
 
+const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+
 const page = await getPage("contact", lang);
 
 ---
@@ -28,6 +30,7 @@ const page = await getPage("contact", lang);
   <section class="bg-pink contact-section">
     <form
       id="contact-form"
+       data-recaptcha-site-key={RECAPTCHA_SITE_KEY}
       class="p-sm pt-xxl-2 md:pt-xxl md:p-md flex flex-col md:flex-row md:flex-wrap"
     >
       <div class="intro-form w-full md:w-1/3 pb-xxl-2">
@@ -191,11 +194,42 @@ const page = await getPage("contact", lang);
         >
       </div>
     </form>
+   {RECAPTCHA_SITE_KEY && (
+      <script
+        src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+        async
+        defer
+      ></script>
+    )}
     <script type="module">
       const form = document.getElementById("contact-form");
+      const SITE_KEY = form.dataset.recaptchaSiteKey;
+
+      function waitForRecaptcha() {
+        return new Promise((resolve) => {
+          const check = () => {
+            if (window.grecaptcha && window.grecaptcha.execute) return resolve();
+            setTimeout(check, 50);
+          };
+          check();
+        });
+      }
+
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
+
         const data = Object.fromEntries(new FormData(form));
+
+        if (!SITE_KEY) {
+          alert("reCAPTCHA no configurado (falta PUBLIC_RECAPTCHA_SITE_KEY).");
+          return;
+        }
+
+        // 1) Token reCAPTCHA v3
+        await waitForRecaptcha();
+        const token = await window.grecaptcha.execute(SITE_KEY, { action: "contact" });
+
+        // 2) Enviar a tu endpoint junto al token
         const res = await fetch("/api/send-mail", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -204,6 +238,9 @@ const page = await getPage("contact", lang);
             subject: data.subject,
             message: data.message,
             service: data.service,
+            name: data.name,
+            company: data.company,
+            token, // 👈 IMPORTANTE para recaptcha
           }),
         });
 
@@ -211,11 +248,12 @@ const page = await getPage("contact", lang);
           alert("¡Correo enviado!");
           form.reset();
         } else {
-          const err = await res.json();
-          alert("Error al enviar: " + err.error);
+          const err = await res.json().catch(() => ({}));
+          alert("Error al enviar: " + (err.error || "Error desconocido"));
         }
       });
     </script>
+
   </section>
   
 </Layout>
