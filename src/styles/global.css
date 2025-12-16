@@ -145,7 +145,10 @@ h5 {
 
 /* Header */
 
-
+header {
+  @apply
+  z-[100];
+}
 
 header, .mobile-menu {
   ul {
@@ -195,14 +198,13 @@ header, .mobile-menu {
   top-0 
   left-0 
   w-full 
-  py-sm 
+  pt-sm 
   px-md
    text-white 
    border-b 
    text-p-small;
   ul {
-    @apply
-    pt-sm;
+    
     li {
       &:hover {
         a {
@@ -220,6 +222,7 @@ header, .mobile-menu {
           }
         }
           @apply
+          py-sm
           block
           relative;
           &.active {
@@ -764,6 +767,7 @@ input[type="checkbox"] {
 
 .mobile-menu {
   @apply
+  z-[99]
   p-sm
   flex
   flex-col

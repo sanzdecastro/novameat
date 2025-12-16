@@ -173,12 +173,12 @@ export default {
     </ul>
   </header>
   <div class="mobile-menu opacity-0 md:hidden">
-    <ul class="menu-items mt-[20vh] flex flex-col gap-1">
+    <ul class="menu-items mt-[20vh] flex flex-col gap-3">
       <li
         v-for="route in routes.filter((r) => r.key !== 'legal')"
         :key="route.key"
       >
-        <a @click="toggleMenu" :class="colorText" :href="to(route)">
+        <a @click="toggleMenu" :class="colorText" class="leading-[120%]" :href="to(route)">
           {{ route.label[lang] }}
           <span
             :class="colorText === 'text-black' ? 'bg-black' : 'bg-white'"
