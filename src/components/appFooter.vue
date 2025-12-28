@@ -85,7 +85,7 @@
                             <input type="checkbox" value="1" name="b_XXXXXXXXXXXX_MERGE3" id="MERGE3" required="true">
                             <div class="dot-check"></div>
                             )
-                            <label class="pl-xs" for="MERGE3">I agree to the <a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a> and <a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a>.</label>
+                            <label class="pl-xs" for="MERGE3">I agree to the <a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a> and <a :href="`/${lang}/legal/${t('legal.urls.legal_notice')}`">{{ t('footer.legal_notice') }}</a>.</label>
                         
                         </div> 
                     </form>

@@ -1725,3 +1725,11 @@ input[type="checkbox"] {
 }
 
 body { cursor: none; }
+
+
+/* label check newsletter */
+
+label[for="privacy"], label[for="MERGE3"] {
+    margin-left: calc(4vw * -1);
+    padding-left: 5vw;
+}
