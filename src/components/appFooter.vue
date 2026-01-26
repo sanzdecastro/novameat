@@ -8,7 +8,10 @@
     interface Props {
         lang: string
         routes: Routes
-        page: string
+        page:  {
+    type: Object,
+    required: true
+  }
         miniFooter: boolean
         langIsActive: boolean
         switchUrls: SwitchUrl[]

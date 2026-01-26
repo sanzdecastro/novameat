@@ -24,10 +24,10 @@ export default {
   mounted() {
     this.fetchProduct();
     
-    this.$nextTick(() => {
-      cardEffect();
+    // this.$nextTick(() => {
+    //   cardEffect();
    
-    });
+    // });
     
   },
   data() {

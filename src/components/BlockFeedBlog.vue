@@ -146,7 +146,7 @@ export default {
       <div class="post" v-for="(post, index) in blogPosts">
         <a :href="`/${lang}/journal/${post.slug}`">
           <div class="post-header">
-          <div class="log">( Log. {{ String(index + 1).padStart(2, '0') }} )</div>
+          <div class="log">( Log. {{ String(blogPosts.length - index).padStart(2, '0') }} )</div>
             <div class="image-wrapper">
                 <img :src="post?._embedded?.['wp:featuredmedia']?.[0]?.source_url" :alt="post.title.rendered">
                 <div class="categories">
