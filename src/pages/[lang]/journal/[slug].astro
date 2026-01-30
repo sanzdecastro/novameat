@@ -35,6 +35,8 @@ const encodedUrl = encodeURIComponent(pageUrl);
 const encodedText = encodeURIComponent(
   `Look at: https://novameat.com${pageUrl}`
 );
+
+const log = Astro.url.searchParams.get("log");
 ---
 
 <Layout
@@ -50,7 +52,9 @@ const encodedText = encodeURIComponent(
       <p>{date}</p>
     </div>
     <div class="center">
-      <span>( Log. 01 )</span>
+      <span>{log && (
+        <div class="log">( Log. {String(log).padStart(2, "0")} )</div>
+      )}</span>
       <h1 class="text-center text-title">{page?.title.rendered}</h1>
       <img
         src={featuredMedia}

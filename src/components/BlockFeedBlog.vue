@@ -144,7 +144,7 @@ export default {
     </div>
     <div class="feed grid-view">
       <div class="post" v-for="(post, index) in blogPosts">
-        <a :href="`/${lang}/journal/${post.slug}`">
+        <a :href="`/${lang}/journal/${post.slug}?log=${String(blogPosts.length - index).padStart(2,'0')}`">
           <div class="post-header">
           <div class="log">( Log. {{ String(blogPosts.length - index).padStart(2, '0') }} )</div>
             <div class="image-wrapper">
