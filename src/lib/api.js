@@ -2,6 +2,39 @@ const domain = import.meta.env.PUBLIC_WP_DOMAIN;
 export const apiUrl = `${domain}/wp-json/wp/v2`;
 export const apiUrlv3 = `${domain}/wp-json/acf/v3`;
 
+function getWpAuthHeaders() {
+  const user = import.meta.env.WP_USER;
+  const pass = import.meta.env.WP_APP_PASSWORD;
+
+  if (!user || !pass) {
+    throw new Error("WP_USER o WP_APP_PASSWORD no definidos");
+  }
+
+  const auth = Buffer.from(`${user}:${pass}`).toString("base64");
+
+  return {
+    Authorization: `Basic ${auth}`,
+  };
+}
+
+// ✅ Preview por SLUG (para /preview/industry/)
+export async function getPagePreview(slug, lang) {
+  const headers = getWpAuthHeaders();
+
+  const url = `${apiUrl}/pages?slug=${encodeURIComponent(slug)}&lang=${encodeURIComponent(lang)}&status=any&context=edit&per_page=1`;
+
+  const res = await fetch(url, { headers });
+  const text = await res.text();
+
+  if (!res.ok) {
+    throw new Error(`WP ${res.status}: ${text}`);
+  }
+
+  const pages = JSON.parse(text);
+  return pages?.length ? pages[0] : null;
+}
+
+
 // Get Pages
 export async function getPages(lang) {
   const response = await fetch(`${apiUrl}/pages?lang=${lang}`);

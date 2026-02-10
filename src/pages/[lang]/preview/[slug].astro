@@ -1,0 +1,27 @@
+---
+import PageTemplate from "../../../components/PageTemplate.astro";
+import { getPagePreview } from "../../../lib/api.js";
+
+const { lang, slug } = Astro.params; // ✅ lang viene de la ruta /en/...
+
+const url = new URL(Astro.request.url);
+const secret = url.searchParams.get("secret");
+
+// ✅ si falta secret, lo añadimos y recargamos LA MISMA URL
+if (!secret) {
+  url.searchParams.set("secret", import.meta.env.PREVIEW_SECRET);
+  return Astro.redirect(url.toString(), 302);
+}
+
+// Seguridad
+if (secret !== import.meta.env.PREVIEW_SECRET) {
+  return new Response("Unauthorized", { status: 401 });
+}
+
+// Traer draft (ahora sí, con el lang correcto)
+const page = await getPagePreview(slug, lang);
+if (!page) return new Response("Not found", { status: 404 });
+---
+
+<meta name="robots" content="noindex,nofollow" />
+<PageTemplate lang={lang} slug={slug} page={page} />
