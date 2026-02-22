@@ -1689,10 +1689,10 @@ input[type="checkbox"] {
     text-p-small
     font-montagu
     text-white
-    rounded-full
+    rounded-[8px]
     flex
     gap-2
-    items-center
+    items-start
     bg-black;
     .maplibregl-popup-close-button {
       @apply
@@ -1700,6 +1700,8 @@ input[type="checkbox"] {
     }
     a {
       @apply
+      !appearance-none
+      focus:!appearance-none
       border-0
       font-montagu;
     }

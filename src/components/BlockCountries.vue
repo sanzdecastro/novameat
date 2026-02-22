@@ -19,6 +19,7 @@ export default {
   },
   setup(props) {
     const mapRef = ref(null)
+       const mapElRef = ref(null); 
 
     function handleAddressClick(address) {
       
@@ -28,10 +29,13 @@ export default {
       if (isNaN(lat) || isNaN(lng) || !mapRef.value) return
       mapRef.value.zoomTo([lng, lat], 17)
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      mapElRef.value?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
 
-    return { mapRef, handleAddressClick }
+    return { mapRef, mapElRef, handleAddressClick }
   }
 };
 </script>
@@ -39,7 +43,9 @@ export default {
 <template>
   
   <div >
+    <div ref="mapElRef">
     <BlockMap v-if="section.visible === true" ref="mapRef" :countries="section.countries" class="border border-b border-black"></BlockMap>
+    </div>
     <BlockText :section="section"></BlockText>
     <div class="block-dots grid grid-cols-1 md:grid-cols-8 gap-sm mb-xxl-2" 
     v-for="(country, index) in section.countries">
