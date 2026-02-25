@@ -80,7 +80,10 @@ onMounted(() => {
           .setLngLat(position)
             .setPopup(
               new maplibregl.Popup({ offset: 10 }).setHTML(`
-                  <p class='font-haffe'><a target="_blank" href="${a.google_maps}">${a.shop} </br><span style="display:inline-block; text-decoration:underline;">↳ Web</span></a></p>
+                  <p class='font-haffe mb-2 !font-semibold'><a target="_blank" href="${a.google_maps}">${a.shop}</p> 
+                    <p>${a.phone} </p>
+                    <p>${a.mail} </p>
+                    <p><span style="display:inline-block; text-decoration:underline;">↳ Web</span></a></p>
                 `)
             )
           .addTo(mapInstance);

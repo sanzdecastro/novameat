@@ -59,6 +59,8 @@ export default {
             <p class="text-p-small">{{ address.shop }}</p>
             <p class="text-p-small">{{ address.street }}</p>
             <p class="text-p-small">{{ address.city }}</p>
+            <p class="text-p-small">{{ address.phone }}</p>
+            <p class="text-p-small"><a :href="`mailto:${address.mail}`" target="_blank"></a>{{ address.mail }}</p>
           </div>
           
         </div>

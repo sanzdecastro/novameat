@@ -1685,18 +1685,22 @@ input[type="checkbox"] {
   .maplibregl-popup-content {
     @apply
     px-sm
-    py-[4px]
+    py-sm
+    relative
     text-p-small
     font-montagu
     text-white
     rounded-[8px]
     flex
-    gap-2
+    flex-col
+    gap-0.5
     items-start
     bg-black;
     .maplibregl-popup-close-button {
       @apply
-      relative;
+      absolute
+      top-1
+      right-3;
     }
     a {
       @apply
