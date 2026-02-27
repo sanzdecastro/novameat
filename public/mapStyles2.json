@@ -21,7 +21,7 @@
     },
     "61k8rs9": {
       "type": "geojson",
-      "data": "https://r2.datahub.io/clvyjaryy0000la0cxieg4o8o/main/raw/data/countries.geojson"
+      "data": "/countries-geo.json"
     }
   },
   "sprite": "https://openmaptiles.github.io/maptiler-toner-gl-style/sprite",
