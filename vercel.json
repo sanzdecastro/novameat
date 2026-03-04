@@ -1,5 +1,12 @@
 {
     "buildCommand": "npm run build",
     "outputDirectory": "dist",
-    "framework": "astro"
+    "framework": "astro",
+    "redirects": [
+    {
+      "source": "/((?!en/|es/).*)",
+      "destination": "/en/$1",
+      "permanent": false
+    }
+  ]
   }
