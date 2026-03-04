@@ -9,7 +9,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [vue()],
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    edgeMiddleware: true,
+  }),
   i18n: {
     defaultLocale: 'en',
     locales: ['en','es'],
