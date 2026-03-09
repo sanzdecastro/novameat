@@ -1,6 +1,11 @@
 // src/lib/routes.js
 export const routes = [
     {
+      key: 'balanced-protein',
+      label: { en: 'Balanced Proteins', es: 'Proteína híbrida' },
+      slug:  { en: 'balanced-protein', es: 'proteina-hibrida'  },
+    },
+    {
       key: 'products',
       label: { en: 'Products', es: 'Productos' },
       slug:  { en: 'products', es: 'productos'  },
