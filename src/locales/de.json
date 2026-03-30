@@ -1,0 +1,33 @@
+{
+  "claims": {
+    "claim1": "Eine neue kulinarische Tradition",
+    "claim2": "Speziell für Lebensmittelprofis entwickelt"
+  },
+  "footer": {
+    "text_newsletter": "Melden Sie sich für unseren Newsletter an und erhalten Sie eine sorgfältig kuratierte Auswahl an Rezepten, Interviews, Forschung und weiteren Branchenneuigkeiten – direkt aus unserem Journal in Ihr Postfach.",
+    "legal_notice": "Impressum",
+    "cookie_information": "Cookie-Informationen",
+    "privacy_statement": "Datenschutzerklärung",
+    "copyright": "Alle Rechte vorbehalten",
+    "certifications": "Zertifizierungen",
+    "financial_support": "Finanzielle Unterstützung durch das CDTI im Rahmen des NEOTEC-Programms, kofinanziert durch das EIC Accelerator Programm der Europäischen Union. Fördervereinbarung Nr. 190112238",
+    "member_of": "Stolze Mitglieder von:",
+    "placeholder_mail": "Ihre E-Mail",
+    "subscribe_button": "Abonnieren"
+  },
+  "products": {
+    "learn_more": "Mehr erfahren"
+  },
+  "legal": {
+    "urls": {
+      "legal_notice": "impressum",
+      "cookie_information": "cookie-richtlinie",
+      "privacy_statement": "datenschutzerklaerung"
+    }
+  },
+  "cookies": {
+    "title": "Cookies",
+    "text1": "Wir behandeln Cookies so wie unsere Produkte: mit wenigen Zutaten und voller Transparenz.",
+    "text2": "Wir verwenden eigene und Drittanbieter-Cookies, um Ihr Nutzererlebnis zu verbessern, die Nutzung der Website zu verstehen und Inhalte an Ihre Präferenzen anzupassen. Sie können Ihre Einstellungen verwalten oder mehr in unserer Cookie-Richtlinie erfahren."
+  }
+}

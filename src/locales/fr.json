@@ -1,0 +1,33 @@
+{
+  "claims": {
+    "claim1": "Une nouvelle tradition culinaire",
+    "claim2": "Créé spécialement pour les professionnels de l’alimentation"
+  },
+  "footer": {
+    "text_newsletter": "Inscrivez-vous à notre newsletter et recevez une sélection soignée de recettes, interviews, recherches et autres actualités du secteur—directement de notre journal dans votre boîte mail.",
+    "legal_notice": "Mentions légales",
+    "cookie_information": "Informations sur les cookies",
+    "privacy_statement": "Politique de confidentialité",
+    "copyright": "Tous droits réservés",
+    "certifications": "Certifications",
+    "financial_support": "Soutien financier du CDTI à travers le programme NEOTEC cofinancé par le programme EIC Accelerator de l’Union européenne. Convention de subvention n° 190112238",
+    "member_of": "Fiers membres de :",
+    "placeholder_mail": "Votre e-mail",
+    "subscribe_button": "S’inscrire"
+  },
+  "products": {
+    "learn_more": "En savoir plus"
+  },
+  "legal": {
+    "urls": {
+      "legal_notice": "mentions-legales",
+      "cookie_information": "politique-de-cookies",
+      "privacy_statement": "politique-de-confidentialite"
+    }
+  },
+  "cookies": {
+    "title": "Cookies",
+    "text1": "Nous abordons les cookies comme nos produits : avec peu d’ingrédients et une transparence totale.",
+    "text2": "Nous utilisons des cookies internes et tiers pour améliorer votre expérience de navigation, comprendre l’utilisation du site et adapter le contenu à vos préférences. Vous pouvez gérer vos paramètres ou en savoir plus dans notre politique de cookies."
+  }
+}
