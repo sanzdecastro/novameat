@@ -16,7 +16,7 @@ import HubsPotScript from "../components/HubsPotScript.astro";
 
 const isProd = import.meta.env.MODE === 'production';
 
-const LOCALES = ['en','es','it','fr','de'];
+const LOCALES = ['en','es','it' ,'de'];
 const { lang, slug, page, seo, miniFooter = false, getById, colorCursor="bg-pink", colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
 
 // determina el slug actual, dinámico o estático
