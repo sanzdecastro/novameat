@@ -80,7 +80,14 @@ export async function getPosts(lang) {
 }
 
 // Get Singular Page
+// Primero busca en el cache de la colección completa (si ya fue cargada por warmCache)
 export async function getPage(slug, lang) {
+  const collectionUrl = `${apiUrl}/pages?lang=${lang}`;
+  const collectionCached = cache.get(collectionUrl);
+  if (collectionCached && Date.now() - collectionCached.timestamp < CACHE_TTL) {
+    const page = collectionCached.data.find((p) => p.slug === slug);
+    if (page) return { ...page };
+  }
   const pages = await cachedFetch(`${apiUrl}/pages?slug=${slug}&lang=${lang}`);
   if (!pages.length) return null;
   return { ...pages[0] };
@@ -114,4 +121,24 @@ export async function getIngredient(slug, lang) {
 export async function getPost(slug, lang) {
   const posts = await cachedFetch(`${apiUrl}/posts?slug=${slug}&lang=${lang}&_embed`);
   return posts.length ? posts[0] : null;
+}
+
+// Warm Cache — llama en segundo plano desde Layout.astro para pre-cargar todo
+let cacheWarmed = false;
+
+export function warmCache() {
+  if (cacheWarmed) return;
+  cacheWarmed = true;
+
+  const langs = ['en', 'es', 'it', 'de'];
+
+  // Todo en paralelo, sin bloquear el render actual
+  Promise.all([
+    getOptions(),
+    ...langs.flatMap((lang) => [
+      getPages(lang),
+      getProducts(lang),
+      getPosts(lang),
+    ]),
+  ]).catch(() => {}); // silencioso — no rompe nada si falla
 }
