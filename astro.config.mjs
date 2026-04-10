@@ -20,9 +20,15 @@ export default defineConfig({
    }
   },
   prefetch: {
-    prefetchAll: false
+    prefetchAll: true,
+    defaultStrategy: 'hover'
   },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    server: {
+      fs: {
+        allow: ['../../..']
+      }
+    }
   }
 });
