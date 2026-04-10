@@ -2,6 +2,25 @@ const domain = import.meta.env.PUBLIC_WP_DOMAIN;
 export const apiUrl = `${domain}/wp-json/wp/v2`;
 export const apiUrlv3 = `${domain}/wp-json/acf/v3`;
 
+// Cache genérico con TTL de 5 minutos
+const cache = new Map();
+const CACHE_TTL = 5 * 60 * 1000;
+
+async function cachedFetch(url) {
+  const now = Date.now();
+  const cached = cache.get(url);
+
+  if (cached && now - cached.timestamp < CACHE_TTL) {
+    return cached.data;
+  }
+
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Error fetching ${url}: ${response.status}`);
+  const data = await response.json();
+  cache.set(url, { data, timestamp: now });
+  return data;
+}
+
 function getWpAuthHeaders() {
   const user = import.meta.env.WP_USER;
   const pass = import.meta.env.WP_APP_PASSWORD;
@@ -37,101 +56,62 @@ export async function getPagePreview(slug, lang) {
 
 // Get Pages
 export async function getPages(lang) {
-  const response = await fetch(`${apiUrl}/pages?lang=${lang}`);
-  if (!response.ok) throw new Error("Error al obtener pages");
-  return await response.json();
+  return cachedFetch(`${apiUrl}/pages?lang=${lang}`);
 }
 
 // Get Options
-let optionsCache = null;
-
 export async function getOptions() {
-  if (optionsCache) return optionsCache;
-  const response = await fetch(`${apiUrlv3}/options/options`);
-  if (!response.ok) throw new Error("Error al obtener opciones");
-  optionsCache = await response.json();
-  return optionsCache;
+  return cachedFetch(`${apiUrlv3}/options/options`);
 }
 
 // Get Products
 export async function getProducts(lang) {
-  const response = await fetch(`${apiUrl}/product?lang=${lang}`);
-  if (!response.ok) throw new Error("Error al obtener products");
-  return await response.json();
+  return cachedFetch(`${apiUrl}/product?lang=${lang}`);
 }
 
 // Get Product Categories
-export async function getProductCategories(apiUrl, idCategory, lang) {
-  const response = await fetch(`${apiUrl}/categories/${idCategory}?lang=${lang}`);
-  if (!response.ok) throw new Error("Error al obtener categories");
-  return await response.json();
+export async function getProductCategories(categoriesApiUrl, idCategory, lang) {
+  return cachedFetch(`${categoriesApiUrl}/categories/${idCategory}?lang=${lang}`);
 }
 
 // Get Posts
 export async function getPosts(lang) {
-  const response = await fetch(`${apiUrl}/posts?lang=${lang}`);
-  if (!response.ok) throw new Error("Error al obtener posts");
-  return await response.json();
+  return cachedFetch(`${apiUrl}/posts?lang=${lang}`);
 }
 
 // Get Singular Page
 export async function getPage(slug, lang) {
-  const response = await fetch(`${apiUrl}/pages?slug=${slug}&lang=${lang}`);
-  const pages = await response.json();
-
+  const pages = await cachedFetch(`${apiUrl}/pages?slug=${slug}&lang=${lang}`);
   if (!pages.length) return null;
-
-  const page = pages[0]; 
-
-  return { ...page };
+  return { ...pages[0] };
 }
+
 // Obtiene una página concreta por ID
 export async function getPageById(id) {
-  const res = await fetch(`${apiUrl}/pages/${id}`);
-  if (!res.ok) throw new Error('WP: fallo al cargar página por ID');
-  return res.json();
+  return cachedFetch(`${apiUrl}/pages/${id}`);
 }
 
 // Get Singular Product
 export async function getProduct(slug, lang) {
-
-  const response = await fetch(
-    `${apiUrl}/product?slug=${slug}&lang=${lang}&_embed`
-  );
-  const projects = await response.json();
-
+  const projects = await cachedFetch(`${apiUrl}/product?slug=${slug}&lang=${lang}&_embed`);
   if (!projects.length) return null;
-
-  const project = projects[0]; 
-
-  return { ...project, translations: {} };
+  return { ...projects[0], translations: {} };
 }
 
 /** OBTENER SLUG traducido de producto por ID */
 export async function getProductById(id) {
-  const res = await fetch(`${apiUrl}/product/${id}`);
-  if (!res.ok) throw new Error("Error al obtener producto por ID");
-  return res.json();
+  return cachedFetch(`${apiUrl}/product/${id}`);
 }
 
 // Get Singular Ingredient
 export async function getIngredient(slug, lang) {
-
-  const response = await fetch(
-    `${apiUrl}/ingredients?slug=${slug}&lang=${lang}&_embed`
-  );
-  const ingredients = await response.json();
-
+  const ingredients = await cachedFetch(`${apiUrl}/ingredients?slug=${slug}&lang=${lang}&_embed`);
   if (!ingredients.length) return null;
-
-  const ingredient = ingredients[0]; 
-
-  return { ...ingredient, translations: {} };
+  return { ...ingredients[0], translations: {} };
 }
 
 // Get Singular Post
 export async function getPost(slug, lang) {
-  const response = await fetch(`${apiUrl}/posts?slug=${slug}&lang=${lang}&_embed`);
-  const posts = await response.json();
+  const posts = await cachedFetch(`${apiUrl}/posts?slug=${slug}&lang=${lang}&_embed`);
   return posts.length ? posts[0] : null;
 }
