@@ -43,10 +43,14 @@ export async function getPages(lang) {
 }
 
 // Get Options
+let optionsCache = null;
+
 export async function getOptions() {
+  if (optionsCache) return optionsCache;
   const response = await fetch(`${apiUrlv3}/options/options`);
   if (!response.ok) throw new Error("Error al obtener opciones");
-  return await response.json();
+  optionsCache = await response.json();
+  return optionsCache;
 }
 
 // Get Products

@@ -139,10 +139,23 @@ const langIsActive = activeLangs?.acf?.activate_lang
 
       gsap.registerPlugin(ScrollTrigger);
 
+      let lenisInstance: any = null;
+      let rafId: number | null = null;
+
       function lenis() {
-        const lenis = new Lenis({
+        // Destruye la instancia anterior para cancelar su RAF loop
+        if (lenisInstance) {
+          lenisInstance.destroy();
+          lenisInstance = null;
+        }
+        if (rafId !== null) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+
+        lenisInstance = new Lenis({
           duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         });
 
         // Scroll para anchor points
@@ -158,23 +171,23 @@ const langIsActive = activeLangs?.acf?.activate_lang
                 }
               });
 
-              lenis.scrollTo(targetElement);
+              lenisInstance.scrollTo(targetElement);
             }
           });
         });
 
-        lenis.on("scroll", ScrollTrigger.update);
-        lenis.scrollTo(0, { immediate: true });
+        lenisInstance.on("scroll", ScrollTrigger.update);
+        lenisInstance.scrollTo(0, { immediate: true });
         ScrollTrigger.refresh();
         ScrollTrigger.defaults({
           //   scroller: document,
         });
-        lenis.resize();
+        lenisInstance.resize();
         function raf(time: any) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
+          lenisInstance.raf(time);
+          rafId = requestAnimationFrame(raf);
         }
-        requestAnimationFrame(raf);
+        rafId = requestAnimationFrame(raf);
       }
 
       function outPage() {
