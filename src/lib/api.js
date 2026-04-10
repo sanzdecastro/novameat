@@ -99,7 +99,14 @@ export async function getPageById(id) {
 }
 
 // Get Singular Product
+// Primero busca en el cache de la colección completa (si ya fue cargada por warmCache)
 export async function getProduct(slug, lang) {
+  const collectionUrl = `${apiUrl}/product?lang=${lang}&_embed`;
+  const collectionCached = cache.get(collectionUrl);
+  if (collectionCached && Date.now() - collectionCached.timestamp < CACHE_TTL) {
+    const product = collectionCached.data.find((p) => p.slug === slug);
+    if (product) return { ...product, translations: {} };
+  }
   const projects = await cachedFetch(`${apiUrl}/product?slug=${slug}&lang=${lang}&_embed`);
   if (!projects.length) return null;
   return { ...projects[0], translations: {} };
@@ -137,7 +144,8 @@ export function warmCache() {
     getOptions(),
     ...langs.flatMap((lang) => [
       getPages(lang),
-      getProducts(lang),
+      // Productos con _embed para que getProduct() pueda usarlos directamente
+      cachedFetch(`${apiUrl}/product?lang=${lang}&_embed`),
       getPosts(lang),
     ]),
   ]).catch(() => {}); // silencioso — no rompe nada si falla
