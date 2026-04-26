@@ -991,6 +991,12 @@ input[type="checkbox"] {
     md:col-span-6
     md:col-start-4;
 
+    a {
+      @apply
+      underline
+      underline-offset-2;
+    }
+
     
 
     &.active-note {
