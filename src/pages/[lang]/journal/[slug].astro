@@ -11,6 +11,7 @@ import {
 } from "../../../lib/api.js";
 
 import BlockBlog from "../../../components/BlockBlog.vue";
+import ButtonSection from "../../../components/ButtonSection.vue"
 
 const { lang, slug } = Astro.params;
 const page = await getPost(slug, lang);
@@ -81,7 +82,9 @@ const log = Astro.url.searchParams.get("log");
       flexibleSections.map((section: any) => {
         if (section.acf_fc_layout === "block_blog") {
           return <BlockBlog section={section} client:only />;
-        }
+        } else if(section.acf_fc_layout === "button") {
+        return <ButtonSection section={section} client:only />;
+      }
 
         return null;
       })
