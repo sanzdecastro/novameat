@@ -997,6 +997,33 @@ input[type="checkbox"] {
       underline-offset-2;
     }
 
+    h1, h2 {
+       @apply
+      text-[30px]
+    }
+
+    h3 {
+      @apply
+      text-[28px]
+    }
+
+    h4 {
+      @apply
+      text-[24px]
+    }
+
+    h5 {
+      @apply
+      font-bold
+      text-[22px];
+    }
+
+    h6 {
+      @apply
+      
+      text-[22px]
+    }
+
     
 
     &.active-note {
