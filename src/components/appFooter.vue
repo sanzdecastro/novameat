@@ -28,6 +28,7 @@
     return key.split('.')
         .reduce((obj: any, part: string) => obj?.[part], props.messages) ?? ''
     }
+
 </script>
 
 <template>
@@ -40,6 +41,7 @@
                 <li><a :href="`/${lang}/legal/${t('legal.urls.legal_notice')}`">{{ t('footer.legal_notice') }}</a></li>
                 <li><a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a></li>
                 <li><a :href="`/${lang}/legal/${t('legal.urls.privacy_statement')}`">{{ t('footer.privacy_statement') }}</a></li>
+                <li><a href="#" data-open-cookie-settings>{{ t('footer.cookie_settings') }}</a></li>
             </ul>
             <ul v-if="langIsActive" class="lang gap-2 flex language-switcher">
                 <li v-for="item in switchUrls" :key="item.code">
@@ -101,6 +103,7 @@
                         <li><a :href="`/${lang}/legal/${t('legal.urls.legal_notice')}`">{{ t('footer.legal_notice') }}</a></li>
                         <li><a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a></li>
                         <li><a :href="`/${lang}/legal/${t('legal.urls.privacy_statement')}`">{{ t('footer.privacy_statement') }}</a></li>
+                        <li><a href="#" data-open-cookie-settings>{{ t('footer.cookie_settings') }}</a></li>
                     </ul>
                   
                     <ul v-if="langIsActive" class="lang gap-2 flex language-switcher">

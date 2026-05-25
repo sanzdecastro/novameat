@@ -1,33 +1,52 @@
 {
-    "claims" : {
-        "claim1" : "A new culinary tradition",
-        "claim2" : "Specially created for food makers"
-    },
-    "footer" : {
-        "text_newsletter" : "Suscríbete a nuestro boletín y recibe una selección cuidadosamente seleccionada de recetas, entrevistas, investigaciones y otras noticias de la industria, directamente desde nuestra revista a tu bandeja de entrada.",
-        "legal_notice" : "Aviso legal",
-        "cookie_information" : "Política de cookies",
-        "privacy_statement" : "Política de privacidad",
-        "copyright" : "Todos los derechos reservados",
-        "certifications" : "Certificaciones",
-        "financial_support" : "Apoyo financiero del CDTI a través del programa NEOTEC Cofinanciado por el programa EIC Accelerator de la Unión Europea Acuerdo de subvención nº 190112238",
-        "member_of" : "Orgulloso miembro de:",
-        "placeholder_mail" : "Escribe tu e-mail",
-        "subscribe_button" : "Suscríbete"
-    },
-    "products" : {
-        "learn_more" : "Saber más"
-    },
-    "legal" : {
-        "urls" : {
-            "legal_notice" : "aviso-legal",
-            "cookie_information" : "politica-de-cookies",
-            "privacy_statement" : "politica-de-privacidad"
-        }
-    },
-    "cookies" : {
-        "title" : "Cookies",
-        "text1" : " We approach cookies the same way we approach our cuts: with fewer ingredients and full transparency.",
-        "text2" : "We use our own and third-party cookies to improve your browsing experience, understand how the site is used and adapt content to your preferences. You can manage your settings or read more about them in our Cookies Policy."
+  "claims": {
+    "claim1": "A new culinary tradition",
+    "claim2": "Specially created for food makers"
+  },
+  "footer": {
+    "text_newsletter": "Suscríbete a nuestro boletín y recibe una selección cuidadosamente seleccionada de recetas, entrevistas, investigaciones y otras noticias de la industria, directamente desde nuestra revista a tu bandeja de entrada.",
+    "legal_notice": "Aviso legal",
+    "cookie_information": "Política de cookies",
+    "privacy_statement": "Política de privacidad",
+    "copyright": "Todos los derechos reservados",
+    "certifications": "Certificaciones",
+    "financial_support": "Apoyo financiero del CDTI a través del programa NEOTEC Cofinanciado por el programa EIC Accelerator de la Unión Europea Acuerdo de subvención nº 190112238",
+    "member_of": "Orgulloso miembro de:",
+    "placeholder_mail": "Escribe tu e-mail",
+    "subscribe_button": "Suscríbete",
+    "cookie_settings": "Configurar Cookies"
+  },
+  "products": {
+    "learn_more": "Saber más"
+  },
+  "legal": {
+    "urls": {
+      "legal_notice": "aviso-legal",
+      "cookie_information": "politica-de-cookies",
+      "privacy_statement": "politica-de-privacidad"
     }
+  },
+  "cookies": {
+    "title": "Cookies",
+    "text1": " We approach cookies the same way we approach our cuts: with fewer ingredients and full transparency.",
+    "text2": "We use our own and third-party cookies to improve your browsing experience, understand how the site is used and adapt content to your preferences. You can manage your settings or read more about them in our Cookies Policy.",
+    "banner": {
+      "reject": "Rechazar",
+      "configure": "Configurar",
+      "accept_all": "Aceptar todo"
+    },
+    "modal": {
+      "title": "Configuración de Cookies",
+      "intro": "Nuestros cortes no son una alternativa, son una elección. Y creemos en las elecciones informadas. A continuación encontrarás un desglose de las cookies que utilizamos y para qué las utilizamos.",
+      "essential_title": "Cookies Esenciales",
+      "essential_desc": "Siempre activas. Son estrictamente necesarias para el funcionamiento del sitio: guardan tus preferencias de cookies y protegen nuestros formularios de contacto contra el spam (Google reCAPTCHA).",
+      "analytics_title": "Cookies Analíticas",
+      "analytics_desc": "Nos ayudan a entender cómo interactúan los visitantes con el sitio recopilando datos de uso anónimos (Google Analytics).",
+      "marketing_title": "Cookies de Marketing",
+      "marketing_desc": "Nos permiten rastrear leads y enviar comunicaciones comerciales relevantes basadas en tus interacciones con el sitio (HubSpot).",
+      "reject_all": "Rechazar todo",
+      "save": "Guardar configuración",
+      "close": "Cerrar"
+    }
+  }
 }

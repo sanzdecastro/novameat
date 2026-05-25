@@ -1,33 +1,52 @@
 {
-    "claims" : {
-        "claim1" : "A new culinary tradition",
-        "claim2" : "Specially created for food makers"
-    },
-    "footer" : {
-        "text_newsletter" : "Sign up to our newsletter and get a carefully curated selection of recipes, interviews, research, and other industry news–straight from our journal to your inbox.",
-        "legal_notice" : "Legal Notice",
-        "cookie_information" : "Cookie Information",
-        "privacy_statement" : "Privacy Statement",
-        "copyright" : "All Rights Reserved",
-        "certifications" : "Certifications",
-        "financial_support" : "Financial support from CDTI through the NEOTEC programme Co-funded by the European Union's EIC Accelerator programme Grant Agreement Nº 190112238",
-        "member_of" : "Proud members of:",
-        "placeholder_mail" : "Your e-mail here",
-        "subscribe_button" : "Subscribe"
-    },
-    "products" : {
-        "learn_more" : "Learn more"
-    },
-    "legal" : {
-        "urls" : {
-            "legal_notice" : "legal-notice",
-            "cookie_information" : "cookie-policy",
-            "privacy_statement" : "privacy-statement"
-        }
-    },
-    "cookies" : {
-        "title" : "Cookies",
-        "text1" : " We approach cookies the same way we approach our cuts: with fewer ingredients and full transparency.",
-        "text2" : "We use our own and third-party cookies to improve your browsing experience, understand how the site is used and adapt content to your preferences. You can manage your settings or read more about them in our Cookies Policy."
+  "claims": {
+    "claim1": "A new culinary tradition",
+    "claim2": "Specially created for food makers"
+  },
+  "footer": {
+    "text_newsletter": "Sign up to our newsletter and get a carefully curated selection of recipes, interviews, research, and other industry news–straight from our journal to your inbox.",
+    "legal_notice": "Legal Notice",
+    "cookie_information": "Cookie Information",
+    "privacy_statement": "Privacy Statement",
+    "copyright": "All Rights Reserved",
+    "certifications": "Certifications",
+    "financial_support": "Financial support from CDTI through the NEOTEC programme Co-funded by the European Union's EIC Accelerator programme Grant Agreement Nº 190112238",
+    "member_of": "Proud members of:",
+    "placeholder_mail": "Your e-mail here",
+    "subscribe_button": "Subscribe",
+    "cookie_settings": "Cookie Settings"
+  },
+  "products": {
+    "learn_more": "Learn more"
+  },
+  "legal": {
+    "urls": {
+      "legal_notice": "legal-notice",
+      "cookie_information": "cookie-policy",
+      "privacy_statement": "privacy-statement"
     }
+  },
+  "cookies": {
+    "title": "Cookies",
+    "text1": " We approach cookies the same way we approach our cuts: with fewer ingredients and full transparency.",
+    "text2": "We use our own and third-party cookies to improve your browsing experience, understand how the site is used and adapt content to your preferences. You can manage your settings or read more about them in our Cookies Policy.",
+    "banner": {
+      "reject": "Reject",
+      "configure": "Configure",
+      "accept_all": "Accept all"
+    },
+    "modal": {
+      "title": "Cookie Settings",
+      "intro": "Our cuts are not an alternative, they're a choice. And we believe in informed choices. Below, you'll find a breakdown of the cookies we use and why we use them for.",
+      "essential_title": "Essential Cookies",
+      "essential_desc": "These are always active. They are strictly necessary for the site to function: storing your cookie preferences and protecting our contact forms against spam (Google reCAPTCHA).",
+      "analytics_title": "Analytics Cookies",
+      "analytics_desc": "They help us understand how visitors interact with the site by collecting anonymous usage data (Google Analytics).",
+      "marketing_title": "Marketing Cookies",
+      "marketing_desc": "They allow us to track leads and send relevant commercial communications based on your interactions with our site (HubSpot).",
+      "reject_all": "Reject all",
+      "save": "Save Settings",
+      "close": "Close"
+    }
+  }
 }

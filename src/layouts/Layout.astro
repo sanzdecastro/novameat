@@ -11,10 +11,6 @@ import CookieConsent from "../components/CookieConsent.vue";
 import CircleSmall from "../components/circleSmall.vue";
 import Cursor from "../components/cursor.vue";
 import { getPageById, getProductById, getOptions, warmCache } from '../lib/api.js';
-import HubspotScript from "../components/HubsPotScript.astro";
-import HubsPotScript from "../components/HubsPotScript.astro";
-
-const isProd = import.meta.env.MODE === 'production';
 
 const LOCALES = ['en','es','it' ,'de'];
 const { lang, slug, page, seo, miniFooter = false, getById, colorCursor="bg-pink", colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
@@ -101,13 +97,6 @@ warmCache();
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <ViewTransitions />
-    <!-- Google tag (gtag.js) --> 
-    {isProd && (
-      <>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-H5KKM5STLL"></script> 
-        <script is:inline> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-H5KKM5STLL'); </script>
-     </>
-    )}
   </head>
 
   <body class="bg-white">
@@ -300,7 +289,6 @@ warmCache();
       });
     </script>
     <CookieConsent client:load lang={lang} messages={messages} />
-    <HubsPotScript/>
   </body>
 </html>
 

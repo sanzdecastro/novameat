@@ -3,6 +3,11 @@ import { defineMiddleware } from "astro:middleware";
 export const onRequest = defineMiddleware((context, next) => {
   const { pathname } = context.url;
 
+  // bloquea peticiones de herramientas del navegador antes de que lleguen al router
+  if (pathname.startsWith("/.well-known/")) {
+    return new Response(null, { status: 404 });
+  }
+
   // deja pasar: ya con locale, assets, endpoints internos
   if (
     pathname === "/favicon.ico" ||

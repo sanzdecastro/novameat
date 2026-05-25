@@ -13,7 +13,8 @@
     "financial_support": "Soutien financier du CDTI à travers le programme NEOTEC cofinancé par le programme EIC Accelerator de l’Union européenne. Convention de subvention n° 190112238",
     "member_of": "Fiers membres de :",
     "placeholder_mail": "Votre e-mail",
-    "subscribe_button": "S’inscrire"
+    "subscribe_button": "S’inscrire",
+    "cookie_settings": "Paramètres des cookies"
   },
   "products": {
     "learn_more": "En savoir plus"
@@ -28,6 +29,24 @@
   "cookies": {
     "title": "Cookies",
     "text1": "Nous abordons les cookies comme nos produits : avec peu d’ingrédients et une transparence totale.",
-    "text2": "Nous utilisons des cookies internes et tiers pour améliorer votre expérience de navigation, comprendre l’utilisation du site et adapter le contenu à vos préférences. Vous pouvez gérer vos paramètres ou en savoir plus dans notre politique de cookies."
+    "text2": "Nous utilisons des cookies internes et tiers pour améliorer votre expérience de navigation, comprendre l’utilisation du site et adapter le contenu à vos préférences. Vous pouvez gérer vos paramètres ou en savoir plus dans notre politique de cookies.",
+    "banner": {
+      "reject": "Refuser",
+      "configure": "Configurer",
+      "accept_all": "Tout accepter"
+    },
+    "modal": {
+      "title": "Paramètres des cookies",
+      "intro": "Nos coupes ne sont pas une alternative, elles sont un choix. Et nous croyons aux choix éclairés. Vous trouverez ci-dessous une présentation des cookies que nous utilisons et pourquoi nous les utilisons.",
+      "essential_title": "Cookies essentiels",
+      "essential_desc": "Toujours actifs. Ils sont strictement nécessaires au fonctionnement du site : ils enregistrent vos préférences en matière de cookies et protègent nos formulaires de contact contre le spam (Google reCAPTCHA).",
+      "analytics_title": "Cookies analytiques",
+      "analytics_desc": "Ils nous aident à comprendre comment les visiteurs interagissent avec le site en collectant des données d'utilisation anonymes (Google Analytics).",
+      "marketing_title": "Cookies marketing",
+      "marketing_desc": "Ils nous permettent de suivre les prospects et d'envoyer des communications commerciales pertinentes basées sur vos interactions avec le site (HubSpot).",
+      "reject_all": "Tout refuser",
+      "save": "Enregistrer les paramètres",
+      "close": "Fermer"
+    }
   }
 }

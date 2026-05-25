@@ -13,7 +13,8 @@
     "financial_support": "Finanzielle Unterstützung durch das CDTI im Rahmen des NEOTEC-Programms, kofinanziert durch das EIC Accelerator Programm der Europäischen Union. Fördervereinbarung Nr. 190112238",
     "member_of": "Stolze Mitglieder von:",
     "placeholder_mail": "Ihre E-Mail",
-    "subscribe_button": "Abonnieren"
+    "subscribe_button": "Abonnieren",
+    "cookie_settings": "Cookie-Einstellungen"
   },
   "products": {
     "learn_more": "Mehr erfahren"
@@ -28,6 +29,24 @@
   "cookies": {
     "title": "Cookies",
     "text1": "Wir behandeln Cookies so wie unsere Produkte: mit wenigen Zutaten und voller Transparenz.",
-    "text2": "Wir verwenden eigene und Drittanbieter-Cookies, um Ihr Nutzererlebnis zu verbessern, die Nutzung der Website zu verstehen und Inhalte an Ihre Präferenzen anzupassen. Sie können Ihre Einstellungen verwalten oder mehr in unserer Cookie-Richtlinie erfahren."
+    "text2": "Wir verwenden eigene und Drittanbieter-Cookies, um Ihr Nutzererlebnis zu verbessern, die Nutzung der Website zu verstehen und Inhalte an Ihre Präferenzen anzupassen. Sie können Ihre Einstellungen verwalten oder mehr in unserer Cookie-Richtlinie erfahren.",
+    "banner": {
+      "reject": "Ablehnen",
+      "configure": "Konfigurieren",
+      "accept_all": "Alle akzeptieren"
+    },
+    "modal": {
+      "title": "Cookie-Einstellungen",
+      "intro": "Unsere Cuts sind keine Alternative, sie sind eine Wahl. Und wir glauben an informierte Entscheidungen. Nachfolgend finden Sie eine Übersicht der von uns verwendeten Cookies und warum wir sie verwenden.",
+      "essential_title": "Notwendige Cookies",
+      "essential_desc": "Diese sind immer aktiv. Sie sind für das Funktionieren der Website unbedingt erforderlich: Sie speichern Ihre Cookie-Einstellungen und schützen unsere Kontaktformulare vor Spam (Google reCAPTCHA).",
+      "analytics_title": "Analyse-Cookies",
+      "analytics_desc": "Sie helfen uns zu verstehen, wie Besucher mit der Website interagieren, indem sie anonyme Nutzungsdaten erfassen (Google Analytics).",
+      "marketing_title": "Marketing-Cookies",
+      "marketing_desc": "Sie ermöglichen es uns, Leads zu verfolgen und relevante kommerzielle Mitteilungen basierend auf Ihren Interaktionen mit der Website zu senden (HubSpot).",
+      "reject_all": "Alle ablehnen",
+      "save": "Einstellungen speichern",
+      "close": "Schließen"
+    }
   }
 }

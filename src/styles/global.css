@@ -495,8 +495,10 @@ body:has(#contact-form) {
     justify-end
     flex;
   }
-  a.primary {
+  a.primary, button.primary {
     @apply
+    mt-0
+    mr-0
     font-haffe
     text-p-small
     cursor-pointer
@@ -510,8 +512,10 @@ body:has(#contact-form) {
     rounded-full
     ;
   }
-  a.secondary {
+  a.secondary, button.secondary {
     @apply
+    mt-0
+    mr-0
     font-haffe
     text-p-small
     cursor-pointer

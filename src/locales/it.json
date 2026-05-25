@@ -13,7 +13,8 @@
     "financial_support": "Supporto finanziario dal CDTI attraverso il programma NEOTEC cofinanziato dal programma EIC Accelerator dell'Unione Europea. Accordo di sovvenzione n° 190112238",
     "member_of": "Orgogliosi membri di:",
     "placeholder_mail": "La tua email",
-    "subscribe_button": "Iscriviti"
+    "subscribe_button": "Iscriviti",
+    "cookie_settings": "Impostazioni Cookie"
   },
   "products": {
     "learn_more": "Scopri di più"
@@ -28,6 +29,24 @@
   "cookies": {
     "title": "Cookie",
     "text1": "Trattiamo i cookie come trattiamo i nostri prodotti: con pochi ingredienti e totale trasparenza.",
-    "text2": "Utilizziamo cookie propri e di terze parti per migliorare la tua esperienza di navigazione, capire come viene utilizzato il sito e adattare i contenuti alle tue preferenze. Puoi gestire le impostazioni o saperne di più nella nostra Cookie Policy."
+    "text2": "Utilizziamo cookie propri e di terze parti per migliorare la tua esperienza di navigazione, capire come viene utilizzato il sito e adattare i contenuti alle tue preferenze. Puoi gestire le impostazioni o saperne di più nella nostra Cookie Policy.",
+    "banner": {
+      "reject": "Rifiuta",
+      "configure": "Configura",
+      "accept_all": "Accetta tutto"
+    },
+    "modal": {
+      "title": "Impostazioni Cookie",
+      "intro": "I nostri tagli non sono un'alternativa, sono una scelta. E crediamo nelle scelte consapevoli. Di seguito troverai una panoramica dei cookie che utilizziamo e perché li utilizziamo.",
+      "essential_title": "Cookie Essenziali",
+      "essential_desc": "Sempre attivi. Sono strettamente necessari per il funzionamento del sito: memorizzano le tue preferenze sui cookie e proteggono i nostri moduli di contatto dallo spam (Google reCAPTCHA).",
+      "analytics_title": "Cookie Analitici",
+      "analytics_desc": "Ci aiutano a capire come i visitatori interagiscono con il sito raccogliendo dati di utilizzo anonimi (Google Analytics).",
+      "marketing_title": "Cookie di Marketing",
+      "marketing_desc": "Ci consentono di tracciare i lead e inviare comunicazioni commerciali pertinenti in base alle tue interazioni con il sito (HubSpot).",
+      "reject_all": "Rifiuta tutto",
+      "save": "Salva impostazioni",
+      "close": "Chiudi"
+    }
   }
 }
