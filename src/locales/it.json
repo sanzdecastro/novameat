@@ -14,7 +14,13 @@
     "member_of": "Orgogliosi membri di:",
     "placeholder_mail": "La tua email",
     "subscribe_button": "Iscriviti",
-    "cookie_settings": "Impostazioni Cookie"
+    "cookie_settings": "Impostazioni Cookie",
+    "newsletter_info": "NOVAMEAT TECH SL, in qualità di titolare del trattamento, tratterà i tuoi dati al fine di inviarti la nostra newsletter con aggiornamenti commerciali sui nostri servizi. Puoi accedere, rettificare e cancellare i tuoi dati, nonché esercitare altri diritti, consultando le informazioni aggiuntive e dettagliate sulla protezione dei dati nella nostra",
+    "newsletter_info_link": "Informativa sulla Privacy",
+    "newsletter_consent": "Ho letto e accetto le condizioni contenute nell'informativa sulla privacy riguardo al trattamento dei miei dati per l'invio della newsletter.",
+    "contact_info": "NOVAMEAT TECH SL, in qualità di titolare del trattamento, tratterà i tuoi dati al fine di rispondere alla tua richiesta o domanda. Puoi accedere, rettificare e cancellare i tuoi dati, nonché esercitare altri diritti, consultando le informazioni aggiuntive e dettagliate sulla protezione dei dati nella nostra",
+    "contact_info_link": "Informativa sulla Privacy",
+    "contact_consent": "Ho letto e accetto le condizioni contenute nell'informativa sulla privacy riguardo al trattamento dei miei dati per rispondere alla mia richiesta."
   },
   "products": {
     "learn_more": "Scopri di più"
@@ -29,7 +35,7 @@
   "cookies": {
     "title": "Cookie",
     "text1": "Trattiamo i cookie come trattiamo i nostri prodotti: con pochi ingredienti e totale trasparenza.",
-    "text2": "Utilizziamo cookie propri e di terze parti per migliorare la tua esperienza di navigazione, capire come viene utilizzato il sito e adattare i contenuti alle tue preferenze. Puoi gestire le impostazioni o saperne di più nella nostra Cookie Policy.",
+    "text2": "Utilizziamo cookie propri e di terze parti per migliorare la tua esperienza di navigazione, capire come viene utilizzato il sito e adattare i contenuti alle tue preferenze. Puoi gestire le impostazioni o saperne di più nella nostra",
     "banner": {
       "reject": "Rifiuta",
       "configure": "Configura",
@@ -37,7 +43,7 @@
     },
     "modal": {
       "title": "Impostazioni Cookie",
-      "intro": "I nostri tagli non sono un'alternativa, sono una scelta. E crediamo nelle scelte consapevoli. Di seguito troverai una panoramica dei cookie che utilizziamo e perché li utilizziamo.",
+      "intro": "I cookie sono importanti per te: influenzano la tua esperienza di navigazione, ci aiutano a proteggere la tua privacy e ci consentono di elaborare le richieste che ci fai tramite il sito. Utilizziamo cookie propri e di terze parti per analizzare i nostri servizi e mostrarti pubblicità correlata alle tue preferenze sulla base di un profilo elaborato dalle tue abitudini di navigazione. Puoi \"Accettare\" o \"Rifiutare\" i cookie non tecnici, nonché configurare le tue preferenze facendo clic su \"Configura Cookie\". Per ulteriori informazioni, consulta la nostra",
       "essential_title": "Cookie Essenziali",
       "essential_desc": "Sempre attivi. Sono strettamente necessari per il funzionamento del sito: memorizzano le tue preferenze sui cookie e proteggono i nostri moduli di contatto dallo spam (Google reCAPTCHA).",
       "analytics_title": "Cookie Analitici",
@@ -47,6 +53,7 @@
       "reject_all": "Rifiuta tutto",
       "save": "Salva impostazioni",
       "close": "Chiudi"
-    }
+    },
+    "policy_link": "Cookie Policy"
   }
 }

@@ -14,7 +14,13 @@
     "member_of": "Orgulloso miembro de:",
     "placeholder_mail": "Escribe tu e-mail",
     "subscribe_button": "Suscríbete",
-    "cookie_settings": "Configurar Cookies"
+    "cookie_settings": "Configurar Cookies",
+    "newsletter_info": "NOVAMEAT TECH SL como responsable del tratamiento tratará tus datos con la finalidad de remitirte nuestra newsletter con novedades comerciales sobre nuestros servicios. Puedes acceder, rectificar y suprimir tus datos, así como ejercer otros derechos consultando la información adicional y detallada sobre protección de datos en nuestra",
+    "newsletter_info_link": "Política de Privacidad",
+    "newsletter_consent": "He leído y acepto las condiciones contenidas en la política de privacidad sobre el tratamiento de mis datos para el envío de la newsletter.",
+    "contact_info": "NOVAMEAT TECH SL como responsable del tratamiento tratará tus datos con la finalidad de dar respuesta a tu consulta o petición. Puedes acceder, rectificar y suprimir tus datos, así como ejercer otros derechos consultando la información adicional y detallada sobre protección de datos en nuestra",
+    "contact_info_link": "Política de Privacidad",
+    "contact_consent": "He leído y acepto las condiciones contenidas en la política de privacidad sobre el tratamiento de mis datos para atender mi consulta."
   },
   "products": {
     "learn_more": "Saber más"
@@ -28,8 +34,8 @@
   },
   "cookies": {
     "title": "Cookies",
-    "text1": " We approach cookies the same way we approach our cuts: with fewer ingredients and full transparency.",
-    "text2": "We use our own and third-party cookies to improve your browsing experience, understand how the site is used and adapt content to your preferences. You can manage your settings or read more about them in our Cookies Policy.",
+    "text1": "Tratamos las cookies igual que nuestros cortes: con pocos ingredientes y total transparencia.",
+    "text2": "Utilizamos cookies propias y de terceros para mejorar tu experiencia de navegación, entender cómo se usa el sitio y adaptar el contenido a tus preferencias. Puedes gestionar tu configuración o leer más en nuestra",
     "banner": {
       "reject": "Rechazar",
       "configure": "Configurar",
@@ -37,7 +43,7 @@
     },
     "modal": {
       "title": "Configuración de Cookies",
-      "intro": "Nuestros cortes no son una alternativa, son una elección. Y creemos en las elecciones informadas. A continuación encontrarás un desglose de las cookies que utilizamos y para qué las utilizamos.",
+      "intro": "Las cookies son importantes para ti, influyen en tu experiencia de navegación, nos ayudan a proteger tu privacidad y permiten realizar las peticiones que nos solicites a través de la web. Utilizamos cookies propias y de terceros para analizar nuestros servicios y mostrarte publicidad relacionada con tus preferencias en base a un perfil elaborado con tus hábitos de navegación. Puedes \"Aceptar\" o \"Rechazar\" aquellas cookies que no sean técnicas, así como configurar tus preferencias pulsando \"Configurar Cookies\". Más información, consulta nuestra",
       "essential_title": "Cookies Esenciales",
       "essential_desc": "Siempre activas. Son estrictamente necesarias para el funcionamiento del sitio: guardan tus preferencias de cookies y protegen nuestros formularios de contacto contra el spam (Google reCAPTCHA).",
       "analytics_title": "Cookies Analíticas",
@@ -47,6 +53,7 @@
       "reject_all": "Rechazar todo",
       "save": "Guardar configuración",
       "close": "Cerrar"
-    }
+    },
+    "policy_link": "Política de Cookies"
   }
 }

@@ -14,7 +14,13 @@
     "member_of": "Stolze Mitglieder von:",
     "placeholder_mail": "Ihre E-Mail",
     "subscribe_button": "Abonnieren",
-    "cookie_settings": "Cookie-Einstellungen"
+    "cookie_settings": "Cookie-Einstellungen",
+    "newsletter_info": "NOVAMEAT TECH SL verarbeitet Ihre Daten als Verantwortlicher mit dem Ziel, Ihnen unseren Newsletter mit kommerziellen Neuigkeiten zu unseren Dienstleistungen zuzusenden. Sie können auf Ihre Daten zugreifen, diese berichtigen und löschen sowie weitere Rechte ausüben, indem Sie die zusätzlichen und detaillierten Datenschutzinformationen in unserer",
+    "newsletter_info_link": "Datenschutzerklärung",
+    "newsletter_consent": "Ich habe die Bedingungen der Datenschutzerklärung zur Verarbeitung meiner Daten für den Newsletterversand gelesen und akzeptiere sie.",
+    "contact_info": "NOVAMEAT TECH SL verarbeitet Ihre Daten als Verantwortlicher mit dem Ziel, Ihre Anfrage zu beantworten. Sie können auf Ihre Daten zugreifen, diese berichtigen und löschen sowie weitere Rechte ausüben, indem Sie die zusätzlichen und detaillierten Datenschutzinformationen in unserer",
+    "contact_info_link": "Datenschutzerklärung",
+    "contact_consent": "Ich habe die Bedingungen der Datenschutzerklärung zur Verarbeitung meiner Daten für die Bearbeitung meiner Anfrage gelesen und akzeptiere sie."
   },
   "products": {
     "learn_more": "Mehr erfahren"
@@ -29,7 +35,7 @@
   "cookies": {
     "title": "Cookies",
     "text1": "Wir behandeln Cookies so wie unsere Produkte: mit wenigen Zutaten und voller Transparenz.",
-    "text2": "Wir verwenden eigene und Drittanbieter-Cookies, um Ihr Nutzererlebnis zu verbessern, die Nutzung der Website zu verstehen und Inhalte an Ihre Präferenzen anzupassen. Sie können Ihre Einstellungen verwalten oder mehr in unserer Cookie-Richtlinie erfahren.",
+    "text2": "Wir verwenden eigene und Drittanbieter-Cookies, um Ihr Nutzererlebnis zu verbessern, die Nutzung der Website zu verstehen und Inhalte an Ihre Präferenzen anzupassen. Sie können Ihre Einstellungen verwalten oder mehr erfahren in unserer",
     "banner": {
       "reject": "Ablehnen",
       "configure": "Konfigurieren",
@@ -37,7 +43,7 @@
     },
     "modal": {
       "title": "Cookie-Einstellungen",
-      "intro": "Unsere Cuts sind keine Alternative, sie sind eine Wahl. Und wir glauben an informierte Entscheidungen. Nachfolgend finden Sie eine Übersicht der von uns verwendeten Cookies und warum wir sie verwenden.",
+      "intro": "Cookies sind für Sie wichtig: Sie beeinflussen Ihr Surferlebnis, helfen uns Ihre Privatsphäre zu schützen und ermöglichen es uns, Ihre Anfragen über die Website zu bearbeiten. Wir verwenden eigene und Drittanbieter-Cookies, um unsere Dienste zu analysieren und Ihnen auf Ihr Nutzerprofil abgestimmte Werbung anzuzeigen. Sie können nicht-technische Cookies \"Akzeptieren\" oder \"Ablehnen\" sowie Ihre Einstellungen über \"Cookies konfigurieren\" anpassen. Weitere Informationen finden Sie in unserer",
       "essential_title": "Notwendige Cookies",
       "essential_desc": "Diese sind immer aktiv. Sie sind für das Funktionieren der Website unbedingt erforderlich: Sie speichern Ihre Cookie-Einstellungen und schützen unsere Kontaktformulare vor Spam (Google reCAPTCHA).",
       "analytics_title": "Analyse-Cookies",
@@ -47,6 +53,7 @@
       "reject_all": "Alle ablehnen",
       "save": "Einstellungen speichern",
       "close": "Schließen"
-    }
+    },
+    "policy_link": "Cookie-Richtlinie"
   }
 }

@@ -85,13 +85,17 @@
                         
                         </div>
                     
+                        <p class="mt-md text-xs">
+                            {{ t('footer.newsletter_info') }}
+                            <a :href="`/${lang}/legal/${t('legal.urls.privacy_statement')}`">{{ t('footer.newsletter_info_link') }}</a>.
+                        </p>
+
                         <div class="flex items-center mt-md">
                             (
                             <input type="checkbox" value="1" name="b_XXXXXXXXXXXX_MERGE3" id="MERGE3" required="true">
                             <div class="dot-check"></div>
                             )
-                            <label class="pl-xs" for="MERGE3">I agree to the <a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a> and <a :href="`/${lang}/legal/${t('legal.urls.legal_notice')}`">{{ t('footer.legal_notice') }}</a>.</label>
-                        
+                            <label class="pl-xs" for="MERGE3">{{ t('footer.newsletter_consent') }}</label>
                         </div> 
                     </form>
                 </div>

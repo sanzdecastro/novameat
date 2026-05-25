@@ -14,7 +14,13 @@
     "member_of": "Fiers membres de :",
     "placeholder_mail": "Votre e-mail",
     "subscribe_button": "S’inscrire",
-    "cookie_settings": "Paramètres des cookies"
+    "cookie_settings": "Paramètres des cookies",
+    "newsletter_info": "NOVAMEAT TECH SL, en tant que responsable du traitement, traitera vos données dans le but de vous envoyer notre newsletter avec des nouveautés commerciales sur nos services. Vous pouvez accéder, rectifier et supprimer vos données, ainsi qu'exercer d'autres droits en consultant les informations supplémentaires et détaillées sur la protection des données dans notre",
+    "newsletter_info_link": "Politique de Confidentialité",
+    "newsletter_consent": "J'ai lu et j'accepte les conditions contenues dans la politique de confidentialité concernant le traitement de mes données pour l'envoi de la newsletter.",
+    "contact_info": "NOVAMEAT TECH SL, en tant que responsable du traitement, traitera vos données dans le but de répondre à votre demande ou question. Vous pouvez accéder, rectifier et supprimer vos données, ainsi qu'exercer d'autres droits en consultant les informations supplémentaires et détaillées sur la protection des données dans notre",
+    "contact_info_link": "Politique de Confidentialité",
+    "contact_consent": "J'ai lu et j'accepte les conditions contenues dans la politique de confidentialité concernant le traitement de mes données pour traiter ma demande."
   },
   "products": {
     "learn_more": "En savoir plus"
@@ -28,8 +34,8 @@
   },
   "cookies": {
     "title": "Cookies",
-    "text1": "Nous abordons les cookies comme nos produits : avec peu d’ingrédients et une transparence totale.",
-    "text2": "Nous utilisons des cookies internes et tiers pour améliorer votre expérience de navigation, comprendre l’utilisation du site et adapter le contenu à vos préférences. Vous pouvez gérer vos paramètres ou en savoir plus dans notre politique de cookies.",
+    "text1": "Nous abordons les cookies comme nos produits : avec peu d'ingrédients et une transparence totale.",
+    "text2": "Nous utilisons des cookies internes et tiers pour améliorer votre expérience de navigation, comprendre l'utilisation du site et adapter le contenu à vos préférences. Vous pouvez gérer vos paramètres ou en savoir plus dans notre",
     "banner": {
       "reject": "Refuser",
       "configure": "Configurer",
@@ -37,7 +43,7 @@
     },
     "modal": {
       "title": "Paramètres des cookies",
-      "intro": "Nos coupes ne sont pas une alternative, elles sont un choix. Et nous croyons aux choix éclairés. Vous trouverez ci-dessous une présentation des cookies que nous utilisons et pourquoi nous les utilisons.",
+      "intro": "Les cookies sont importants pour vous : ils influencent votre expérience de navigation, nous aident à protéger votre vie privée et nous permettent de traiter vos demandes sur le site. Nous utilisons des cookies internes et tiers pour analyser nos services et vous montrer des publicités adaptées à vos préférences, sur la base d'un profil établi à partir de vos habitudes de navigation. Vous pouvez \"Accepter\" ou \"Refuser\" les cookies non techniques, et configurer vos préférences en cliquant sur \"Configurer les cookies\". Pour plus d'informations, consultez notre",
       "essential_title": "Cookies essentiels",
       "essential_desc": "Toujours actifs. Ils sont strictement nécessaires au fonctionnement du site : ils enregistrent vos préférences en matière de cookies et protègent nos formulaires de contact contre le spam (Google reCAPTCHA).",
       "analytics_title": "Cookies analytiques",
@@ -47,6 +53,7 @@
       "reject_all": "Tout refuser",
       "save": "Enregistrer les paramètres",
       "close": "Fermer"
-    }
+    },
+    "policy_link": "politique de cookies"
   }
 }

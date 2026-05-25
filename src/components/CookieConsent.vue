@@ -125,11 +125,10 @@ export default {
    <div>
     <div v-if="showBanner" id="cookie-banner" ref="cookieBanner" class="cookie-banner">
       <span>Cookies</span>
+      <p>{{ messages.cookies.text1 }}</p>
       <p>
-        {{messages.cookies.text1}}
-      </p>
-      <p>
-        {{messages.cookies.text2}}
+        {{ messages.cookies.text2 }}
+        <a :href="`/${lang}/legal/${messages.legal.urls.cookie_information}`">{{ messages.cookies.policy_link }}</a>.
       </p>
       <div class="buttons">
         <a @click="declineAll" class="secondary">{{ messages.cookies.banner.reject }}</a>
@@ -141,7 +140,10 @@ export default {
     <div v-if="showModal" id="cookie-settings-modal" class="cookie-modal">
       <div class="modal-content">
         <h2>{{ messages.cookies.modal.title }}</h2>
-        <p>{{ messages.cookies.modal.intro }}</p>
+        <p>
+          {{ messages.cookies.modal.intro }}
+          <a :href="`/${lang}/legal/${messages.legal.urls.cookie_information}`">{{ messages.cookies.policy_link }}</a>.
+        </p>
         <form @submit.prevent="savePreferences">
           <label>
             (

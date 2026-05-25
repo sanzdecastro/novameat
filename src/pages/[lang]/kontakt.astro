@@ -148,12 +148,16 @@ const page = await getPage("kontakt", lang);
       </div>
 
       <div class="textarea-form w-full md:w-1/3">
-        <div class="flex flex-col md:max-w-max-ssm mx-auto">
+        <div class="flex flex-col md:max-w-full mx-auto">
           <label for="message">{page?.acf?.form?.message}*</label>
           <textarea class="mt-sm" id="message" name="message" required
           ></textarea>
         </div>
-        <div class="radio-buttons w-full mt-lg ">
+        <div class="radio-buttons w-full mt-lg">
+            <p class="text-xs mb-sm">
+              {messages.footer.contact_info}
+              <a class="underline" href={`/${lang}/legal/${messages.legal.urls.privacy_statement}`} target="_blank" rel="noopener">{messages.footer.contact_info_link}</a>.
+            </p>
             <div class="flex items-center w-full justify-center">
               (
               <input
@@ -165,22 +169,7 @@ const page = await getPage("kontakt", lang);
               />
               <div class="dot-check"></div>
               )
-              <label for="privacy" class="inline-block !text-wrap">
-                I have read and accept the
-                <a
-                  class="underline"
-                  href={`/${lang}/legal/${messages.legal.urls.privacy_statement}`}
-                  target="_blank"
-                  rel="noopener">{messages.footer.privacy_statement}</a
-                >
-                <br>and the use of
-                <a
-                  class="underline"
-                  href={`/${lang}/legal/${messages.legal.urls.cookie_information}`}
-                  target="_blank"
-                  rel="noopener">{messages.footer.cookie_information}</a
-                >.</label
-              >
+              <label for="privacy" class="inline-block !text-wrap">{messages.footer.contact_consent}</label>
             </div>
           </div>
       </div>
