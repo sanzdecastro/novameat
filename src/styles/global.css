@@ -369,7 +369,7 @@ body:has(#contact-form) {
   @apply
   opacity-0
   md:min-w-[290px]
-  md:max-w-[calc((358/1515)*100vw)]
+  md:max-w-[calc((558/1515)*100vw)]
   text-p-small
   p-md
   flex
