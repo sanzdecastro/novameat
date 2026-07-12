@@ -42,6 +42,34 @@ import Circlee from './circlee.vue';
           novameatLogo,
         };
       },
+      mounted() {
+        // Tras una navegación del ClientRouter de Astro el autoplay no se
+        // re-dispara, y además Swiper recoloca los slides en el DOM al
+        // inicializarse — mover un <video> lo pausa. Relanzamos el play()
+        // cuando el slider ya está montado (y una vez más tras la
+        // inicialización de Swiper, por si movió los nodos después).
+        this.playVideos();
+        setTimeout(() => this.playVideos(), 300);
+        setTimeout(() => this.playVideos(), 1000);
+      },
+      methods: {
+        playVideos() {
+          this.$el?.parentElement
+            ?.querySelectorAll("video[autoplay]")
+            .forEach((video) => {
+              if (!video.paused) return;
+              // Tras el swap el medio puede quedar en estado de error
+              // (readyState 0 + MediaError); play() no lo recupera, hay que
+              // recargar la fuente primero.
+              if (video.error || video.readyState === 0) {
+                video.load();
+              }
+              video.muted = true;
+              const p = video.play();
+              if (p) p.catch(() => {});
+            });
+        },
+      },
     };
   </script>
 

@@ -10,7 +10,7 @@ import Footer from "../components/appFooter.vue";
 import CookieConsent from "../components/CookieConsent.vue";
 import CircleSmall from "../components/circleSmall.vue";
 import Cursor from "../components/cursor.vue";
-import { getPageById, getProductById, getOptions, warmCache } from '../lib/api.js';
+import { getOptions, warmCache, getTranslatedSlugs } from '../lib/api.js';
 
 const LOCALES = ['en','es','it' ,'de'];
 const { lang, slug, page, seo, miniFooter = false, getById, sectionPath = "", colorCursor="bg-pink", colorText = "#eee9e3", bgHeader = "bg-transparent" } = Astro.props;
@@ -19,26 +19,23 @@ const { lang, slug, page, seo, miniFooter = false, getById, sectionPath = "", co
 const currentSlug = page?.slug ?? slug;
 
 // construye el switch
+// getById se mantiene como flag "página dinámica de WP" (lo pasan los templates),
+// pero la resolución de slugs traducidos se hace en UNA petición (antes era una
+// petición por idioma)
+const translatedSlugs = page && getById ? await getTranslatedSlugs(page.translations) : {};
+
 const switchUrls = page && getById
-  ? await Promise.all(
-         LOCALES.map(async (code) => {
-        const transId = page.translations?.[code];
-        let translatedSlug = page.slug;
+  ? LOCALES.map((code) => {
+      const translatedSlug = translatedSlugs[code] ?? page.slug;
 
-        if (transId) {
-          const { slug } = await getById(transId);
-          translatedSlug = slug;
-        }
+      // 👉 si la página es 'home', no añadimos el slug
+      const prefix = sectionPath ? `/${sectionPath}` : '';
+      const url = translatedSlug === 'home'
+        ? `/${code}`
+        : `/${code}${prefix}/${translatedSlug}`;
 
-        // 👉 si la página es 'home', no añadimos el slug
-        const prefix = sectionPath ? `/${sectionPath}` : '';
-        const url = translatedSlug === 'home'
-          ? `/${code}`
-          : `/${code}${prefix}/${translatedSlug}`;
-
-        return { code, url };
-      })
-    )
+      return { code, url };
+    })
   : LOCALES.map((code) => {
       const route = routes.find(r => r.slug[lang] === currentSlug);
       const target = route ? route.slug[code] : '';
@@ -238,6 +235,30 @@ warmCache(lang);
               gsap.set(loading, { autoAlpha: 0 });
             }
           }, 900);
+        }
+
+        resumeAutoplayVideos();
+      }
+
+      // Tras una navegación del ClientRouter el navegador no re-dispara el
+      // autoplay de los <video> del documento intercambiado (p. ej. el vídeo de
+      // fondo de la home): quedan cargados pero en pausa. Los relanzamos a mano.
+      // Reintento corto porque las islas Vue (slider) pueden hidratar el vídeo
+      // unos ms después del swap.
+      function resumeAutoplayVideos(attempt = 0) {
+        document.querySelectorAll("video[autoplay]").forEach((video: any) => {
+          if (!video.paused) return;
+          // Tras el swap el medio puede quedar en estado de error (readyState 0
+          // + MediaError); play() no lo recupera, hay que recargar la fuente.
+          if (video.error || video.readyState === 0) {
+            video.load();
+          }
+          video.muted = true;
+          const p = video.play();
+          if (p) p.catch(() => {});
+        });
+        if (attempt < 5) {
+          setTimeout(() => resumeAutoplayVideos(attempt + 1), 300);
         }
       }
 
