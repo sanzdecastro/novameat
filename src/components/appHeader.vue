@@ -193,6 +193,7 @@ export default {
           <li><a @click="toggleMenu" :href="`/${lang}/legal/${messages?.legal?.urls?.legal_notice}`">{{ messages?.footer?.legal_notice }}</a></li>
           <li><a @click="toggleMenu" :href="`/${lang}/legal/${messages?.legal?.urls?.cookie_information}`">{{ messages?.footer?.cookie_information }}</a></li>
           <li><a @click="toggleMenu" :href="`/${lang}/legal/${messages?.legal?.urls?.privacy_statement}`">{{ messages?.footer?.privacy_statement }}</a></li>
+          <li><a @click="toggleMenu" :href="`/${lang}/legal/${messages?.legal?.urls?.social_media_policy}`">{{ messages?.footer?.social_media_policy }}</a></li>
         </ul>
         <ul class="lang gap-2 flex language-switcher">
             <li v-for="item in switchUrls" :key="item.code">

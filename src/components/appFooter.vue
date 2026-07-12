@@ -41,6 +41,7 @@
                 <li><a :href="`/${lang}/legal/${t('legal.urls.legal_notice')}`">{{ t('footer.legal_notice') }}</a></li>
                 <li><a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a></li>
                 <li><a :href="`/${lang}/legal/${t('legal.urls.privacy_statement')}`">{{ t('footer.privacy_statement') }}</a></li>
+                <li><a :href="`/${lang}/legal/${t('legal.urls.social_media_policy')}`">{{ t('footer.social_media_policy') }}</a></li>
                 <li><a href="#" data-open-cookie-settings>{{ t('footer.cookie_settings') }}</a></li>
             </ul>
             <ul v-if="langIsActive" class="lang gap-2 flex language-switcher">
@@ -55,8 +56,8 @@
                 </li>
             </ul>
         </div>
-        
-       
+
+
     </footer>
     <footer v-else class="bg-pink m-sm p-md rounded-[15px] md:h-footer-height flex flex-col justify-between text-small">
         <div class="header-footer flex flex-col md:flex-row justify-between ">
@@ -107,6 +108,7 @@
                         <li><a :href="`/${lang}/legal/${t('legal.urls.legal_notice')}`">{{ t('footer.legal_notice') }}</a></li>
                         <li><a :href="`/${lang}/legal/${t('legal.urls.cookie_information')}`">{{ t('footer.cookie_information') }}</a></li>
                         <li><a :href="`/${lang}/legal/${t('legal.urls.privacy_statement')}`">{{ t('footer.privacy_statement') }}</a></li>
+                        <li><a :href="`/${lang}/legal/${t('legal.urls.social_media_policy')}`">{{ t('footer.social_media_policy') }}</a></li>
                         <li><a href="#" data-open-cookie-settings>{{ t('footer.cookie_settings') }}</a></li>
                     </ul>
                   

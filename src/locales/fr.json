@@ -8,6 +8,7 @@
     "legal_notice": "Mentions légales",
     "cookie_information": "Informations sur les cookies",
     "privacy_statement": "Politique de confidentialité",
+    "social_media_policy": "Politique des réseaux sociaux",
     "copyright": "Tous droits réservés",
     "certifications": "Certifications",
     "financial_support": "Soutien financier du CDTI à travers le programme NEOTEC cofinancé par le programme EIC Accelerator de l’Union européenne. Convention de subvention n° 190112238",
@@ -29,7 +30,8 @@
     "urls": {
       "legal_notice": "mentions-legales",
       "cookie_information": "politique-de-cookies",
-      "privacy_statement": "politique-de-confidentialite"
+      "privacy_statement": "politique-de-confidentialite",
+      "social_media_policy": "politique-reseaux-sociaux"
     }
   },
   "cookies": {

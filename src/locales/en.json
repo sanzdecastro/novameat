@@ -8,6 +8,7 @@
     "legal_notice": "Legal Notice",
     "cookie_information": "Cookie Information",
     "privacy_statement": "Privacy Statement",
+    "social_media_policy": "Social Media Policy",
     "copyright": "All Rights Reserved",
     "certifications": "Certifications",
     "financial_support": "Financial support from CDTI through the NEOTEC programme Co-funded by the European Union's EIC Accelerator programme Grant Agreement Nº 190112238",
@@ -29,7 +30,8 @@
     "urls": {
       "legal_notice": "legal-notice",
       "cookie_information": "cookie-policy",
-      "privacy_statement": "privacy-statement"
+      "privacy_statement": "privacy-statement",
+      "social_media_policy": "social-media-policy"
     }
   },
   "cookies": {
