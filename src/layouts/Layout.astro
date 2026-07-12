@@ -58,7 +58,7 @@ const activeLangs = await getOptions();
 const langIsActive = activeLangs?.acf?.activate_lang
 
 // Pre-carga todo el contenido en segundo plano (solo ocurre una vez)
-warmCache();
+warmCache(lang);
 
 
 
@@ -213,6 +213,7 @@ warmCache();
           {
             autoAlpha: 1,
             duration: 0.3,
+            overwrite: true,
           }
         );
         gsap.fromTo(
@@ -224,8 +225,33 @@ warmCache();
             delay: 0.2,
             autoAlpha: 0,
             duration: 0.3,
+            overwrite: true,
           }
         );
+        // Red de seguridad: si inPage() se llega a disparar más de una vez para
+        // la misma navegación, un fromTo() con delay puede quedar "matado" por el
+        // siguiente antes de arrancar y el overlay .loading se queda pillado en
+        // opacidad 1 tapando el contenido. Forzamos su ocultación pase lo que pase.
+        if (loading) {
+          setTimeout(() => {
+            if (parseFloat(getComputedStyle(loading).opacity) > 0.05) {
+              gsap.set(loading, { autoAlpha: 0 });
+            }
+          }, 900);
+        }
+      }
+
+      // Astro despacha astro:page-load / astro:after-swap dos veces seguidas en la
+      // misma navegación (ClientRouter + prefetch). runOnce colapsa ráfagas del mismo
+      // tick para que la inicialización (GSAP, ScrollTrigger, Lenis) no se dispare doble.
+      function runOnce(fn: () => void) {
+        let handled = false;
+        return () => {
+          if (handled) return;
+          handled = true;
+          setTimeout(() => { handled = false; }, 0);
+          fn();
+        };
       }
 
       // El script inline se re-ejecuta en cada transición de Astro; sin esta
@@ -234,17 +260,17 @@ warmCache();
       if (!(window as any).__novameatTransitionListenersBound) {
         (window as any).__novameatTransitionListenersBound = true;
 
-        document.addEventListener("astro:before-preparation", () => {
+        document.addEventListener("astro:before-preparation", runOnce(() => {
           console.log("before prep");
           outPage();
-        });
+        }));
 
         document.addEventListener("astro:before-swap", () => {
           console.log("before swap");
         });
 
         // En la navegación interna
-        document.addEventListener("astro:after-swap", () => {
+        document.addEventListener("astro:after-swap", runOnce(() => {
           console.log("after swap");
 
           inPage();
@@ -264,12 +290,10 @@ warmCache();
             menuTransparent();
           }, 500);
           copiesAnimation();
-
-
-        });
+        }));
 
         // En la carga inicial
-        document.addEventListener("astro:page-load", () => {
+        document.addEventListener("astro:page-load", runOnce(() => {
           console.log("page loaded");
           inPage();
           // mata triggers previos, por si acaso
@@ -290,7 +314,7 @@ warmCache();
           }, 1000);
           copiesAnimation();
           reload();
-        });
+        }));
       }
     </script>
     <CookieConsent client:load lang={lang} messages={messages} />

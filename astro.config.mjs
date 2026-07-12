@@ -19,8 +19,12 @@ export default defineConfig({
       prefixDefaultLocale: true,
    }
   },
+  // Con <ViewTransitions /> Astro activa prefetchAll por defecto: cada enlace por
+  // el que pasa el ratón dispara una navegación SSR completa en segundo plano
+  // (golpeando la API de WordPress), que puede pisarse con la del clic real y
+  // dejar la página a medio cargar. Lo desactivamos explícitamente.
   prefetch: {
-    prefetchAll: true,
+    prefetchAll: false,
     defaultStrategy: 'hover'
   },
   vite: {

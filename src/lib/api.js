@@ -130,23 +130,33 @@ export async function getPost(slug, lang) {
   return posts.length ? posts[0] : null;
 }
 
-// Warm Cache — llama en segundo plano desde Layout.astro para pre-cargar todo
-let cacheWarmed = false;
+// Warm Cache — llama en segundo plano desde Layout.astro para pre-cargar el idioma
+// de la petición actual. Antes precargaba los 4 idiomas en cada arranque del
+// servidor (~13 peticiones a WP por visita, sin usarse la mayoría); ahora solo
+// calienta el idioma que realmente se está visitando.
+let optionsWarmed = false;
+const warmedLangs = new Set();
 
-export function warmCache() {
-  if (cacheWarmed) return;
-  cacheWarmed = true;
+export function warmCache(lang) {
+  const tasks = [];
 
-  const langs = ['en', 'es', 'it', 'de'];
+  if (!optionsWarmed) {
+    optionsWarmed = true;
+    tasks.push(getOptions());
+  }
 
-  // Todo en paralelo, sin bloquear el render actual
-  Promise.all([
-    getOptions(),
-    ...langs.flatMap((lang) => [
+  if (lang && !warmedLangs.has(lang)) {
+    warmedLangs.add(lang);
+    tasks.push(
       getPages(lang),
       // Productos con _embed para que getProduct() pueda usarlos directamente
       cachedFetch(`${apiUrl}/product?lang=${lang}&_embed`),
-      getPosts(lang),
-    ]),
-  ]).catch(() => {}); // silencioso — no rompe nada si falla
+      getPosts(lang)
+    );
+  }
+
+  if (!tasks.length) return;
+
+  // En paralelo, sin bloquear el render actual
+  Promise.all(tasks).catch(() => {}); // silencioso — no rompe nada si falla
 }
