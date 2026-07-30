@@ -2,6 +2,7 @@
 
     import { defineProps } from 'vue'
     import Logo from './logo.vue'
+    import { activeFooterLogoGroups } from '../lib/footerLogos'
 
     interface SwitchUrl { code: string; url: string }
     interface Routes { [key: string]: string }
@@ -28,6 +29,12 @@
     return key.split('.')
         .reduce((obj: any, part: string) => obj?.[part], props.messages) ?? ''
     }
+
+    // 3️⃣ Logos institucionales (certificaciones, ayudas, premios)
+    const logoGroups = activeFooterLogoGroups
+    const logoClass = 'h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px] w-auto'
+    // Los sellos circulares necesitan el doble de alto para ser legibles
+    const logoClassTall = 'h-[calc((46/360)*100vw)] md:h-[calc((80/1515)*100vw)] md:max-h-[70px] w-auto'
 
 </script>
 
@@ -139,33 +146,29 @@
             </div>
         </div>
 
+        <div class="footer-logos w-full font-haffe grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg items-start pb-lg">
+            <div
+                v-for="group in logoGroups"
+                :key="group.key"
+                :class="['group-' + group.key, 'flex flex-col h-full', group.wide ? 'md:col-span-2' : '']"
+            >
+                <p class="pb-md md:max-w-max-ssm">{{ t(group.titleKey) }}</p>
+                <div class="logos flex flex-wrap items-end gap-lg">
+                    <img
+                        v-for="logo in group.logos"
+                        :key="logo.src"
+                        :class="group.tall ? logoClassTall : logoClass"
+                        :src="logo.src"
+                        :alt="logo.alt"
+                        decoding="async"
+                    >
+                </div>
+            </div>
+        </div>
+
         <div class="footer-footer flex items-start md:items-end justify-between ">
             <div class="copyright font-haffe w-full md:w-1/3">
                 Novameat® 2025 <br class="md:hidden">{{ t('footer.copyright') }}
-            </div>
-            <div class="info  w-full font-haffe flex flex-col md:flex-row  md:items-end gap-[calc((95/1515)*100vw)] md:justify-end">
-                <div class="certifications flex flex-col md:justify-between md:h-full">
-                    <p class="pb-md">{{ t('footer.certifications') }}:</p>
-                    <div class="logos flex gap-lg flex-wrap md:flex-nowrap">
-                        <!-- <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/v-label.svg">
-                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/gluten-free.svg"> -->
-                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/food-safety.svg">
-                    </div>
-                </div>
-                <div class="financial flex flex-col">
-                    <p class="pb-md md:w-max-ssm">{{ t('footer.financial_support') }}</p>
-                    <div class="logos flex gap-lg flex-wrap md:flex-nowrap">
-                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/ministerio-economia.svg">
-                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/cdti.svg">
-                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/eu.svg">
-                    </div>
-                </div>
-                <div class="member flex flex-col">
-                    <p class="pb-md">{{ t('footer.member_of') }}</p>
-                    <div class="logos">
-                        <img class="h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px]" src="/eit.svg">
-                    </div>
-                </div>
             </div>
         </div>
 
