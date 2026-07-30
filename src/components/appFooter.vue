@@ -150,7 +150,7 @@
             <div
                 v-for="group in logoGroups"
                 :key="group.key"
-                :class="['group-' + group.key, 'flex flex-col h-full', group.wide ? 'md:col-span-2' : '']"
+                :class="['group-' + group.key,  group.classes, 'flex flex-col h-full', group.wide ? 'md:col-span-2' : '']"
             >
                 <p class="pb-md md:max-w-max-ssm">{{ t(group.titleKey) }}</p>
                 <div class="logos flex flex-wrap items-end gap-lg">

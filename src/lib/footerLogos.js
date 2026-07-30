@@ -9,6 +9,7 @@
 export const footerLogoGroups = [
   {
     key: 'certifications',
+    classes: '',
     titleKey: 'footer.certifications',
     logos: [
       { src: '/food-safety.svg', alt: 'Food Safety System Certification 22000' },
@@ -21,6 +22,7 @@ export const footerLogoGroups = [
   },
   {
     key: 'financial_support',
+    classes: 'mr-12',
     titleKey: 'footer.financial_support',
     // Es el grupo con más logos: ocupa doble columna para no partirse en 3 filas.
     wide: true,
@@ -41,6 +43,7 @@ export const footerLogoGroups = [
   },
   {
     key: 'awards',
+    classes: '',
     titleKey: 'footer.awards',
     // Es un sello circular, no un logotipo de tira: a 35px el texto no se lee.
     tall: true,
@@ -50,6 +53,7 @@ export const footerLogoGroups = [
   },
   {
     key: 'member_of',
+    classes: '',
     titleKey: 'footer.member_of',
     logos: [
       { src: '/eit.svg', alt: 'EIT Food' },
