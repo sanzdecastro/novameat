@@ -6,16 +6,25 @@
 //
 // `enabled: false` deja el logo preparado sin renderizarlo. Un grupo sin
 // ningún logo activo no se pinta.
+//
+// `tall` renderiza a 70px en vez de 35px, para sellos circulares o lockups
+// apilados cuyo texto no se lee a tamaño de tira. Va por logo o por grupo
+// entero; el del logo manda sobre el del grupo.
 export const footerLogoGroups = [
   {
     key: 'certifications',
     classes: '',
     titleKey: 'footer.certifications',
     logos: [
-      { src: '/food-safety.svg', alt: 'Food Safety System Certification 22000' },
+      // Sustituye a /food-safety.svg por petición de Mario (mail 18/08/2026).
+      // Lockup apilado (BRCGS / START! / CERTIFICATED): a 35px no se lee, de ahí
+      // el `tall`. Archivo oficial tal cual, con su degradado — es el único logo
+      // del footer que no es negro plano.
+      { src: '/brcgs-start.png', alt: 'BRCGS START! Certificated', tall: true },
+      { src: '/food-safety.svg', alt: 'BRCGS Food Safety', enabled: false },
       // Marca sola: se le quitó el bloque del Ministerio de Ciencia e Innovación
       // que traía el archivo oficial (el footer ya muestra dos escudos de España).
-      { src: '/pyme-innovadora.svg', alt: 'Innovative SME — Pyme Innovadora' },
+      { src: '/pyme-innovadora.svg', alt: 'Innovative SME — Pyme Innovadora', tall:true, },
       { src: '/v-label.svg', alt: 'V-Label', enabled: false },
       { src: '/gluten-free.svg', alt: 'Gluten Free', enabled: false },
     ],
@@ -35,6 +44,7 @@ export const footerLogoGroups = [
       { src: '/eu.svg', alt: 'Unión Europea', enabled: false },
       
       { src: '/next-generation-eu.png', alt: 'Financiado por la Unión Europea — NextGenerationEU' },
+      { src: '/transformacion-resiliencia.png', alt: 'Financiado por la Unión Europea — NextGenerationEU' },
       // Exportaciones
       { src: '/generalitat-catalunya.png', alt: 'Generalitat de Catalunya' },
       // Innomatch: Mario pidió NO publicarlo todavía (mail 16/07/2026).

@@ -33,7 +33,8 @@
     // 3️⃣ Logos institucionales (certificaciones, ayudas, premios)
     const logoGroups = activeFooterLogoGroups
     const logoClass = 'h-[calc((23/360)*100vw)] md:h-[calc((40/1515)*100vw)] md:max-h-[35px] w-auto'
-    // Los sellos circulares necesitan el doble de alto para ser legibles
+    // Los sellos circulares y los lockups apilados necesitan el doble de alto
+    // para ser legibles. Se activa con `tall`, por logo o por grupo entero.
     const logoClassTall = 'h-[calc((46/360)*100vw)] md:h-[calc((80/1515)*100vw)] md:max-h-[70px] w-auto'
 
 </script>
@@ -152,12 +153,13 @@
                 :key="group.key"
                 :class="['group-' + group.key,  group.classes, 'flex flex-col h-full', group.wide ? 'md:col-span-2' : '']"
             >
-                <p class="pb-md md:max-w-max-ssm">{{ t(group.titleKey) }}</p>
+                <!-- whitespace-pre-line: los créditos de ayudas llevan \n en los locales. -->
+                <p class="pb-md md:max-w-max-ssm whitespace-pre-line">{{ t(group.titleKey) }}</p>
                 <div class="logos flex flex-wrap items-end gap-lg">
                     <img
                         v-for="logo in group.logos"
                         :key="logo.src"
-                        :class="group.tall ? logoClassTall : logoClass"
+                        :class="(logo.tall ?? group.tall) ? logoClassTall : logoClass"
                         :src="logo.src"
                         :alt="logo.alt"
                         decoding="async"
