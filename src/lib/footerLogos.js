@@ -22,11 +22,10 @@ export const footerLogoGroups = [
       // del footer que no es negro plano.
       { src: '/brcgs-start.png', alt: 'BRCGS START! Certificated', tall: true },
       { src: '/food-safety.svg', alt: 'BRCGS Food Safety', enabled: false },
-      // Marca sola: se le quitó el bloque del Ministerio de Ciencia e Innovación
-      // que traía el archivo oficial (el footer ya muestra dos escudos de España).
-      { src: '/pyme-innovadora.svg', alt: 'Innovative SME — Pyme Innovadora', tall:true, },
-      { src: '/v-label.svg', alt: 'V-Label', enabled: false },
-      { src: '/gluten-free.svg', alt: 'Gluten Free', enabled: false },
+      // Lockup apilado (círculo V-Label + caja VEGAN): a 35px no se lee la caja.
+      { src: '/v-label.png', alt: 'V-Label Vegan', tall: true },
+      // Sello circular; mismo criterio que el resto de sellos circulares del footer.
+      { src: '/gluten-free.png', alt: 'Gluten Free', tall: true },
     ],
   },
   {
@@ -47,6 +46,8 @@ export const footerLogoGroups = [
       { src: '/transformacion-resiliencia.png', alt: 'Financiado por la Unión Europea — NextGenerationEU' },
       // Exportaciones
       { src: '/generalitat-catalunya.png', alt: 'Generalitat de Catalunya' },
+      // Lockup apilado: la línea "Catalonia Trade & Investment" se pierde a 35px.
+      { src: '/accio-investment.png', alt: 'ACCIÓ — Catalonia Trade & Investment'},
       // Innomatch: Mario pidió NO publicarlo todavía (mail 16/07/2026).
       { src: '/innomatch.png', alt: 'InnoMatch', enabled: false },
     ],
@@ -55,10 +56,13 @@ export const footerLogoGroups = [
     key: 'awards',
     classes: '',
     titleKey: 'footer.awards',
-    // Es un sello circular, no un logotipo de tira: a 35px el texto no se lee.
+    // Sellos con texto integrado: a 35px no se lee, por eso el grupo va tall.
     tall: true,
     logos: [
       { src: '/catalonia-exponential-leaders.png', alt: 'Catalonia Exponential Leader — ACCIÓ, Generalitat de Catalunya' },
+      // Marca sola: se le quitó el bloque del Ministerio de Ciencia e Innovación
+      // que traía el archivo oficial (el footer ya muestra dos escudos de España).
+      { src: '/pyme-innovadora.svg', alt: 'Innovative SME — Pyme Innovadora' },
     ],
   },
   {
