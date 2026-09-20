@@ -24,6 +24,13 @@ const currentSlug = page?.slug ?? slug;
 // petición por idioma)
 const translatedSlugs = page && getById ? await getTranslatedSlugs(page.translations) : {};
 
+// Además de la URL por idioma, marcamos si el switchUrls es fiable para SEO
+// (i.e. las URLs por idioma son variantes reales de la misma página).
+// Si no encontramos la ruta actual en `routes.js` y no viene una traducción
+// desde WordPress, cae al `/${code}/` genérico — usable para el menú, pero
+// NO para emitir hreflang.
+const fallbackRoute = routes.find(r => r.slug[lang] === currentSlug);
+
 const switchUrls = page && getById
   ? LOCALES.map((code) => {
       const translatedSlug = translatedSlugs[code] ?? page.slug;
@@ -37,10 +44,18 @@ const switchUrls = page && getById
       return { code, url };
     })
   : LOCALES.map((code) => {
-      const route = routes.find(r => r.slug[lang] === currentSlug);
-      const target = route ? route.slug[code] : '';
+      const target = fallbackRoute ? fallbackRoute.slug[code] : '';
       return { code, url: `/${code}/${target}` };
     });
+
+// Emitir hreflang solo si las alternativas son fiables:
+// - viene de WordPress con traducciones, o
+// - encontramos la ruta actual en routes.js.
+const hreflangReliable = (page && getById) || Boolean(fallbackRoute);
+
+// Yoast emite canonicals con trailing slash (p.ej. /en/). Normalizamos los
+// hreflang para que coincidan y Google no vea inconsistencias.
+const withTrailingSlash = (u: string) => (u.endsWith('/') ? u : `${u}/`);
 
 // Traducciones JSON
 // 1️⃣ “Glob” de todos los JSON de idiomas (eager para cargarlos en build)
@@ -86,6 +101,14 @@ warmCache(lang);
           <meta name="twitter:image" content={seo.twitter_image} />
         )}
         <link rel="canonical" href={seo.canonical} />
+      </>
+    )}
+    {hreflangReliable && Astro.site && (
+      <>
+        {switchUrls.map(({ code, url }) => (
+          <link rel="alternate" hreflang={code} href={new URL(withTrailingSlash(url), Astro.site).toString()} />
+        ))}
+        <link rel="alternate" hreflang="x-default" href={new URL(withTrailingSlash(switchUrls.find(s => s.code === 'en')?.url ?? '/en/'), Astro.site).toString()} />
       </>
     )}
     <link

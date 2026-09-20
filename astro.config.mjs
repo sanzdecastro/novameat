@@ -12,6 +12,7 @@ const env = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '');
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.novameat.com',
   integrations: [vue()],
   output: 'server',
   adapter: vercel({

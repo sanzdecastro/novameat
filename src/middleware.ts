@@ -31,6 +31,6 @@ export const onRequest = defineMiddleware((context, next) => {
     if (pathname === "/de") return Response.redirect(new URL("/de/", context.url), 308);
 
 
-  // redirige todo lo demás a default locale
-  return Response.redirect(new URL(`/en${pathname}`, context.url), 302);
+  // redirige todo lo demás a default locale (308: permanente, preserva método)
+  return Response.redirect(new URL(`/en${pathname}`, context.url), 308);
 });

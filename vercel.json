@@ -1,5 +1,13 @@
 {
-    "buildCommand": "npm run build",
-    "outputDirectory": "dist",
-    "framework": "astro"
-  }
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "novameat.com" }],
+      "destination": "https://www.novameat.com/:path*",
+      "permanent": true
+    }
+  ]
+}

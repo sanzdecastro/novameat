@@ -1,16 +1,7 @@
 ---
-const defaultLocale = 'en';
+// El middleware redirige `/` a `/en/` con 308 antes de llegar aquí.
+// Esta página es la red de seguridad: si algún día el middleware deja de
+// interceptar `/`, seguimos redirigiendo con 301 en vez de servir un HTML
+// con noindex (que fue el estado anterior y penalizaba indexación).
+return Astro.redirect('/en/', 301);
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Redirecting...</title>
-    <meta name="robots" content="noindex" />
-    <link rel="canonical" href={`/${defaultLocale}`} />
-    <meta http-equiv="refresh" content={`0; url=/${defaultLocale}`} />
-  </head>
-  <body>
-    <p>Redirecting to /{defaultLocale}…</p>
-  </body>
-</html>
