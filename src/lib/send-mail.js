@@ -14,12 +14,19 @@ export async function sendMail({ mail, subject, message, service }) {
     <p>${mail}</p>
   `;
 
-  return await resend.emails.send({
+  // Resend no lanza: devuelve { data, error }. Sin esta comprobación un fallo
+  // de envío llegaba al usuario como "¡Correo enviado!".
+  const { data, error } = await resend.emails.send({
     from: 'Formulario web <no-reply@novameat.com>',
     to: 'contact@novameat.com',
     replyTo: mail,
-    mail,
     subject,
     html,
   });
+
+  if (error) {
+    throw new Error(`Resend: ${error.message || error.name || 'send failed'}`);
+  }
+
+  return data;
 }
