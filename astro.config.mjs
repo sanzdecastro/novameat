@@ -16,7 +16,6 @@ export default defineConfig({
   integrations: [vue()],
   output: 'server',
   adapter: vercel({
-    edgeMiddleware: true,
     // ISR: cachea el HTML renderizado en el edge de Vercel. La primera visita
     // renderiza (SSR + WordPress); las siguientes se sirven desde caché sin
     // tocar el servidor ni la API de WP hasta que expira (o se revalida bajo
