@@ -12,6 +12,46 @@ export default {
       type: Object,
     },
   },
+  computed: {
+    // Los artículos llegan de WP con los títulos de sección maquetados de 3
+    // formas: <h2>, <h3> o un párrafo entero en negrita (texto pegado desde
+    // Word/Docs). Convertimos ese último caso en <h3> para que todos los
+    // títulos compartan estilo (ver .block-blog h2, h3 en global.css), sin
+    // tocar el contenido en WordPress.
+    blockText() {
+      const html = this.section?.block_text || '';
+      if (!html || typeof DOMParser === 'undefined') return html;
+
+      const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html');
+      const root = doc.body.firstElementChild;
+
+      // Títulos vacíos que deja el editor (<h2><strong></strong></h2>): solo
+      // añadían un hueco con el margen de título
+      root.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((h) => {
+        if (!h.textContent.replace(/ /g, ' ').trim()) h.remove();
+      });
+
+      root.querySelectorAll('p').forEach((p) => {
+        const text = p.textContent.replace(/ /g, ' ').trim();
+        if (!text) return;
+
+        const bold = Array.from(p.querySelectorAll('b, strong'))
+          .filter((el) => !el.parentElement.closest('b, strong'))
+          .map((el) => el.textContent)
+          .join('')
+          .replace(/ /g, ' ')
+          .trim();
+        if (bold !== text) return;
+
+        const h3 = doc.createElement('h3');
+        h3.innerHTML = p.innerHTML;
+        h3.querySelectorAll('b, strong').forEach((el) => el.replaceWith(...el.childNodes));
+        p.replaceWith(h3);
+      });
+
+      return root.innerHTML;
+    },
+  },
   mounted() {
     this.hoverNotes();
   },
@@ -86,7 +126,7 @@ export default {
 <template >
     <div class="block-blog">
         <div class="block mb-md">
-            <div class="text-block" v-if="section.add_text === true" v-html="section.block_text"></div>
+            <div class="text-block" v-if="section.add_text === true" v-html="blockText"></div>
             <div v-if="section.add_quote === true" class="quote">
                 <p class="quote-text">{{ section.quote.quote }}</p>
                 <p class="quote-author">{{ section.quote.author }}</p>

@@ -1002,14 +1002,19 @@ input[type="checkbox"] {
       underline-offset-2;
     }
 
-    h1, h2 {
-       @apply
-      text-[30px]
-    }
-
-    h3 {
+    /* Títulos de sección del artículo: h2 y h3 con el mismo estilo (en WP
+       conviven ambos niveles, más párrafos en negrita que BlockBlog.vue
+       convierte en h3). El peso lo marca el estilo, no el <strong> del editor. */
+    h1, h2, h3 {
       @apply
-      text-[28px]
+      text-title
+      leading-[1.15]
+      mt-[1.5em]
+      mb-[0.6em];
+
+      b, strong {
+        font-weight: inherit;
+      }
     }
 
     h4 {
