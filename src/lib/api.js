@@ -188,22 +188,28 @@ export async function getFeedBlogData(section, lang) {
   const postById = new Map(posts.map((p) => [p.id, p]));
   const categoryById = new Map(categories.map((c) => [c.id, c]));
 
+  const feedPosts = postIds
+    .map((id) => postById.get(id))
+    .filter(Boolean)
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title?.rendered ?? '',
+      excerpt: post.excerpt?.rendered ?? '',
+      words: post.acf?.words ?? '',
+      date: post.acf?.date ?? '',
+      image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? '',
+      categories: (post._embedded?.['wp:term']?.[0] || []).map((c) => ({ name: c.name, slug: c.slug })),
+    }));
+
+  // Solo se ofrecen como filtro las categorías con algún post en el listado:
+  // una categoría vacía dejaba la lista en blanco al pulsarla
+  const usedSlugs = new Set(feedPosts.flatMap((p) => p.categories.map((c) => c.slug)));
+
   return {
-    posts: postIds
-      .map((id) => postById.get(id))
-      .filter(Boolean)
-      .map((post) => ({
-        slug: post.slug,
-        title: post.title?.rendered ?? '',
-        excerpt: post.excerpt?.rendered ?? '',
-        words: post.acf?.words ?? '',
-        date: post.acf?.date ?? '',
-        image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? '',
-        categories: (post._embedded?.['wp:term']?.[0] || []).map((c) => ({ name: c.name, slug: c.slug })),
-      })),
+    posts: feedPosts,
     categories: categoryIds
       .map((id) => categoryById.get(id))
-      .filter(Boolean)
+      .filter((c) => c && usedSlugs.has(c.slug))
       .map((c) => ({ name: c.name, slug: c.slug })),
   };
 }
