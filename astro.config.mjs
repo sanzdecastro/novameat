@@ -31,7 +31,9 @@ export default defineConfig({
   }),
   i18n: {
     defaultLocale: 'en',
-    locales: ['en','es'],
+    // Deben estar todos los idiomas con contenido en WP: un locale que falte aquí
+    // devuelve 404 en todas sus rutas (it/de estuvieron caídos por eso)
+    locales: ['en','es','it','de'],
     routing: {
       prefixDefaultLocale: true,
    }
