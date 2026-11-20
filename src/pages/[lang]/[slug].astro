@@ -2,7 +2,7 @@
 
 import Layout from '../../layouts/Layout.astro';
 
-import { getPages, getPage, getPageById, getProducts, getProduct } from "../../lib/api.js";
+import { getPages, getPage, getPageById, getProducts, getProduct, getFeedBlogData } from "../../lib/api.js";
 
 import PointsSlider from "../../components/PointsSlider.vue"
 import BlockText from "../../components/BlockText.vue"
@@ -30,6 +30,15 @@ const bgHeader = "bg-white"
 // console.log( page )
 
 const flexibleSections = page?.acf?.flexible_content || [];
+
+// El listado del blog se resuelve aquí (SSR + ISR) y no en el navegador
+const feedBlogData = new Map(
+  await Promise.all(
+    flexibleSections
+      .filter((section: any) => section.acf_fc_layout === "block_feed_blog")
+      .map(async (section: any) => [section, await getFeedBlogData(section, lang)] as const)
+  )
+);
 
 ---
 
@@ -66,7 +75,7 @@ const flexibleSections = page?.acf?.flexible_content || [];
       } else if(section.acf_fc_layout === "block_related") {
         return <BlockRelated section={section} client:only />;
       } else if(section.acf_fc_layout === "block_feed_blog") {
-        return <BlockFeedBlog section={section} lang={lang} client:only />;
+        return <BlockFeedBlog section={section} lang={lang} posts={feedBlogData.get(section)?.posts} categories={feedBlogData.get(section)?.categories} client:only />;
       } 
       
       return null; 

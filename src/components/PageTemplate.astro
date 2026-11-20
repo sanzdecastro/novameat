@@ -15,11 +15,21 @@ import BlockCentralMessage from '../components/BlockCentralMessage.vue';
 import SubHeader from '../components/subHeader.vue';
 import BlockRelated from '../components/BlockRelated.vue';
 import BlockFeedBlog from '../components/BlockFeedBlog.vue'
+import { getFeedBlogData } from '../lib/api.js';
 
 const { lang, slug, page } = Astro.props;
 
 const seo = page?.yoast_head_json ?? null;
 const flexibleSections = page?.acf?.flexible_content || [];
+
+// El listado del blog se resuelve aquí (SSR + ISR) y no en el navegador
+const feedBlogData = new Map(
+  await Promise.all(
+    flexibleSections
+      .filter((section: any) => section.acf_fc_layout === "block_feed_blog")
+      .map(async (section: any) => [section, await getFeedBlogData(section, lang)] as const)
+  )
+);
 
 const colorText = "text-black";
 const bgHeader = "bg-white";
@@ -59,7 +69,7 @@ const bgHeader = "bg-white";
       } else if(section.acf_fc_layout === "block_related") {
         return <BlockRelated section={section} client:only />;
       } else if(section.acf_fc_layout === "block_feed_blog") {
-        return <BlockFeedBlog section={section} lang={lang} client:only />;
+        return <BlockFeedBlog section={section} lang={lang} posts={feedBlogData.get(section)?.posts} categories={feedBlogData.get(section)?.categories} client:only />;
       } 
       
       return null; 

@@ -166,6 +166,48 @@ export async function getPost(slug, lang) {
   return posts.length ? posts[0] : null;
 }
 
+// Datos del bloque block_feed_blog (listado del blog), resueltos en servidor.
+// Antes el componente pedía cada post por separado desde el navegador
+// (~29 posts + 5 categorías = 34 peticiones a WP por visita, ~7 s) y la página
+// se quedaba colgada. Ahora son 2 peticiones en el SSR, cacheadas por ISR, y al
+// cliente solo le llegan los campos que pinta la tarjeta.
+export async function getFeedBlogData(section, lang) {
+  const postIds = (section?.posts || []).map((p) => p?.ID).filter(Boolean);
+  const categoryIds = (section?.categories_visible || []).filter(Boolean);
+
+  const [posts, categories] = await Promise.all([
+    postIds.length
+      ? cachedFetch(`${apiUrl}/posts?include=${postIds.join(',')}&per_page=100&lang=${lang}&_embed=wp:featuredmedia,wp:term&_fields=id,slug,title,excerpt,acf,_links,_embedded`)
+      : [],
+    categoryIds.length
+      ? cachedFetch(`${apiUrl}/categories?include=${categoryIds.join(',')}&per_page=100&lang=${lang}&_fields=id,name,slug`)
+      : [],
+  ]);
+
+  // WP devuelve `include` ordenado por fecha: respetamos el orden elegido en ACF
+  const postById = new Map(posts.map((p) => [p.id, p]));
+  const categoryById = new Map(categories.map((c) => [c.id, c]));
+
+  return {
+    posts: postIds
+      .map((id) => postById.get(id))
+      .filter(Boolean)
+      .map((post) => ({
+        slug: post.slug,
+        title: post.title?.rendered ?? '',
+        excerpt: post.excerpt?.rendered ?? '',
+        words: post.acf?.words ?? '',
+        date: post.acf?.date ?? '',
+        image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? '',
+        categories: (post._embedded?.['wp:term']?.[0] || []).map((c) => ({ name: c.name, slug: c.slug })),
+      })),
+    categories: categoryIds
+      .map((id) => categoryById.get(id))
+      .filter(Boolean)
+      .map((c) => ({ name: c.name, slug: c.slug })),
+  };
+}
+
 // Warm Cache — llama en segundo plano desde Layout.astro para pre-cargar el idioma
 // de la petición actual. Antes precargaba los 4 idiomas en cada arranque del
 // servidor (~13 peticiones a WP por visita, sin usarse la mayoría); ahora solo

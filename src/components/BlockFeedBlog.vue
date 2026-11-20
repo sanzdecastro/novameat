@@ -1,7 +1,10 @@
 <script>
 import Divider from './Divider.vue';
-import { getProductCategories, getPost, apiUrl } from "../lib/api";
 
+// Posts y categorías llegan ya resueltos desde el servidor (getFeedBlogData en
+// src/lib/api.js): el navegador no hace ninguna petición a WordPress.
+// Solo vista de lista: el selector Grid/List se quitó a petición del cliente
+// (los estilos .grid-view siguen en global.css por si se recupera).
 export default {
   name: "BlockFeedBlog",
   components: { Divider },
@@ -13,73 +16,25 @@ export default {
     lang: {
       type: String,
       default: 'en'
+    },
+    posts: {
+      type: Array,
+      default: () => []
+    },
+    categories: {
+      type: Array,
+      default: () => []
     }
   },
-  data() {
-    return {
-      blogCategories: [],
-      blogPosts: []
-    };
-  },
-  async created() {
-    await this.fetchCategories();
-    await this.fetchPosts();
-  },
-  async mounted() {
-    this.showView();
+  computed: {
+    blogPosts() {
+      return this.posts;
+    },
+    blogCategories() {
+      return this.categories;
+    }
   },
   methods: {
-    async fetchCategories() {
-      const ids = this.section.categories_visible || [];
-      if (!ids.length) return;
-
-      try {
-        const categories = await Promise.all(
-          ids.map(id =>
-            getProductCategories(apiUrl, id, this.lang)
-          )
-        );
-        this.blogCategories = categories;
-        //console.log("Fetched categories:", this.blogCategories);
-      } catch (error) {
-        console.error("Error al obtener categories", error);
-      }
-    },
-    async fetchPosts() {
-      const items = this.section.posts || [];
-      if (!items.length) return;
-
-      try {
-        const posts = await Promise.all(
-          items.map(item =>
-            getPost(item.post_name ,this.lang)
-          )
-        );
-        this.blogPosts = posts;
-        //console.log("Fetched posts:", this.blogPosts);
-      } catch (error) {
-        console.error("Error al obtener posts", error);
-      }
-    },
-    async showView() {
-      const gridButton = document.querySelector(".view-as .grid-view-button")
-      const listButton = document.querySelector(".view-as .list-view-button")
-      const wrapperFeed = document.querySelector(".feed")
-
-      gridButton.addEventListener("click" , ()=> {
-        gridButton.classList.add("active");
-        listButton.classList.remove("active")
-        wrapperFeed.classList.add("grid-view");
-        wrapperFeed.classList.remove("list-view");
-      })
-
-      listButton.addEventListener("click", ()=> {
-        gridButton.classList.remove("active")
-        listButton.classList.add("active");
-        wrapperFeed.classList.remove("grid-view");
-        wrapperFeed.classList.add("list-view");
-      })
-    },
     selectCategory(slug) {
       const categoryButtons = document.querySelectorAll(
         ".header-feed .categories .category-wrapper"
@@ -117,12 +72,6 @@ export default {
 <template>
   <div class="blog-feed">
     <div class="header-feed">
-      <div class="view-as">
-        <ul>
-          <li class="grid-view-button active">Grid</li>
-          <li class="list-view-button">List</li>
-        </ul>
-      </div>
       <h1 v-html="section.title"></h1>
       <div class="categories">
         <div class="category">
@@ -142,33 +91,33 @@ export default {
         </div>
       </div>
     </div>
-    <div class="feed grid-view">
-      <div class="post" v-for="(post, index) in blogPosts">
+    <div class="feed list-view">
+      <div class="post" v-for="(post, index) in blogPosts" :key="post.slug">
         <a :href="`/${lang}/journal/${post.slug}?log=${String(blogPosts.length - index).padStart(2,'0')}`">
           <div class="post-header">
           <div class="log">( Log. {{ String(blogPosts.length - index).padStart(2, '0') }} )</div>
             <div class="image-wrapper">
-                <img :src="post?._embedded?.['wp:featuredmedia']?.[0]?.source_url" :alt="post.title.rendered">
+                <img :src="post.image" :alt="post.title" loading="lazy">
                 <div class="categories">
-                  <div class="category" v-for="(category, index) in post?._embedded?.['wp:term']?.[0]" :class=category.slug>
+                  <div class="category" v-for="category in post.categories" :key="category.slug" :class="category.slug">
                     {{ category.name }}
                   </div>
                 </div>
             </div>
           </div>
-          
+
           <div class="post-footer">
             <div>
-                <h2>{{post.title.rendered}}</h2>
-                <div class="excerpt" v-html="post.excerpt.rendered"></div>
-                <span>{{post.acf?.words}}</span>
+                <h2 v-html="post.title"></h2>
+                <div class="excerpt" v-html="post.excerpt"></div>
+                <span>{{post.words}}</span>
             </div>
             <div class="categories">
-                <div class="category" v-for="(category, index) in post?._embedded?.['wp:term']?.[0]" :class=category.slug>
+                <div class="category" v-for="category in post.categories" :key="category.slug" :class="category.slug">
                   {{ category.name }}
                 </div>
               </div>
-             <p>{{post.acf?.date}}</p>
+             <p>{{post.date}}</p>
           </div>
         </a>
       </div>
