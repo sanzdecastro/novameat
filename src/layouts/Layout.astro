@@ -124,7 +124,7 @@ warmCache(lang);
     <Header transition:persist lang={lang}  switchUrls={switchUrls} routes={routes} colorText={colorText} bgHeader={bgHeader} messages={messages}  client:load />
     
     <div
-      class="loading z-50 bg-black w-full h-[100vh] absolute top-0 left-0 flex justify-center items-center pointer-events-none"
+      class="loading z-50 bg-black w-full h-[100vh] fixed top-0 left-0 flex justify-center items-center pointer-events-none"
     >
       <CircleSmall class="w-1/3 md:w-1/6" color={colorText} client:load />
     </div>
@@ -209,6 +209,20 @@ warmCache(lang);
           autoAlpha: 0,
           duration: 0.2,
         });
+        // Indicador de carga: si el servidor tarda (SSR + WordPress), mostramos
+        // el overlay .loading mientras llega la página nueva. El retardo evita
+        // que las navegaciones rápidas parpadeen: el swap llega antes y este
+        // overlay (del documento viejo) nunca se ve. Tras el swap, el .loading
+        // del documento nuevo ya está visible e inPage() lo funde.
+        const loading = document.querySelector(".loading");
+        if (loading) {
+          gsap.to(loading, {
+            autoAlpha: 1,
+            duration: 0.2,
+            delay: 0.3,
+            overwrite: true,
+          });
+        }
         // Si es iPhone y Chrome, función para obligar a actualizar el historial
         function updateUrlIfChromeOniPhone() {
             const ua = navigator.userAgent;
