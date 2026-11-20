@@ -70,12 +70,14 @@ export const routes = [
   },
   {
     key: 'journal',
+    // Etiqueta visible «Blog» (petición del cliente, nov 2026). El slug se
+    // mantiene en /journal/ para no romper URLs ya indexadas.
     label: {
-      en: 'Journal',
-      es: 'Journal',
-      it: 'Journal',
-      fr: 'Journal',
-      de: 'Journal'
+      en: 'Blog',
+      es: 'Blog',
+      it: 'Blog',
+      fr: 'Blog',
+      de: 'Blog'
     },
     slug: {
       en: 'journal',
