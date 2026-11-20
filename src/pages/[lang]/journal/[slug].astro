@@ -25,7 +25,9 @@ const bgHeader = "bg-white";
 const flexibleSections = page?.acf?.flexible_blog || [];
 const date = page?.acf?.date;
 const words = page?.acf?.words;
-const featuredMedia = page?._embedded?.["wp:featuredmedia"]?.[0]?.link;
+// source_url es el fichero de imagen; `link` es la página del adjunto en WP
+// (HTML) y dejaba la imagen rota en todos los artículos
+const featuredMedia = page?._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
 const categories = page?._embedded?.["wp:term"]?.[0];
 
 const credits = page?.acf?.creedits?.credit;
