@@ -1521,9 +1521,13 @@ input[type="checkbox"] {
             @apply
             hidden;
           }
+          /* La columna del título medía 458px fijos aunque su celda del grid
+             fuera más estrecha, y los títulos largos se montaban sobre la
+             categoría. Ahora se limita a la celda (min-w-0) con el mismo tope */
           & > div {
             @apply
-            md:w-[458px];
+            md:min-w-0
+            md:max-w-[458px];
           }
           .excerpt {
             @apply
@@ -1536,7 +1540,9 @@ input[type="checkbox"] {
             md:text-p-small
             gap-2
             font-haffe
-            flex;
+            flex
+            flex-wrap
+            content-start;
 
             & + p {
               @apply
