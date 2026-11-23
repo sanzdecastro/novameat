@@ -990,9 +990,11 @@ input[type="checkbox"] {
 
 
   .block {
+    /* Cuerpo del artículo en Haffer 15 (pedido de cliente, 23 nov); los
+       títulos de sección y las citas siguen en Montagu */
     @apply
-    text-[14px]
-    md:text-p
+    font-haffe
+    text-[15px]
     md:col-span-6
     md:col-start-4;
 
@@ -1005,6 +1007,11 @@ input[type="checkbox"] {
     /* Títulos de sección del artículo: h2 y h3 con el mismo estilo (en WP
        conviven ambos niveles, más párrafos en negrita que BlockBlog.vue
        convierte en h3). El peso lo marca el estilo, no el <strong> del editor. */
+    h1, h2, h3, h4, h5, h6 {
+      @apply
+      font-montagu;
+    }
+
     h1, h2, h3 {
       @apply
       text-title
@@ -1117,8 +1124,7 @@ input[type="checkbox"] {
         @apply
         
         md:grid
-        md:grid-cols-6
-        text-p-small;
+        md:grid-cols-6;
 
       
         .question {
@@ -1145,6 +1151,7 @@ input[type="checkbox"] {
       md:mx-0
       md:grid
       md:grid-cols-6
+      font-montagu
       text-center
       text-[14px]
       md:text-p-small
